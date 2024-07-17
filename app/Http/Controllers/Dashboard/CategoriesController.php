@@ -31,6 +31,8 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
+        $request->validate(Category::rules());
         $request->merge([
             'slug' => Str::slug($request->name),
         ]);
@@ -53,9 +55,10 @@ class CategoriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request, string $id)
     {
         $category = Category::findOrFail($id);
+
         $perants = Category::where('id', '<>', $id)
             ->where(function ($query) use ($id) {
                 $query->whereNull('parent_id')->orwhere('parent_id', '<>', $id);
@@ -72,6 +75,10 @@ class CategoriesController extends Controller
     {
         $category = Category::findOrFail($id);
         $oldImage = $category->image;
+
+        // تمرير قيمة oldImage للتحقق مما إذا كانت الصورة موجودة بالفعل
+        $request->validate(Category::rules($id, $oldImage));
+
         $data = $request->except('image');
 
         // تحميل الصورة الجديدة إن وجدت
@@ -88,7 +95,7 @@ class CategoriesController extends Controller
             Storage::disk('public')->delete($oldImage);
         }
 
-        return redirect()->route('categories.index');
+        return redirect()->route('categories.index')->with('success', 'Category updated successfully');
     }
 
     /**
