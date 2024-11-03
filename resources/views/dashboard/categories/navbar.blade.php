@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+   <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
@@ -22,7 +22,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+     
+   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -164,123 +165,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </li>
             </ul>
         </nav>
-        <!-- Navbar -->
-        <!-- /.navbar -->
-
-        <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <!-- Brand Logo -->
-            <div class="mt-4" style="display: flex-direction: column;justify-content: center; text-align:center;">
-                <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
-                    class="brand-image img-circle elevation-3 " style="opacity: .8;width: 50px ;height: 50px"><br>
-                <span class="brand-text font-weight-light" style="color: white">متجر قطع غيار السيارات </span>
-            </div>
-            <!-- Sidebar -->
-            <div class="sidebar mt-3">
-                <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
-                            alt="User Image">
-                    </div>
-                    <div class="info">
-                        <a href="#" class="d-block">{{ Auth::user()->name }}</a>
-                    </div>
-                </div>
-                <div style="  display: flex;
-  justify-content: center;" class="m-3">
-                    <form action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button class="btn btn-primary btn-sm px-5 py-2 ">تسجيل الخروج</button>
-                    </form>
-                </div>
-                <div class="mt-3">
-                    <a href="{{ route('dashboard') }}" class="btn btn-primary btn-lg w-100"
-                        style="color:white">Categories</a>
-
-
-                    <a href="{{ route('dashboard.in') }}" class="btn btn-primary btn-lg w-100 mt-1"
-                        style="color:white">
-                        سب كاتجوري داخلية
-                    </a>
-                    <a href="{{ route('dashboard.internalPartsProducts') }}" class="btn btn-primary btn-lg w-100 mt-1"
-                        style="color:white">
-                        قطع غيار داخلية
-                    </a>
-                    <a href="{{ route('dashboard.ex') }}" class="btn btn-primary btn-lg w-100 mt-1"
-                        style="color:white">
-                        سب كاتجوري الخارجية
-
-                    </a>
-                    <a href="{{ route('dashboard.externalPartsProducts') }}"
-                        class="btn btn-primary btn-lg w-100 mt-1" style="color:white">
-                        قطع غيار الخارجية
-
-                    </a>
-                    <a href="{{ route('dashboard.el') }}" class="btn btn-primary btn-lg w-100 mt-1"
-                        style="color:white">سب الكاتجوري
-                        كهربائية</a>
-                    <a href="{{ route('dashboard.electricalPartsProducts') }}"
-                        class="btn btn-primary btn-lg w-100 mt-1" style="color:white">قطع غيار
-
-                        كهربائية</a>
-                </div>
-
-
-                <!-- Sidebar Menu -->
-                <nav class="mt-0">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-                        <a href="{{ route('dashboard.allProducts') }}">
-                            <li class="btn btn-primary btn-lg w-100 mt-1" style="color: white">جميع منتجات </li>
-                        </a>
-                    </ul>
-                </nav>
-                <!-- /.sidebar-menu -->
-            </div>
-            <!-- /.sidebar -->
-        </aside>
-
-        <div class="content-wrapper">
-            <div class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1 class="m-0">@yield('title')</h1>
-                        </div><!-- /.col -->
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                @section('breadcrumb')
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                @show
-                            </ol>
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
-                </div><!-- /.container-fluid -->
-            </div>
-
-            <div class="content">
-                <div class="container-fluid">
-                    @yield('content')
-                    @yield('create')
-                    @yield('edit')
-                </div>
-            </div>
-        </div>
-        <!-- /.content-wrapper -->
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-            <div class="p-3">
-                <h5>Title</h5>
-                <p>Sidebar content</p>
-            </div>
-        </aside>
-        <!-- /.control-sidebar -->
-
-        <!-- Main Footer -->
+                <!-- Main Footer -->
         @include('dashboard.categories.includes.footer')
     </div>
     <!-- ./wrapper -->

@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use App\Models\Product;
+use App\Models\SubCategory;
 use Illuminate\Support\Facades\Storage;
 class CategoriesController extends Controller
 {
@@ -13,8 +16,12 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        return view('dashboard.categories.index', ['categories' => $categories]);
+        $subCategories = SubCategory::with('category')->get();
+
+        // جلب المنتجات ذات الكميات المنخفضة
+        $lowStockProducts = Product::where('quantity', '<', 5)->get();
+
+        return view('dashboard.categories.index', compact('subCategories', 'lowStockProducts'));
     }
 
     /**
@@ -25,23 +32,25 @@ class CategoriesController extends Controller
         $perants = Category::all();
         return view('dashboard.categories.create', compact('perants'));
     }
-
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        $request->validate(Category::rules());
-        $request->merge([
-            'slug' => Str::slug($request->name),
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'quantity' => 'required|integer|min:0',
+            'price' => 'required|numeric|min:0',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'sub_category_id' => 'required|exists:sub_categories,id',
         ]);
 
-        $data = $request->except('image');
-        $data['image'] = $this->uploadImag($request);
-        $category = new Category($data);
-        $category->save();
-        return redirect()->route('categories.index')->with('success', 'Category created successfully');
+        $data = $request->except('image'); // استثني حقل الصورة
+        $data['image'] = $this->uploadImage($request); // تحميل الصورة
+
+        Product::create($data); // إنشاء المنتج
+        return redirect()->route('dashboard')->with('success', 'Product created successfully.');
     }
 
     /**
@@ -95,7 +104,7 @@ class CategoriesController extends Controller
             Storage::disk('public')->delete($oldImage);
         }
 
-        return redirect()->route('categories.index')->with('success', 'Category updated successfully');
+        return redirect()->route('categories.index')->with('updated', 'Category updated successfully');
     }
 
     /**

@@ -5,33 +5,22 @@
     <li class="breadcrumb-item active">Starter Page</li>
 @endsection
 @section('content')
-    <h1>لوحة التحكم</h1>
-
- @if ($lowStockProducts->count() > 0)
-    <div class="alert alert-warning text-center alert-dismissible fade show" role="alert">
-        <h4>تنبيه!</h4>
-        هناك منتجات عددها أقل من 5. يرجى مراجعتها:
-        @foreach ($lowStockProducts as $product)
-            {{ $product->name }}: {{ $product->quantity }}@if (!$loop->last), @endif
-        @endforeach
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-@endif
-
-
     <x-alert />
-    <a href="{{ route('subcategories.create') }}" class="btn btn-primary">Create Category</a>
+    <a href="{{ route('subcategories.create') }}" class="btn btn-primary">Create SupCategory</a>
     <hr>
     <br>
+    <h2>قطع غيار كهربائية</h2>
+    {{-- 
+    @if (count($subCategories) > 0)
+        <a href="{{ route('subcategories.create') }}" class="btn btn-primary">Create SubCategory</a>
+    @endif --}}
 
     {{-- جدول السُب كاتجوري --}}
     <table class="table table-striped table-hover mt-4">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">الاسم</th>
-                <th scope="col">الوصف</th>
+                <th scope="col">اسم السُب كاتجوري</th>
+                <th scope="col">وصف السُب كاتجوري</th>
                 <th scope="col">الإجراءات</th>
             </tr>
         </thead>
@@ -49,6 +38,8 @@
                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                             </form>
                         </div>
+                        <a href="{{ route('subcategories.products', $s['id']) }}" class="btn btn-dark btn-sm mr-1">all
+                            products</a>
                     </td>
                 </tr>
             @empty

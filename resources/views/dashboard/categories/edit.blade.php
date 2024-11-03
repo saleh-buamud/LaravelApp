@@ -2,7 +2,7 @@
 @section('edit')
     <h2 style="margin-bottom: 15px">Edit Category</h2>
     <div class="container">
-        <form action="{{ route('categories.update', $category->id) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('subCategories.update', $supcategories->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('put')
             <div class="mb-3">
