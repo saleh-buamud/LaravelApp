@@ -69,6 +69,18 @@ class ProductController extends Controller
         }
 
         $product->update($productData);
-        return redirect()->route('products.index')->with('success', 'Product updated successfully.');
+        return redirect()->route('dashboard.allProducts')->with('updated', 'Product updated successfully.');
+    }
+
+    public function destroy(string $id)
+    {
+        // البحث عن المنتج باستخدام الـ ID المحدد
+        $product = Product::findOrFail($id);
+
+        // حذف المنتج
+        $product->delete();
+
+        // إعادة التوجيه إلى قائمة المنتجات مع رسالة تأكيد
+        return redirect()->route('dashboard.allProducts')->with('Deleted', 'Product deleted successfully');
     }
 }

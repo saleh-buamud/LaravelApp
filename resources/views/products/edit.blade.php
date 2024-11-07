@@ -16,18 +16,21 @@
         </div>
         <div class="mb-3">
             <label for="quantity" class="form-label">الكمية</label>
-            <input type="number" class="form-control" id="quantity" name="quantity" value="{{ $product->quantity }}" required min="0">
+            <input type="number" class="form-control" id="quantity" name="quantity" value="{{ $product->quantity }}"
+                required min="0">
         </div>
         <div class="mb-3">
             <label for="price" class="form-label">السعر</label>
-            <input type="number" class="form-control" id="price" name="price" value="{{ $product->price }}" required min="0" step="0.01">
+            <input type="number" class="form-control" id="price" name="price" value="{{ $product->price }}" required
+                min="0" step="0.01">
         </div>
         <div class="mb-3">
             <label for="subcategory_id" class="form-label">الفئة الفرعية</label>
             <select class="form-select" name="subcategory_id" id="subcategory_id" required>
                 <option value="">اختر فئة فرعية</option>
                 @foreach ($subCategories as $subCategory)
-                    <option value="{{ $subCategory->id }}" {{ $product->subcategory_id == $subCategory->id ? 'selected' : '' }}>
+                    <option value="{{ $subCategory->id }}"
+                        {{ $product->subcategory_id == $subCategory->id ? 'selected' : '' }}>
                         {{ $subCategory->name }}
                     </option>
                 @endforeach
@@ -36,8 +39,14 @@
         <div class="mb-3">
             <label for="image" class="form-label">الصورة (اختياري)</label>
             <input type="file" class="form-control" id="image" name="image">
+
+            <!-- عرض الصورة القديمة إذا كانت موجودة -->
             @if ($product->image)
-                <img src="{{ asset('storage/' . $product->image) }}" alt="صورة المنتج" style="width: 100px; height: auto; margin-top: 10px;">
+                <div class="mt-2">
+                    <label>الصورة الحالية</label>
+                    <img src="{{ asset('storage/' . $product->image) }}" alt="صورة المنتج"
+                        style="width: 100px; height: auto;">
+                </div>
             @endif
         </div>
         <button type="submit" class="btn btn-primary">تحديث المنتج</button>

@@ -94,7 +94,9 @@ class SalehController extends Controller
     public function allProducts()
     {
         $products = Product::all();
-        return view('dashboard.categories.productAll', compact('products'));
+         $lowStockProducts = Product::where('quantity', '<', 5)->get();
+
+        return view('dashboard.categories.productAll', compact('products', 'lowStockProducts'));
     }
     // دالة لجلب المنتجات المرتبطة بفئة فرعية معينة
     public function productsBySubCategory($subCategoryId)
@@ -111,4 +113,10 @@ class SalehController extends Controller
 
         return view('dashboard.categories.productsBySubCategory', compact('products', 'subCategory'));
     }
+    // public function checkproduct()
+    // {
+    //     $lowStockProducts = Product::where('quantity', '<', 5)->get();
+
+    //     return view('dashboard.categories.productAll', compact('lowStockProducts'));
+    // }
 }
