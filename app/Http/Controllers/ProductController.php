@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product; // تأكد من إضافة الـ Model
 use App\Models\SubCategory; // إضافة SubCategory Model
 use Illuminate\Http\Request;
+use App\Models\Mode; // ��ضافة Model Model
 
 class ProductController extends Controller
 {
@@ -12,7 +13,9 @@ class ProductController extends Controller
     public function create()
     {
         $subCategories = SubCategory::all(); // جلب جميع الفئات الفرعية
-        return view('products.create', compact('subCategories'));
+        $models = Mode::all(); // جلب جميع الموديلات
+
+        return view('products.create', compact('subCategories', 'models'));
     }
 
     // تخزين منتج جديد
@@ -25,6 +28,8 @@ class ProductController extends Controller
             'price' => 'required|numeric|min:0',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'sub_category_id' => 'required|exists:sub_categories,id',
+            'model_id' => 'required|array', // تعديل هنا لإلزام المستخدم باختيار موديلات
+            'model_id.*' => 'exists:modes,id', // التحقق من وجود كل موديل
         ]);
 
         $productData = $request->all();
@@ -36,8 +41,13 @@ class ProductController extends Controller
             $productData['image'] = $imagePath;
         }
 
-        Product::create($productData);
-        return redirect()->route('dashboard.allProducts')->with('success', 'Product created successfully.');
+        // إنشاء المنتج
+        $product = Product::create($productData);
+
+        // ربط المنتج بالموديلات المختارة
+        $product->modes()->attach($request->model_id);
+
+        return redirect()->route('dashboard.allProducts')->with('messages', 'Product created successfully.');
     }
 
     // عرض نموذج تعديل منتج
@@ -56,20 +66,31 @@ class ProductController extends Controller
             'quantity' => 'required|integer|min:0',
             'price' => 'required|numeric|min:0',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'subcategory_id' => 'required|exists:sub_categories,id',
+            'sub_category_id' => 'required|exists:sub_categories,id',
+            'model_id' => 'required|array', // إلزام الموديلات
+            'model_id.*' => 'exists:models,id',
         ]);
 
         $productData = $request->all();
 
         // معالجة الصورة
         if ($request->hasFile('image')) {
-            // هنا يمكنك حذف الصورة القديمة إذا كانت موجودة
+            // حذف الصورة القديمة إذا كانت موجودة
+            if ($product->image && file_exists(storage_path('app/public/' . $product->image))) {
+                unlink(storage_path('app/public/' . $product->image));
+            }
+            // تحديد المسار لحفظ الصورة
             $imagePath = $request->file('image')->store('products', 'public');
             $productData['image'] = $imagePath;
         }
 
+        // تحديث المنتج
         $product->update($productData);
-        return redirect()->route('dashboard.allProducts')->with('updated', 'Product updated successfully.');
+
+        // تحديث علاقة الموديلات
+        $product->models()->sync($request->model_id);
+
+        return redirect()->route('dashboard.allProducts')->with('messages', 'Product updated successfully.');
     }
 
     public function destroy(string $id)
@@ -81,6 +102,6 @@ class ProductController extends Controller
         $product->delete();
 
         // إعادة التوجيه إلى قائمة المنتجات مع رسالة تأكيد
-        return redirect()->route('dashboard.allProducts')->with('Deleted', 'Product deleted successfully');
+        return redirect()->route('dashboard.allProducts')->with('messages', 'Product deleted successfully');
     }
 }
