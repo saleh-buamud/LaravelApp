@@ -1,19 +1,22 @@
 @extends('dashboard.layout')
+
 @section('title', 'Starter Page')
 @section('breadcrumb')
     @parent
     <li class="breadcrumb-item active">Starter Page</li>
 @endsection
+
 @section('content')
     {{-- <x-alert /> --}}
 
-    @if (session('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('success') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
+    @if (Session::has('messages'))
+        <script>
+        swal("Messages","{{ Session::get('messages') }}",'success',{
+            button:true,
+            button:"OK",
+        });
+
+        </script>
     @endif
 
     @if (session('Deleted'))
@@ -40,6 +43,7 @@
             $('.alert').alert('close');
         }, 5000);
     </script>
+
     @if ($lowStockProducts->count() > 0)
         <!-- Modal -->
         <div class="modal-backdrop" id="lowStockModal">
@@ -55,80 +59,6 @@
             </div>
         </div>
     @endif
-    <style>
-        .modal-backdrop {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            /* زيادة الشفافية لجعل الخلفية أغمق */
-            backdrop-filter: blur(10px);
-            /* إضافة تأثير الضبابية على الخلفية */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1050;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-
-        /* تصميم محتوى المودال */
-        .modal-content {
-            background-color: #000000;
-            /* تغيير الخلفية إلى لون داكن */
-            color: #0c00ed;
-            /* تغيير النص إلى اللون الأبيض */
-            padding: 30px;
-            border-radius: 12px;
-            width: 80%;
-            max-width: 500px;
-            box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.6);
-            /* إضافة تأثير ظل أكثر كثافة */
-            text-align: center;
-        }
-
-        /* تصميم زر الإغلاق */
-        .btn-close {
-            background: transparent;
-            border: none;
-            font-size: 35px;
-            color: #fff;
-            /* جعل لون زر الإغلاق أبيض */
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-        }
-
-        .modal-backdrop.show {
-            opacity: 1;
-            visibility: visible;
-        }
-    </style>
-    <script>
-        // إظهار المودال بعد تحميل الصفحة
-        window.onload = function() {
-            var modal = document.getElementById("lowStockModal");
-            modal.classList.add('show');
-        };
-
-        // إغلاق المودال عند الضغط على زر الإغلاق
-        function closeModal() {
-            var modal = document.getElementById("lowStockModal");
-            modal.classList.remove('show');
-        }
-
-        // إغلاق المودال عند النقر على الخلفية الضبابية
-        document.getElementById("lowStockModal").addEventListener('click', function(event) {
-            if (event.target === this) {
-                closeModal();
-            }
-        });
-    </script>
-
 
     <a href="{{ route('products.create') }}" class="btn btn-primary">Add Product</a>
     <hr>
@@ -143,6 +73,7 @@
                 <th scope="col">وصف المنتج</th>
                 <th scope="col">السعر</th>
                 <th scope="col">الكمية</th>
+                <th scope="col">الموديلات</th> <!-- إضافة عمود للموديلات -->
                 <th scope="col">الإجراءات</th>
             </tr>
         </thead>
@@ -162,6 +93,14 @@
                     <td>{{ $product->description }}</td>
                     <td>{{ $product->price }}</td>
                     <td>{{ $product->quantity }}</td>
+
+                    <!-- عرض الموديلات المرتبطة -->
+                    <td>
+                        @foreach ($product->modes as $mode)
+                            <span class="badge bg-secondary">{{ $mode->name }}</span> <!-- عرض كل موديل مرتبط -->
+                        @endforeach
+                    </td>
+
                     <td>
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                             <a href="{{ route('products.edit', $product->id) }}" class="btn btn-dark btn-sm mr-1">Edit</a>
@@ -175,7 +114,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="6">
+                    <td colspan="7">
                         <div class="alert alert-primary text-center mt-3 p-2">
                             <h3 class="display-3">لا توجد منتجات</h3>
                         </div>

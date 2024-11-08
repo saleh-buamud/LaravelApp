@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Make extends Model
 {
-     $guarded = [];
     use HasFactory;
+
+    protected $fillable = ['name'];
+
+    // العلاقة بين Make و Mode
+    public function modes()
+    {
+        return $this->hasMany(Mode::class);
+    }
 }

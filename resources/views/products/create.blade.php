@@ -45,10 +45,26 @@
                 @endforeach
             </select>
         </div>
+        
+        <!-- حقل اختيار الموديل -->
+        <div class="mb-3">
+            <label for="model" class="form-label">الموديل</label>
+            <select class="form-select" name="model_id[]" id="model" multiple required>
+                <option value="">اختر موديل</option>
+                @foreach ($models as $model)
+                    <option value="{{ $model->id }}"
+                        {{ in_array($model->id, old('model_id', [])) ? 'selected' : '' }}>
+                        {{ $model->name }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+
         <div class="mb-3">
             <label for="image" class="form-label">الصورة</label>
             <input type="file" class="form-control" id="image" name="image">
         </div>
+        
         <button type="submit" class="btn btn-primary">إضافة المنتج</button>
     </form>
 @endsection

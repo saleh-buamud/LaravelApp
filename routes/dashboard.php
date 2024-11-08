@@ -5,6 +5,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SalehController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\MakeController;
+use App\Http\Controllers\ModeController;
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
@@ -40,3 +42,5 @@ Route::get('/subcategories/{id}/products', [SalehController::class, 'productsByS
 // Route::resource('dashboard/categories', CategoriesController::class)->middleware('auth');
 Route::resource('dashboard/subcategories', SubCategoryController::class)->middleware('auth');
 Route::resource('dashboard/products', ProductController::class)->middleware('auth');
+Route::resource('dashboard/makes', MakeController::class)->middleware('auth');
+Route::resource('dashboard/modes', ModeController::class)->middleware('auth');

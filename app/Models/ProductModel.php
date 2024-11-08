@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductModel extends Model
 {
-     $guarded = [];
     use HasFactory;
+     $guarded = [];
 
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'product_model', 'model_id', 'product_id');
+        return $this->belongsToMany(Mode::class, 'product_model', 'mode_id', 'product_id');
     }
 }

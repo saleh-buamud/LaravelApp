@@ -17,8 +17,12 @@ class Product extends Model
     }
 
     // علاقة "ميني تو ميني" مع ProductModel
-    public function models()
+    // public function models()
+    // {
+    //     return $this->belongsToMany(ProductModel::class, 'product_model', 'product_id', 'model_id');
+    // }
+      public function modes()
     {
-        return $this->belongsToMany(ProductModel::class, 'product_model', 'product_id', 'model_id');
+        return $this->belongsToMany(Mode::class, 'product_model', 'product_id', 'mode_id');
     }
 }
