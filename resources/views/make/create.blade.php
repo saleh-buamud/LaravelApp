@@ -3,7 +3,7 @@
 @section('content')
     <h1>إضافة ماركة جديدة</h1>
 
-    <form action="{{ route('makes.store') }}" method="POST">
+    <form action="{{ route('dashboard.makes.store') }}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">اسم الماركة</label>

@@ -2,6 +2,9 @@
 
 @section('content')
     <h1>تعديل المنتج</h1>
+    @if ($errors->any())
+        <div class="alert alert-danger">{{ $errors }}</div>
+    @endif
 
     <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -25,17 +28,31 @@
                 min="0" step="0.01">
         </div>
         <div class="mb-3">
-            <label for="subcategory_id" class="form-label">الفئة الفرعية</label>
-            <select class="form-select" name="subcategory_id" id="subcategory_id" required>
+            <label for="sub_category_id" class="form-label">الفئة الفرعية</label>
+            <select class="form-select" name="sub_category_id" id="sub_category_id" required>
                 <option value="">اختر فئة فرعية</option>
                 @foreach ($subCategories as $subCategory)
                     <option value="{{ $subCategory->id }}"
-                        {{ $product->subcategory_id == $subCategory->id ? 'selected' : '' }}>
+                        {{ $product->sub_category_id == $subCategory->id ? 'selected' : '' }}>
                         {{ $subCategory->name }}
                     </option>
                 @endforeach
             </select>
         </div>
+        <div class="mb-3">
+            <label for="mode_id" class="form-label">الموديلات</label>
+            <select class="form-select" name="mode_id[]" id="mode_id" multiple required>
+                <option value="">اختر الموديلات</option>
+                @foreach ($modes as $mode)
+                    <option value="{{ $mode->id }}"
+                        {{ in_array($mode->id, old('mode_id', $product->modes->pluck('id')->toArray())) ? 'selected' : '' }}>
+                        {{ $mode->name }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+
+
         <div class="mb-3">
             <label for="image" class="form-label">الصورة (اختياري)</label>
             <input type="file" class="form-control" id="image" name="image">

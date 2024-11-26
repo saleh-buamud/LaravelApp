@@ -34,13 +34,32 @@ Route::get('/dashboard/ele', [SalehController::class, 'electricalPartsProducts']
     ->middleware(['auth', 'verified'])
     ->name('dashboard.electricalPartsProducts');
 
-// Route::get('/dashboard/check', [SubCategoryController::class, 'check'])
-//     ->middleware(['auth', 'verified'])
-//     ->name('dashboard.electricalPartsProducts');
 Route::get('/subcategories/{id}/products', [SalehController::class, 'productsBySubCategory'])->name('subcategories.products');
 
-// Route::resource('dashboard/categories', CategoriesController::class)->middleware('auth');
 Route::resource('dashboard/subcategories', SubCategoryController::class)->middleware('auth');
 Route::resource('dashboard/products', ProductController::class)->middleware('auth');
-Route::resource('dashboard/makes', MakeController::class)->middleware('auth');
-Route::resource('dashboard/modes', ModeController::class)->middleware('auth');
+// Define resource routes for 'makes' with customized route names
+Route::resource('dashboard/makes', MakeController::class)
+    ->middleware('auth')
+    ->names([
+        'index' => 'dashboard.makes.index',
+        'create' => 'dashboard.makes.create',
+        'store' => 'dashboard.makes.store',
+        'show' => 'dashboard.makes.show',
+        'edit' => 'dashboard.makes.edit',
+        'update' => 'dashboard.makes.update',
+        'destroy' => 'dashboard.makes.destroy',
+    ]);
+
+// Define resource routes for 'modes' with customized route names
+Route::resource('dashboard/modes', ModeController::class)
+    ->middleware('auth')
+    ->names([
+        'index' => 'dashboard.modes.index',
+        'create' => 'dashboard.modes.create',
+        'store' => 'dashboard.modes.store',
+        'show' => 'dashboard.modes.show',
+        'edit' => 'dashboard.modes.edit',
+        'update' => 'dashboard.modes.update',
+        'destroy' => 'dashboard.modes.destroy',
+    ]);

@@ -187,6 +187,13 @@
                         style="color:white">سب الكاتجوري كهربائية</a>
                     <a href="{{ route('dashboard.electricalPartsProducts') }}"
                         class="btn btn-primary btn-lg w-100 mt-1" style="color:white">قطع غيار كهربائية</a>
+                    <a href="{{ route('dashboard.allProducts') }}" class="btn btn-primary btn-lg w-100 mt-1"
+                        style="color:white">all products</a>
+                    <a class="btn btn-primary btn-lg w-100 mt-1" style="color:white"
+                        href="{{ route('dashboard.makes.index') }}">الماركات</a>
+                    <a class="btn btn-primary btn-lg w-100 mt-1" style="color:white"
+                        href="{{ route('dashboard.modes.index') }}">موديلات</a>
+
                 </div>
             </div>
         </aside>

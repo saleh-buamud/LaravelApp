@@ -3,7 +3,7 @@
 @section('content')
     <h1>إضافة نمط جديد</h1>
 
-    <form action="{{ route('modes.store') }}" method="POST">
+    <form action="{{ route('dashboard.modes.store') }}" method="POST">
         @csrf
 
         <div class="mb-3">

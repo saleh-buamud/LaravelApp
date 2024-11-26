@@ -21,7 +21,7 @@ class Product extends Model
     // {
     //     return $this->belongsToMany(ProductModel::class, 'product_model', 'product_id', 'model_id');
     // }
-      public function modes()
+    public function modes()
     {
         return $this->belongsToMany(Mode::class, 'product_model', 'product_id', 'mode_id');
     }

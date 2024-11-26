@@ -3,7 +3,7 @@
 @section('content')
     <h1>تعديل ماركة</h1>
 
-    <form action="{{ route('makes.update', $make) }}" method="POST">
+    <form action="{{ route('dashboard.makes.update', $make) }}" method="POST">
         @csrf
         @method('PUT')
 

@@ -45,7 +45,7 @@ class ProductController extends Controller
         $product = Product::create($productData);
 
         // ربط المنتج بالموديلات المختارة
-        $product->modes()->attach($request->model_id);
+        $product->modes()->attach($request->modes_id);
 
         return redirect()->route('dashboard.allProducts')->with('messages', 'Product created successfully.');
     }
@@ -54,7 +54,9 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $subCategories = SubCategory::all(); // جلب جميع الفئات الفرعية
-        return view('products.edit', compact('product', 'subCategories'));
+        $modes = Mode::all(); // يجب أن تضمن هذا السطر لجلب الموديلات
+
+        return view('products.edit', compact('product', 'subCategories', 'modes'));
     }
 
     // تحديث منتج معين
@@ -67,8 +69,8 @@ class ProductController extends Controller
             'price' => 'required|numeric|min:0',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'sub_category_id' => 'required|exists:sub_categories,id',
-            'model_id' => 'required|array', // إلزام الموديلات
-            'model_id.*' => 'exists:models,id',
+            'mode_id' => 'required|array', // إلزام الموديلات
+            'mode_id.*' => 'exists:modes,id',
         ]);
 
         $productData = $request->all();
@@ -88,7 +90,7 @@ class ProductController extends Controller
         $product->update($productData);
 
         // تحديث علاقة الموديلات
-        $product->models()->sync($request->model_id);
+        $product->modes()->sync($request->mode_id);
 
         return redirect()->route('dashboard.allProducts')->with('messages', 'Product updated successfully.');
     }

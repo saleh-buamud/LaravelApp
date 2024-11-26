@@ -3,7 +3,7 @@
 @section('content')
     <h1>تعديل نمط</h1>
 
-    <form action="{{ route('modes.update', $mode) }}" method="POST">
+    <form action="{{ route('dashboard.modes.update', $mode) }}" method="POST">
         @csrf
         @method('PUT')
 
