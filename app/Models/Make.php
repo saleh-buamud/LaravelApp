@@ -16,4 +16,5 @@ class Make extends Model
     {
         return $this->hasMany(Mode::class);
     }
+  
 }

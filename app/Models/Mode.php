@@ -21,4 +21,5 @@ class Mode extends Model
     {
         return $this->belongsToMany(Product::class, 'product_model', 'mode_id', 'product_id');
     }
+ 
 }

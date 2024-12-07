@@ -20,21 +20,21 @@
             </div>
 
             <div class="mb-3">
-    <label for="category_id" class="form-label">Category</label>
-    <select class="form-select" name="category_id" id="category_id">
-        <option value="" class="form-control">Select Category</option>
-        @foreach ($categories as $category)
-            <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
-                {{ $category->name }}
-            </option>
-        @endforeach
-    </select>
-    @error('category_id')
-        <div class="alert m-2" style="background-color: #007bff;">
-            <p>{{ $message }}</p>
-        </div>
-    @enderror
-</div>
+                <label for="category_id" class="form-label">Category</label>
+                <select class="form-select" name="category_id" id="category_id">
+                    <option value="" class="form-control">Select Category</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                            {{ $category->name }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('category_id')
+                    <div class="alert m-2" style="background-color: #007bff;">
+                        <p>{{ $message }}</p>
+                    </div>
+                @enderror
+            </div>
             <button type="submit" class="btn btn-primary mb-3">Submit</button>
         </form>
     </div>

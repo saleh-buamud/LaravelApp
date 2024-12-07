@@ -11,14 +11,13 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('sub_categories', function (Blueprint $table) {
-        $table->id(); // مفتاح أساسي
+            $table->id(); // مفتاح أساسي
             $table->foreignId('category_id')->constrained()->onDelete('cascade'); // مفتاح خارجي
             $table->string('name'); // اسم الفئة الفرعية
             $table->text('description')->nullable(); // وصف الفئة الفرعية
             $table->timestamps(); // تواريخ الإنشاء والتحديث
         });
     }
-
     /**
      * Reverse the migrations.
      */

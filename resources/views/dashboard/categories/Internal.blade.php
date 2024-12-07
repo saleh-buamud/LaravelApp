@@ -33,15 +33,16 @@
 
                     <td>
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <a href="{{ route('subcategories.edit', $s['id']) }}" class="btn btn-dark btn-sm mr-1">Edit</a>
+                            <a href="{{ route('subcategories.edit', $s['id']) }}"
+                                class="btn btn-dark btn-sm mr-1">Edit</a>
                             <form action="{{ route('subcategories.destroy', $s->id) }}" method="post" class="mr-1">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                             </form>
                         </div>
-                        <a href="{{ route('subcategories.products', $s->id) }}" class="btn btn-dark btn-sm mr-1">all
-                            products</a>
+                        {{-- <a href="{{ route('dashboardsubcategories.products', $s->id) }}" class="btn btn-dark btn-sm mr-1">all
+                            products</a> --}}
                     </td>
                 </tr>
             @empty

@@ -15,8 +15,8 @@ class SalehController extends Controller
         $categoryName = 'Internal-Parts';
 
         if ($category) {
-            // جلب جميع السُب كاتجوري المرتبطة
-            $subCategories = $category->subCategories;
+            // جلب جميع السُب كاتجوري
+            $subCategories = $category->subCategories()->get();
         }
 
         return view('dashboard.categories.Internal', compact('subCategories', 'categoryName'));
@@ -28,8 +28,8 @@ class SalehController extends Controller
         $categoryName = 'External-Parts';
 
         if ($category) {
-            // جلب جميع السُب كاتجوري المرتبطة
-            $subCategories = $category->subCategories;
+            // جلب جميع السُب كاتجوري
+            $subCategories = $category->subCategories()->get();
         }
 
         return view('dashboard.categories.External', compact('subCategories', 'categoryName'));
@@ -41,8 +41,8 @@ class SalehController extends Controller
         $categoryName = 'Electrical-Parts';
 
         if ($category) {
-            // جلب جميع السُب كاتجوري المرتبطة
-            $subCategories = $category->subCategories;
+            // جلب جميع السُب كاتجوري
+            $subCategories = $category->subCategories()->get();
         }
 
         return view('dashboard.categories.Electrical', compact('subCategories', 'categoryName'));
@@ -94,10 +94,11 @@ class SalehController extends Controller
     public function allProducts()
     {
         $products = Product::all();
-         $lowStockProducts = Product::where('quantity', '<', 5)->get();
+        $lowStockProducts = Product::where('quantity', '<', 5)->get();
 
         return view('dashboard.categories.productAll', compact('products', 'lowStockProducts'));
     }
+
     // دالة لجلب المنتجات المرتبطة بفئة فرعية معينة
     public function productsBySubCategory($subCategoryId)
     {
@@ -109,14 +110,8 @@ class SalehController extends Controller
         }
 
         // جلب المنتجات المرتبطة بالفئة الفرعية
-        $products = $subCategory->products; // باستخدام العلاقة المعرفة في نموذج SubCategory
+        $products = $subCategory->products()->get();
 
         return view('dashboard.categories.productsBySubCategory', compact('products', 'subCategory'));
     }
-    // public function checkproduct()
-    // {
-    //     $lowStockProducts = Product::where('quantity', '<', 5)->get();
-
-    //     return view('dashboard.categories.productAll', compact('lowStockProducts'));
-    // }
 }

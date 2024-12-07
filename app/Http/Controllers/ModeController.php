@@ -44,7 +44,7 @@ class ModeController extends Controller
     public function edit(Mode $mode)
     {
         $makes = Make::all(); // جلب جميع الـ Makes لاختيارها عند تحرير Mode
-        return view('modes.edit', compact('mode', 'makes'));
+        return view('mode.edit', compact('mode', 'makes'));
     }
 
     // تحديث Mode معينة

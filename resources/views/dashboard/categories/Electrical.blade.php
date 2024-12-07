@@ -38,8 +38,8 @@
                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                             </form>
                         </div>
-                        <a href="{{ route('subcategories.products', $s->id) }}" class="btn btn-dark btn-sm mr-1">all
-                            products</a>
+                        {{-- <a href="{{ route('subcategories.products', $s->id) }}" class="btn btn-dark btn-sm mr-1">all
+                            products</a> --}}
                     </td>
                 </tr>
             @empty

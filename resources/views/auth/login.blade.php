@@ -42,10 +42,13 @@
                 </a>
             @endif
 
-            <x-primary-button
-                class="px-6 py-2 mt-2 bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 text-white font-semibold rounded-md">
-                {{ __('Log in') }}
-            </x-primary-button>
+            <!-- حدد نوع الدخول -->
+            <button
+                class="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                type="submit" name="admin_login" value="1">تسجيل دخول كمشرف</button>
+            <button
+                class="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                type="submit">تسجيل دخول كزبون</button>
         </div>
     </form>
 </x-guest-layout>

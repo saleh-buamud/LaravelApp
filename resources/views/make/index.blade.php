@@ -19,7 +19,8 @@
                     <td>{{ $make->name }}</td>
                     <td>
                         <a href="{{ route('dashboard.makes.edit', $make) }}" class="btn btn-warning btn-sm">تعديل</a>
-                        <form action="{{ route('dashboard.makes.destroy', $make) }}" method="POST" style="display:inline;">
+                        <form action="{{ route('dashboard.makes.destroy', $make) }}" method="POST"
+                            style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm">حذف</button>

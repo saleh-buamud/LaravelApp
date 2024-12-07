@@ -1,10 +1,8 @@
 <?php
-
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB; // تأكد من إضافة هذا السطر
+use Illuminate\Support\Facades\DB;
 
 class OrderDetsTableSeeder extends Seeder
 {
@@ -13,10 +11,15 @@ class OrderDetsTableSeeder extends Seeder
      */
     public function run(): void
     {
-        //
-          DB::table('order_dets')->insert([
-            ['order_id' => 1, 'product_id' => 1, 'quantity' => 1, 'price' => 2000.00],
-            ['order_id' => 1, 'product_id' => 2, 'quantity' => 1, 'price' => 150.00],
+        // تأكد من إدخال طلب أولًا
+        $orderId = DB::table('orders')->insertGetId([
+            'user_id' => 1, // تأكد من وجود المستخدم في جدول users
+            'order_date' => now(),
+            'total_amount' => 2150.0,
+            'status' => true,
         ]);
+
+        // إدخال تفاصيل الطلب
+        DB::table('order_dets')->insert([['order_id' => $orderId, 'product_id' => 1, 'price' => 2000, 'quantity' => 1], ['order_id' => $orderId, 'product_id' => 2, 'price' => 150, 'quantity' => 1]]);
     }
 }

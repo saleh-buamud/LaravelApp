@@ -12,6 +12,8 @@ class SubCategoryController extends Controller
     // عرض جميع الفئات الفرعية
     public function index()
     {
+        $this->authorize('is-admin'); // This will check if the user has admin access
+
         $subCategories = SubCategory::with('category')->get();
 
         // جلب المنتجات ذات الكميات المنخفضة
@@ -23,6 +25,8 @@ class SubCategoryController extends Controller
     // عرض نموذج إنشاء فئة فرعية جديدة
     public function create()
     {
+        $this->authorize('is-admin'); // This will check if the user has admin access
+
         $categories = Category::all(); // جلب جميع الفئات
         return view('dashboard.categories.create', compact('categories'));
     }
@@ -30,19 +34,29 @@ class SubCategoryController extends Controller
     // تخزين فئة فرعية جديدة
     public function store(Request $request)
     {
+        $this->authorize('is-admin'); // This will check if the user has admin access
+
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'category_id' => 'required|exists:categories,id',
         ]);
 
-        SubCategory::create($request->all());
+        // إضافة فئة فرعية جديدة بدون ربط بـ admin
+        SubCategory::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'category_id' => $request->category_id,
+        ]);
+
         return redirect()->route('subcategories.index')->with('success', 'تم إنشاء الفئة الفرعية بنجاح.');
     }
 
     // عرض نموذج تعديل فئة فرعية
     public function edit(Request $request, SubCategory $subCategory, string $id)
     {
+        $this->authorize('is-admin'); // This will check if the user has admin access
+
         // جلب الفئات الرئيسية
         $subCategory = SubCategory::find($id);
         $categories = Category::all();
@@ -53,13 +67,17 @@ class SubCategoryController extends Controller
     // تحديث فئة فرعية معينة
     public function update(Request $request, SubCategory $subCategory, string $id)
     {
+        $this->authorize('is-admin'); // This will check if the user has admin access
+
         // التحقق من صحة البيانات المدخلة
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'category_id' => 'required|exists:categories,id', // التأكد أن الـ category_id موجود في الجدول
         ]);
+
         $subCategory = SubCategory::find($id);
+
         // تحديث بيانات الفئة الفرعية
         $subCategory->update($request->all());
 
@@ -70,6 +88,8 @@ class SubCategoryController extends Controller
     // حذف فئة فرعية معينة
     public function destroy($id)
     {
+        $this->authorize('is-admin'); // This will check if the user has admin access
+
         // العثور على الفئة الفرعية باستخدام الـ id
         $subCategory = SubCategory::find($id);
 

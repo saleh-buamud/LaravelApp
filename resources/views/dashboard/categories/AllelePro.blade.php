@@ -31,8 +31,8 @@
                     <td>{{ $product->quantity }}</td>
                     <td>
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <a href="{{ route('products.edit', $product->id) }}" class="btn btn-dark btn-sm mr-1">Edit</a>
-                            <form action="{{ route('products.destroy', $product->id) }}" method="post" class="mr-1">
+                            <a href="{{ route('.products.edit', $product->id) }}" class="btn btn-dark btn-sm mr-1">Edit</a>
+                            <form action="{{ route('.products.destroy', $product->id) }}" method="post" class="mr-1">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>

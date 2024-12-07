@@ -1,10 +1,9 @@
 <?php
-
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB; // تأكد من إضافة هذا السطر
+use Illuminate\Support\Facades\DB;
+use App\Models\User; // تأكد من إضافة الـ Model
 
 class OrdersTableSeeder extends Seeder
 {
@@ -13,9 +12,19 @@ class OrdersTableSeeder extends Seeder
      */
     public function run(): void
     {
-        //
-         DB::table('orders')->insert([
-            ['user_id' => 1, 'order_date' => now(), 'total_amount' => 2150.00, 'status' => true],
+        // إضافة مستخدم أولًا
+        $user = User::create([
+            'name' => 'User One',
+            'email' => 'userone@example.com',
+            'password' => bcrypt('password'), // تأكد من تشفير كلمة المرور
+        ]);
+
+        // إضافة الطلبات
+        DB::table('orders')->insert([
+            'user_id' => $user->id, // استخدام معرف المستخدم الذي تم إنشاؤه
+            'order_date' => now(),
+            'total_amount' => 2150.0,
+            'status' => true, // قيمة الحالة (يمكنك تخصيص الحالة حسب الحاجة)
         ]);
     }
 }
