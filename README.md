@@ -14,7 +14,12 @@
 ## Additional Notes:
 - Dashboard operations specific to the **Vendor** have been completed.
 - Currently working on the **store pages** and **frontend**.
-
+ 
+ ## Shopping cart feature has been added.
+ - Added the ability to store the shopping cart 
+  
+  
+  ## Done Cart Shopping (add  - delete - quantity - clear)
 -------------------------------------------------------- ////////////////////////////
 
 # مشروع Laravel
@@ -39,3 +44,6 @@
 ## ملاحظات إضافية:
 - تم إتمام عمليات **اللوحة الرئيسية** الخاصة بـ **التاجر** بنجاح.
 - حالياً أعمل على **صفحات المتجر** و **الواجهة الأمامية**.
+ 
+ ## اضافة سلة مشتريات 
+ - تم اضافة سلة مشتريات  بنجاح 
