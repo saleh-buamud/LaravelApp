@@ -22,7 +22,6 @@ class ProductController extends Controller
         })->get();
 
         $products = Product::whereIn('sub_category_id', $subCategories->pluck('id'))->get();
-        dd($products);
         return view('front-ecom-temp.Internal', compact('products'));
     }
     public function allExternal()
@@ -31,7 +30,6 @@ class ProductController extends Controller
             $query->where('name', 'External-Parts');
         })->get();
         $products = Product::whereIn('sub_category_id', $subCategories->pluck('id'))->get();
-        dd($products);
         return view('front-ecom-temp.External', compact('products'));
     }
     public function allElectrical()
