@@ -29,11 +29,10 @@ class CartController extends Controller
             'associatedModel' => $product,
         ]);
 
-        // تحقق من نوع الطلب
         if ($request->ajax()) {
             return response()->json(['totalQuantity' => Cart::getTotalQuantity()]);
         } else {
-            return redirect()->route('allExternal')->with('success', 'Item has been added to the cart');
+            return redirect()->back()->with('success', 'Item has been added to the cart');
         }
     }
 
