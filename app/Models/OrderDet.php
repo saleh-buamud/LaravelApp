@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrderDet extends Model
 {
-     $guarded = [];
+    protected $guarded = [];
     use HasFactory;
 
     public function order()

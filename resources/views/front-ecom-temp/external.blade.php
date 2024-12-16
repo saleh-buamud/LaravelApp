@@ -8,6 +8,8 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.svg" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
     <!-- ========================= CSS here ========================= -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/LineIcons.3.0.css') }}" />
@@ -31,6 +33,19 @@
 
     <div class="container my-4">
         <h1 class="text-center mb-4">External Parts Products</h1>
+        <div class="text-center flex">
+            <form method="GET" action="{{ route('search') }}">
+                <input type="text" id="search" name="search" placeholder="Search products..."
+                    class="form-control">
+            </form>
+            <div id="search-results">
+
+            </div>
+            <br>
+            <hr>
+            <hr>
+            <hr>
+        </div>
         <div class="row">
             @foreach ($products as $product)
                 <div class="col-md-4 mb-4">
@@ -82,6 +97,36 @@
                     }
                 });
             });
+        });
+        document.getElementById('search').addEventListener('input', function() {
+            var searchQuery = this.value;
+
+            // إذا كانت قيمة البحث غير فارغة، نقوم بإرسال طلب البحث
+            if (searchQuery.length > 0) {
+                fetch('{{ route('search') }}?search=' + searchQuery)
+                    .then(response => response.json())
+                    .then(data => {
+                        let results = data.results;
+                        let resultContainer = document.getElementById('search-results');
+                        resultContainer.innerHTML = ''; // مسح النتائج السابقة
+
+                        if (results.length > 0) {
+                            results.forEach(item => {
+                                resultContainer.innerHTML += `
+                            <div class="result-item">
+                                <h5>${item.name}</h5>
+                                <p>${item.description}</p>
+                            </div>
+                        `;
+                            });
+                        } else {
+                            resultContainer.innerHTML = '<p>No results found</p>';
+                        }
+                    })
+                    .catch(error => console.log(error));
+            } else {
+                document.getElementById('search-results').innerHTML = '';
+            }
         });
     </script>
 

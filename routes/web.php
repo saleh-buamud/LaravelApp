@@ -25,7 +25,13 @@ Route::get('/electrical', [ProductController::class, 'allElectrical'])->name('al
 Route::get('cart', [CartController::class, 'cart'])->name('cart');
 Route::get('add-cart/{productId}', [CartController::class, 'addCart'])->name('add.cart');
 
-//
+Route::get('checkout', function () {
+    return view('front-ecom-temp.checkout');
+})->name('checkout');
+Route::post('saveOrder', [CartController::class, 'saveOrder'])->name('saveOrder');
+
+Route::get('send', [CartController::class, 'send'])->name('send');
+
 Route::get('add-quantity/{productId}', [CartController::class, 'addQuantity'])->name('add.quantity');
 
 Route::get('decrease-quantity/{productId}', [CartController::class, 'decreaseQuantity'])->name('decrease.quantity');
@@ -33,6 +39,8 @@ Route::get('decrease-quantity/{productId}', [CartController::class, 'decreaseQua
 Route::get('remove-item/{productId}', [CartController::class, 'removeItem'])->name('remove.item');
 
 Route::get('clear', [CartController::class, 'clearCart'])->name('clear'); // Route::get('/all', [ProductController::class, 'AllProduct'])->name('home');
+
+Route::get('/search', [ProductController::class, 'search'])->name('search');
 
 Route::get('/product-details', function () {
     return view('front-ecom-temp.product-details');

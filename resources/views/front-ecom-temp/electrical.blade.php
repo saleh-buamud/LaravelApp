@@ -31,6 +31,12 @@
 
     <div class="container my-4">
         <h1 class="text-center mb-4">Electrical Parts Products</h1>
+        <div class="search-input">
+            <input type="text" placeholder="Search">
+        </div>
+        <div class="search-btn">
+            <button><i class="lni lni-search-alt"></i></button>
+        </div>
         <div class="row">
             @foreach ($products as $product)
                 <div class="col-md-4 mb-4">

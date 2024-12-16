@@ -67,12 +67,12 @@
                              <div class="search-select">
 
                              </div>
-                             <div class="search-input">
+                             {{-- <div class="search-input">
                                  <input type="text" placeholder="Search">
                              </div>
                              <div class="search-btn">
                                  <button><i class="lni lni-search-alt"></i></button>
-                             </div>
+                             </div> --}}
                          </div>
                      </div>
                  </div>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades;
+use Illuminate\Support\Facades\DB;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\SubCategory;
@@ -47,5 +49,13 @@ class ProductController extends Controller
             dd('No products found for the subcategories');
         }
         return view('front-ecom-temp.Electrical', compact('products'));
+    }
+    public function search(Request $request)
+    {
+        $searchQuery = $request->input('search');
+
+        $products = Product::where('name', 'like', '%' . $searchQuery . '%')->get();
+
+        return response()->json(['results' => $products]);
     }
 }

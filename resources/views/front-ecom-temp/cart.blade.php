@@ -173,8 +173,7 @@
                                 <a href="#" class="btn btn-success w-100 shadow-0 mb-2">
                                     Make Purchase
                                 </a>
-                                <a href="{{ route('allExternal') }}"
-                                    class="btn btn-light w-100 border mt-2 hover-scale">
+                                <a href="{{ route('home') }}" class="btn btn-light w-100 border mt-2 hover-scale">
                                     Back to shop
                                 </a>
                             </div>
@@ -185,6 +184,7 @@
                 <!-- summary -->
             </div>
         </div>
+        <a href="{{ route('checkout') }}" class="btn btn-primary btn-lg w-40 mt-1">Chkecout</a>
     </section>
     @include('front-ecom-temp.footer')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
