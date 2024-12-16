@@ -30,7 +30,7 @@ Route::get('checkout', function () {
 })->name('checkout');
 Route::post('saveOrder', [CartController::class, 'saveOrder'])->name('saveOrder');
 
-Route::get('send', [CartController::class, 'send'])->name('send');
+Route::get('sendEmail', [CartController::class, 'sendEmail'])->name('sendEmail');
 
 Route::get('add-quantity/{productId}', [CartController::class, 'addQuantity'])->name('add.quantity');
 

@@ -98,10 +98,10 @@ class CartController extends Controller
             $orderDetails[] = $orderDetail;
         }
 
-        // إرسال البريد الإلكتروني مع تفاصيل الطلب
-        // Mail::to(auth()->user()->email)->send(new TestMail($order, $orderDetails));
-
-        Mail::to('buamudb@gmail.com')->send(new TestMail());
+        // إرسال البريد الإلكتروني للزبون مع تفاصيل الطلب
+        Mail::to('itstd.4626@uob.edu.ly')->send(new TestMail($order, $orderDetails));
+        // إرسال البريد الإلكتروني لصاحب المتجر مع تفاصيل الطلب
+        Mail::to('buamudsaleh@gmail.com')->send(new TestMail($order, $orderDetails));
 
         // مسح السلة بعد حفظ الطلب
         \Cart::clear();
@@ -110,9 +110,15 @@ class CartController extends Controller
         return redirect()->route('home')->with('success', 'Your order has been placed successfully!');
     }
 
-    public function send()
-    {
-        Mail::to('buamudsaleh@gmail.com')->send(new TestMail());
-        return 'Email sent ';
-    }
+    // public function sendEmail()
+    // {
+    //     $details = [
+    //         'subject' => 'Test Email from Laravel',
+    //         'body' => 'This is a test email sent from Laravel on localhost.',
+    //     ];
+
+    //     Mail::to('buamudsaleh@gmail.com')->send(new \App\Mail\TestMail($details));
+
+    //     return 'Email sent successfully - please wait for a response.';
+    // }
 }

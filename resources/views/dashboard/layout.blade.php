@@ -177,12 +177,12 @@
                         style="color:white">الفئات</a>
                     <a href="{{ route('dashboard.in') }}" class="btn btn-primary btn-lg w-100 mt-1"
                         style="color:white">سب كاتجوري داخلية</a>
-                    <a href="{{ route('dashboard.internalPartsProducts') }}"
-                        class="btn btn-y btn-lg w-100 mt-1" style="color:white">قطع غيار داخلية</a>
+                    <a href="{{ route('dashboard.internalPartsProducts') }}" class="btn btn-y btn-lg w-100 mt-1"
+                        style="color:white">قطع غيار داخلية</a>
                     <a href="{{ route('dashboard.ex') }}" class="btn btn-primary btn-lg w-100 mt-1"
                         style="color:white">سب كاتجوري الخارجية</a>
-                    <a href="{{ route('dashboard.externalPartsProducts') }}"
-                        class="btn btn-y btn-lg w-100 mt-1" style="color:white">قطع غيار الخارجية</a>
+                    <a href="{{ route('dashboard.externalPartsProducts') }}" class="btn btn-y btn-lg w-100 mt-1"
+                        style="color:white">قطع غيار الخارجية</a>
                     <a href="{{ route('dashboard.el') }}" class="btn btn-primary btn-lg w-100 mt-1"
                         style="color:wسب الكاتجوري كهربائية</a>
                     <a href="{{ route('dashboard.electricalPartsProducts') }}"
@@ -222,6 +222,7 @@
                     @yield('content')
                     @yield('create')
                     @yield('edit')
+                    @yield('user')
                 </div>
             </div>
         </div>

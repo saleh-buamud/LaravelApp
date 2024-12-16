@@ -3,153 +3,91 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Confirmation</title>
-
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 0;
-            color: #333;
         }
 
         .container {
-            width: 100%;
             max-width: 600px;
             margin: 0 auto;
-            background-color: #ffffff;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            background-color: #f1f1f1;
         }
 
-        h1 {
-            color: #4CAF50;
+        .header {
             text-align: center;
+            margin-bottom: 20px;
         }
 
-        h2 {
-            color: #333;
-            margin-top: 20px;
-        }
-
-        p {
-            color: #666;
-            line-height: 1.5;
-        }
-
-        .order-info,
-        .order-details {
-            margin-top: 20px;
-        }
-
-        .order-info p,
-        .order-details p {
-            font-size: 14px;
+        .header h2 {
+            margin: 0;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
         }
 
-        table th,
-        table td {
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
             padding: 10px;
             text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        table th {
-            background-color: #f2f2f2;
-        }
-
-        table td {
-            font-size: 14px;
-        }
-
-        .total {
-            font-weight: bold;
-            font-size: 16px;
         }
 
         .footer {
+            margin-top: 20px;
             text-align: center;
-            font-size: 12px;
-            color: #888;
-            margin-top: 30px;
-        }
-
-        .footer a {
-            color: #4CAF50;
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 600px) {
-            .container {
-                padding: 15px;
-            }
-
-            table th,
-            table td {
-                padding: 8px;
-            }
-
-            h1 {
-                font-size: 24px;
-            }
-
-            h2 {
-                font-size: 18px;
-            }
-
-            .footer {
-                font-size: 10px;
-            }
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1>Order Confirmation</h1>
-        <p>Thank you for your order! Below are the details of your order:</p>
-
-        <div class="order-info">
-            <h2>Order Information:</h2>
+        <div class="header">
+            <h2>Order Confirmation</h2>
         </div>
 
-        <div class="order-details">
-            <h2>Order Details:</h2>
-            <table>
-                <thead>
+        <p>Dear {{ Auth::user()->name }},</p>
+        <p>Thank you for your order! Here are your order details:</p>
+
+        <h3>Order Information:</h3>
+        <p><strong>Order ID:</strong> {{ $order->id }}</p>
+        <p><strong>Order Date:</strong> {{ $order->order_date->format('d M Y H:i') }}</p>
+        <p><strong>Total Amount:</strong> ${{ number_format($order->total_amount, 2) }}</p>
+
+        <h3>Order Details:</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($orderDetails as $detail)
                     <tr>
-                        <th>Product Name</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                        <th>Total</th>
+                        <td>{{ $detail->product->name }}</td>
+                        <td>{{ $detail->quantity }}</td>
+                        <td>${{ number_format($detail->price, 2) }}</td>
+                        <td>${{ number_format($detail->quantity * $detail->price, 2) }}</td>
                     </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </div>
-
-        <p>If you have any questions, feel free to contact us.</p>
-
-        <p>Best regards,<br>Your Company Name</p>
+                @endforeach
+            </tbody>
+        </table>
 
         <div class="footer">
-            <p>&copy; 2024 Your Company. All rights reserved.</p>
-            <p><a href="mailto:support@yourcompany.com">Contact Support</a></p>
+            <p>If you have any questions, feel free to contact us.</p>
+            <p>Best regards,<br>Your Company Name</p>
         </div>
     </div>
 </body>
