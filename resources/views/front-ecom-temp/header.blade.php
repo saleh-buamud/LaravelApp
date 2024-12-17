@@ -115,19 +115,22 @@
                          </button>
                          <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                              <ul id="nav" class="navbar-nav ms-auto">
-                                 <!-- إضافة قسم قطع الغيار -->
-                                 <li class="nav-item">
-                                     <a class="nav-link" href="internal-parts.html">قطع غيار داخلية</a>
+                                 <!-- Adding spare parts section -->
+                                 <li class="nav-item ">
+                                     <a class="nav-link" style="font-family: sans-serif ; font-weight: bold"
+                                         href="{{ route('allInternal') }}">Internal Spare Parts</a>
                                  </li>
                                  <li class="nav-item">
-                                     <a class="nav-link" href="internal-parts.html">قطع غيار كهرابائية</a>
+                                     <a class="nav-link" style="font-family: sans-serif ; font-weight: bold"
+                                         href="{{ route('allExternal') }}">Electrical Spare Parts</a>
                                  </li>
                                  <li class="nav-item">
-                                     <a class="nav-link" href="external-parts.html">قطع غيار خارجية</a>
+                                     <a class="nav-link" style="font-family: sans-serif ; font-weight: bold"
+                                         href="{{ route('allElectrical') }}">External Spare Parts</a>
                                  </li>
-
                              </ul>
                          </div>
+
                      </nav>
                  </div>
              </div>
