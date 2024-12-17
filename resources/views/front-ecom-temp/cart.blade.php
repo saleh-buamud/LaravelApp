@@ -67,7 +67,7 @@
 
 <body>
     @include('front-ecom-temp.header')
-    <!-- cart + summary -->
+
     <section class="bg-light my-5 mt-4 ">
         <div class="container">
             <div class="row">

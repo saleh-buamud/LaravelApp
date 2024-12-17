@@ -25,7 +25,7 @@ class CartController extends Controller
         $product = Product::findOrFail($productId);
 
         \Cart::add([
-            'user_id' => auth()->user()->id,
+            'user_id' => auth()->check() ? auth()->user()->id : null,
             'id' => $productId,
             'name' => $product->name,
             'price' => $product->price,
@@ -74,9 +74,15 @@ class CartController extends Controller
     }
     public function saveOrder(Request $request)
     {
+        if (!empty(\Cart::getContent())) {
+            return redirect()->route('cart')->with('error', 'There is no item in your cart');
+        }
+        if (Auth::guest()->user) {
+            return redirect()->route('login')->with('error', 'يجب تسجيل الدخول أولا�� للمتابعة');
+        }
         // إنشاء سجل طلب جديد
         $order = new Order();
-        $order->user_id = auth()->user()->id; // ربط الطلب بالمستخدم الذي قام بإنشائه
+        $order->user_id = auth()->check() ? auth()->user()->id : null; // ربط الطلب بالمستخدم إذا كان مسجلاً للدخول، وإذا لم يكن يوجد مستخدم يتم تعيين القيمة null
         $order->order_date = Carbon::now(); // تعيين تاريخ الطلب الحالي
         $order->total_amount = \Cart::getTotal(); // حساب المجموع الكلي باستخدام getTotal()
         $order->status = 1; // تعيين حالة الطلب إلى "قيد الانتظار" بشكل افتراضي
