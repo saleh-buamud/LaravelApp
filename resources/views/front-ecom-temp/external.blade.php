@@ -38,9 +38,7 @@
                 <input type="text" id="search" name="search" placeholder="Search products..."
                     class="form-control">
             </form>
-            <div id="search-results">
 
-            </div>
             <br>
             <hr>
             <hr>
@@ -76,59 +74,6 @@
     <script src="assets/js/glightbox.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('.add-to-cart').on('click', function(e) {
-                e.preventDefault();
-                var productId = $(this).data('id');
-
-                $.ajax({
-                    url: '/add-cart/' + productId,
-                    method: 'POST',
-                    data: {
-                        _token: '{{ csrf_token() }}',
-                        id: productId
-                    },
-                    success: function(response) {
-                        $('#cart-item-count').text(response.totalQuantity);
-                    },
-                    error: function(xhr) {
-                        console.error(xhr.responseText);
-                    }
-                });
-            });
-        });
-        document.getElementById('search').addEventListener('input', function() {
-            var searchQuery = this.value;
-
-            // إذا كانت قيمة البحث غير فارغة، نقوم بإرسال طلب البحث
-            if (searchQuery.length > 0) {
-                fetch('{{ route('search') }}?search=' + searchQuery)
-                    .then(response => response.json())
-                    .then(data => {
-                        let results = data.results;
-                        let resultContainer = document.getElementById('search-results');
-                        resultContainer.innerHTML = ''; // مسح النتائج السابقة
-
-                        if (results.length > 0) {
-                            results.forEach(item => {
-                                resultContainer.innerHTML += `
-                            <div class="result-item">
-                                <h5>${item.name}</h5>
-                                <p>${item.description}</p>
-                            </div>
-                        `;
-                            });
-                        } else {
-                            resultContainer.innerHTML = '<p>No results found</p>';
-                        }
-                    })
-                    .catch(error => console.log(error));
-            } else {
-                document.getElementById('search-results').innerHTML = '';
-            }
-        });
-    </script>
 
 </body>
 

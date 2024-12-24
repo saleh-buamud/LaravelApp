@@ -56,7 +56,10 @@
 
             <!-- Submit Button -->
             <button type="submit" class="btn btn-primary">Submit Order</button>
-             
+            <button type="submit" class="btn btn-primary">Submit Order</button>
+            <button type="submit" class="btn btn-primary">Submit Order</button>
+
+
         </form>
     </div>
 

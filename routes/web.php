@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminAuthController;
+use App\Models\User;
+use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\ProductController;
 use App\Http\Controllers\Front\CartController;
@@ -24,6 +25,7 @@ Route::get('/external', [ProductController::class, 'allExternal'])->name('allExt
 Route::get('/electrical', [ProductController::class, 'allElectrical'])->name('allElectrical');
 Route::get('cart', [CartController::class, 'cart'])->name('cart');
 Route::get('add-cart/{productId}', [CartController::class, 'addCart'])->name('add.cart');
+Route::get('/logintest', [UserController::class, 'showLoginForm']);
 
 Route::get('checkout', function () {
     return view('front-ecom-temp.checkout');
@@ -45,6 +47,12 @@ Route::get('/search', [ProductController::class, 'search'])->name('search');
 Route::get('/product-details', function () {
     return view('front-ecom-temp.product-details');
 })->name('product-details');
+
+Route::get('/to', function () {
+    $All = User::all();
+
+    dd($All);
+});
 
 /////////////////////////
 Route::middleware('auth')->group(function () {

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades;
 use Illuminate\Support\Facades\DB;
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\SubCategory;
@@ -50,12 +52,28 @@ class ProductController extends Controller
         }
         return view('front-ecom-temp.Electrical', compact('products'));
     }
+
     public function search(Request $request)
     {
+        // افتراض وجود عمود 'type' أو 'category' للإشارة إلى نوع المنتج
         $searchQuery = $request->input('search');
 
-        $products = Product::where('name', 'like', '%' . $searchQuery . '%')->get();
+        $products = QueryBuilder::for(Product::class)
+            ->allowedFilters(['name', AllowedFilter::exact('sub_category_id')])
+            ->where('SubCategory', 'external') // أو استخدام 'type' إذا كان العمود يحمل هذا الاسم
+            ->get();
 
-        return response()->json(['results' => $products]);
+        if ($products->isEmpty()) {
+            return response()->json([
+                'message' => 'No products found',
+                'status' => 404,
+                'data' => null,
+            ]);
+        }
+
+        return response()->json([
+            'data' => $products,
+            'status' => 200,
+        ]);
     }
 }
