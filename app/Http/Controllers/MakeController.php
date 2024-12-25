@@ -28,7 +28,7 @@ class MakeController extends Controller
         ]);
 
         Make::create($request->all());
-        return redirect()->route('dashboard.makes.index');
+        return redirect()->route('dashboard.makes.index')->with('message', 'Make created successfully!');
     }
 
     // عرض تفاصيل Make معينة
@@ -51,13 +51,13 @@ class MakeController extends Controller
         ]);
 
         $make->update($request->all());
-        return redirect()->route('dashboard.makes.index');
+        return redirect()->route('dashboard.makes.index')->with('Update', 'Make updated successfully!');
     }
 
     // حذف Make معينة
     public function destroy(Make $make)
     {
         $make->delete();
-        return redirect()->route('dashboard.makes.index');
+        return redirect()->route('dashboard.makes.index')->with('Delete', 'Make deleted successfully!');
     }
 }

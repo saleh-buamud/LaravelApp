@@ -36,29 +36,6 @@
         </div>
     @endif
 
-    <script>
-        // إخفاء الرسالة بعد 5 ثوانٍ
-        setTimeout(function() {
-            $('.alert').alert('close');
-        }, 5000);
-    </script>
-
-    @if ($lowStockProducts->count() > 0)
-        <!-- Modal -->
-        <div class="modal-backdrop" id="lowStockModal">
-            <div class="modal-content">
-                <h4>تنبيه!</h4>
-                <p>هناك منتجات عددها أقل من 5. يرجى مراجعتها:</p>
-                <ul>
-                    @foreach ($lowStockProducts as $product)
-                        <li>{{ $product->name }}: {{ $product->quantity }}</li>
-                    @endforeach
-                </ul>
-                <button type="button" class="btn-close" onclick="closeModal()">×</button>
-            </div>
-        </div>
-    @endif
-
     <a href="{{ route('products.create') }}" class="btn btn-primary">Add Product</a>
     <hr>
     <br>
@@ -102,10 +79,8 @@
 
                     <td>
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <a href="{{ route('products.edit', $product->id) }}"
-                                class="btn btn-dark btn-sm mr-1">Edit</a>
-                            <form action="{{ route('products.destroy', $product->id) }}" method="post"
-                                class="mr-1">
+                            <a href="{{ route('products.edit', $product->id) }}" class="btn btn-dark btn-sm mr-1">Edit</a>
+                            <form action="{{ route('products.destroy', $product->id) }}" method="post" class="mr-1">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>

@@ -31,7 +31,7 @@ class ModeController extends Controller
         ]);
 
         Mode::create($request->all());
-        return redirect()->route('dashboard.modes.index');
+        return redirect()->route('dashboard.modes.index')->with('message', 'Make created successfully!');
     }
 
     // عرض تفاصيل Mode معينة
@@ -56,13 +56,13 @@ class ModeController extends Controller
         ]);
 
         $mode->update($request->all());
-        return redirect()->route('dashboard.modes.index');
+        return redirect()->route('dashboard.modes.index')->with('Update', 'Mode updated successfully!');
     }
 
     // حذف Mode معينة
     public function destroy(Mode $mode)
     {
         $mode->delete();
-        return redirect()->route('dashboard.modes.index');
+        return redirect()->route('dashboard.modes.index')->with('Delete', 'Mode deleted successfully!');
     }
 }
