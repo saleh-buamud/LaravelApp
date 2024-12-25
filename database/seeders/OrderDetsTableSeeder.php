@@ -20,6 +20,6 @@ class OrderDetsTableSeeder extends Seeder
         ]);
 
         // إدخال تفاصيل الطلب
-        DB::table('order_dets')->insert([['order_id' => $orderId, 'product_id' => 1, 'price' => 2000, 'quantity' => 1], ['order_id' => $orderId, 'product_id' => 2, 'price' => 150, 'quantity' => 1]]);
+        DB::table('order_dets')->insert([['order_id' => $orderId, 'product_id' => 1, 'price' => 2000, 'quantity' => 10], ['order_id' => $orderId, 'product_id' => 2, 'price' => 150, 'quantity' => 70], ['order_id' => $orderId, 'product_id' => 2, 'price' => 950, 'quantity' => 30], ['order_id' => $orderId, 'product_id' => 2, 'price' => 450, 'quantity' => 20]]);
     }
 }

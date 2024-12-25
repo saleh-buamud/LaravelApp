@@ -15,7 +15,7 @@ class ProductController extends Controller
 {
     public function AllProduct()
     {
-        $products = Product::with('SubCategory')->limit(4)->get(); // جلب أول 4 قطع غيار مع الفئات الفرعية المرتبطة
+        $products = Product::with('SubCategory')->limit(1)->get(); // جلب أول 4 قطع غيار مع الفئات الفرعية المرتبطة
 
         return view('front-ecom-temp.Trending-product', compact('products'));
     }

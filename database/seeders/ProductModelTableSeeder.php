@@ -14,9 +14,6 @@ class ProductModelTableSeeder extends Seeder
     public function run(): void
     {
         //
-         DB::table('product_model')->insert([
-            ['mode_id' => 1, 'product_id' => 1],
-            ['mode_id' => 2, 'product_id' => 2],
-        ]);
+        DB::table('product_model')->insert([['mode_id' => 1, 'product_id' => 1], ['mode_id' => 2, 'product_id' => 2], ['mode_id' => 3, 'product_id' => 3], ['mode_id' => 4, 'product_id' => 4]]);
     }
 }
