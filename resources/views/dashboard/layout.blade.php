@@ -173,28 +173,21 @@
                 </div>
 
                 <div class="mt-3">
-                    <a href="{{ route('dashboard') }}" class="btn btn-primary btn-lg w-100"
-                        style="color:white">الفئات</a>
-                    <a href="{{ route('dashboard.in') }}" class="btn btn-primary btn-lg w-100 mt-1"
-                        style="color:white">سب كاتجوري داخلية</a>
-                    <a href="{{ route('dashboard.internalPartsProducts') }}" class="btn btn-y btn-lg w-100 mt-1"
-                        style="color:white">قطع غيار داخلية</a>
-                    <a href="{{ route('dashboard.ex') }}" class="btn btn-primary btn-lg w-100 mt-1"
-                        style="color:white">سب كاتجوري الخارجية</a>
-                    <a href="{{ route('dashboard.externalPartsProducts') }}" class="btn btn-y btn-lg w-100 mt-1"
-                        style="color:white">قطع غيار الخارجية</a>
-                    <a href="{{ route('dashboard.el') }}" class="btn btn-primary btn-lg w-100 mt-1"
-                        style="color:wسب الكاتجوري كهربائية</a>
-                    <a href="{{ route('dashboard.electricalPartsProducts') }}"
-                        class="btn btn-y btn-lg w-100 mt-1" style="color:white">قطع غيار كهربائية</a>
-                    <a href="{{ route('dashboard.allProducts') }}" class="btn btn-primary btn-lg w-100 mt-1"
-                        style="color:white">all products</a>
-                    <a class="btn btn-primary btn-lg w-100 mt-1" style="color:white"
-                        href="{{ route('dashboard.makes.index') }}">الماركات</a>
-                    <a class="btn btn-primary btn-lg w-100 mt-1" style="color:white"
-                        href="{{ route('dashboard.modes.index') }}">موديلات</a>
-
+                    <a href="{{ route('dashboard') }}" class="btn btn-primary btn-lg w-100  text-white">الفئات</a>
+                    <a href="{{ route('dashboard.in') }}" class="btn btn-primary btn-lg w-100 text-white">سب
+                        كاتجوري داخلية</a>
+                    <a href="{{ route('dashboard.ex') }}" class="btn btn-primary btn-lg w-100  text-white">سب
+                        كاتجوري الخارجية</a>
+                    <a href="{{ route('dashboard.el') }}" class="btn btn-primary btn-lg w-100  text-white">سب
+                        الكاتجوري كهربائية</a>
+                    <a href="{{ route('dashboard.allProducts') }}" class="btn btn-primary btn-lg w-100  text-white">All
+                        Products</a>
+                    <a href="{{ route('dashboard.makes.index') }}"
+                        class="btn btn-primary btn-lg w-100  text-white">الماركات</a>
+                    <a href="{{ route('dashboard.modes.index') }}"
+                        class="btn btn-primary btn-lg w-100  text-white">موديلات</a>
                 </div>
+
             </div>
         </aside>
 
@@ -222,7 +215,6 @@
                     @yield('content')
                     @yield('create')
                     @yield('edit')
-                    @yield('user')
                 </div>
             </div>
         </div>

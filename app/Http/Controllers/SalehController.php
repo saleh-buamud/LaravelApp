@@ -47,71 +47,11 @@ class SalehController extends Controller
 
         return view('dashboard.categories.Electrical', compact('subCategories', 'categoryName'));
     }
-
-    // دالة لجلب قطع الغيار المرتبطة بالقطع الداخلية
-    public function internalPartsProducts()
-    {
-        $subCategories = SubCategory::whereHas('category', function ($query) {
-            $query->where('name', 'Internal-Parts');
-        })->get();
-
-        $products = Product::whereIn('sub_category_id', $subCategories->pluck('id'))->get();
-        return view('dashboard.categories.AllintPro', compact('products'));
-    }
-
-    // دالة لجلب قطع الغيار المرتبطة بالقطع الخارجية
-    public function externalPartsProducts()
-    {
-        $subCategories = SubCategory::whereHas('category', function ($query) {
-            $query->where('name', 'External-Parts');
-        })->get();
-
-        $products = Product::whereIn('sub_category_id', $subCategories->pluck('id'))->get();
-
-        return view('dashboard.categories.AllExtPro', compact('products'));
-    }
-
-    // دالة لجلب قطع الغيار المرتبطة بالكهربائية
-    public function electricalPartsProducts()
-    {
-        $subCategories = SubCategory::whereHas('category', function ($query) {
-            $query->where('name', 'Electrical-Parts');
-        })->get();
-
-        if ($subCategories->isEmpty()) {
-            dd('No subcategories found for Electrical-Parts');
-        }
-
-        $products = Product::whereIn('sub_category_id', $subCategories->pluck('id'))->get();
-
-        if ($products->isEmpty()) {
-            dd('No products found for the subcategories');
-        }
-
-        return view('dashboard.categories.AllelePro', compact('products'));
-    }
-
     public function allProducts()
     {
         $products = Product::all();
         $lowStockProducts = Product::where('quantity', '<', 5)->get();
 
         return view('dashboard.categories.productAll', compact('products', 'lowStockProducts'));
-    }
-
-    // دالة لجلب المنتجات المرتبطة بفئة فرعية معينة
-    public function productsBySubCategory($subCategoryId)
-    {
-        // الحصول على الفئة الفرعية بناءً على المعرف
-        $subCategory = SubCategory::find($subCategoryId);
-
-        if (!$subCategory) {
-            return redirect()->back()->with('error', 'SubCategory not found.');
-        }
-
-        // جلب المنتجات المرتبطة بالفئة الفرعية
-        $products = $subCategory->products()->get();
-
-        return view('dashboard.categories.productsBySubCategory', compact('products', 'subCategory'));
     }
 }
