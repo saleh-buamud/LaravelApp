@@ -1,23 +1,25 @@
 @extends('dashboard.layout')
 
-@section('title', 'Starter Page')
+@section('title', 'Dashboard')
 
 @section('breadcrumb')
     @parent
-    <li class="breadcrumb-item active">Starter Page</li>
+    <li class="breadcrumb-item active">Dashboard</li>
 @endsection
 
 @section('content')
-    <h1>لوحة التحكم</h1>
+    <h1>Dashboard</h1>
 
-    <!-- التحقق من وجود رسالة في الجلسة وعرضها باستخدام SweetAlert -->
     @if (Session::has('messages'))
         <script>
-            // عرض تنبيه باستخدام SweetAlert
-
-            swal("Messages", "{{ Session::get('messages') }}", 'warning', {
+            swal("Message", "{{ Session::get('messages') }}", 'warning', {
                 button: true,
                 button: "OK",
+            }).then(() => {
+                // After the message is displayed, forget it from the session
+                @php
+                    session()->forget('messages');
+                @endphp
             });
         </script>
     @endif

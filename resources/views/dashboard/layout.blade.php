@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -21,7 +21,6 @@
     <style>
         body {
             font-family: 'Amiri', serif;
-
             /* Apply the Arabic font */
         }
 
@@ -120,7 +119,7 @@
                             class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="{{ route('dashboard') }}" class="nav-link">الرئيسية</a>
+                    <a href="{{ route('dashboard') }}" class="nav-link">Home</a>
                 </li>
             </ul>
 
@@ -151,7 +150,7 @@
                 <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8; width: 50px; height: 50px">
                 <br>
-                <span class="brand-text font-weight-light">متجر قطع غيار السيارات</span>
+                <span class="brand-text font-weight-light">Car Parts Store</span>
             </div>
 
             <div class="sidebar mt-3">
@@ -168,26 +167,25 @@
                 <div class="m-3 text-center">
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <button class="btn btn-primary btn-sm px-5 py-2">تسجيل الخروج</button>
+                        <button class="btn btn-primary btn-sm px-5 py-2">Log Out</button>
                     </form>
                 </div>
 
                 <div class="mt-3">
-                    <a href="{{ route('dashboard') }}" class="btn btn-primary btn-lg w-100  text-white">الفئات</a>
-                    <a href="{{ route('dashboard.in') }}" class="btn btn-primary btn-lg w-100 text-white">سب
-                        كاتجوري داخلية</a>
-                    <a href="{{ route('dashboard.ex') }}" class="btn btn-primary btn-lg w-100  text-white">سب
-                        كاتجوري الخارجية</a>
-                    <a href="{{ route('dashboard.el') }}" class="btn btn-primary btn-lg w-100  text-white">سب
-                        الكاتجوري كهربائية</a>
-                    <a href="{{ route('dashboard.allProducts') }}" class="btn btn-primary btn-lg w-100  text-white">All
+                    <a href="{{ route('dashboard') }}" class="btn btn-primary btn-lg w-100 text-white">Categories</a>
+                    <a href="{{ route('dashboard.in') }}" class="btn btn-primary btn-lg w-100 text-white">Internal
+                        Category</a>
+                    <a href="{{ route('dashboard.ex') }}" class="btn btn-primary btn-lg w-100 text-white">External
+                        Category</a>
+                    <a href="{{ route('dashboard.el') }}" class="btn btn-primary btn-lg w-100 text-white">Electrical
+                        Category</a>
+                    <a href="{{ route('dashboard.allProducts') }}" class="btn btn-primary btn-lg w-100 text-white">All
                         Products</a>
                     <a href="{{ route('dashboard.makes.index') }}"
-                        class="btn btn-primary btn-lg w-100  text-white">الماركات</a>
+                        class="btn btn-primary btn-lg w-100 text-white">Brands</a>
                     <a href="{{ route('dashboard.modes.index') }}"
-                        class="btn btn-primary btn-lg w-100  text-white">موديلات</a>
+                        class="btn btn-primary btn-lg w-100 text-white">Models</a>
                 </div>
-
             </div>
         </aside>
 
@@ -202,7 +200,7 @@
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 @section('breadcrumb')
-                                    <li class="breadcrumb-item"><a href="#">الرئيسية</a></li>
+                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
                                 @show
                             </ol>
                         </div>
