@@ -11,7 +11,7 @@ use App\Http\Controllers\ModeController;
 // حدد الـ Guard للمشرفين فقط
 Route::middleware(['auth', 'admin'])->group(function () {
     // مسارات لوحة التحكم الخاصة بالمشرفين
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::get('/dashboard/in', [SalehController::class, 'internalParts'])->name('dashboard.in');
     Route::get('/dashboard/ex', [SalehController::class, 'externalParts'])->name('dashboard.ex');
     Route::get('/dashboard/el', [SalehController::class, 'electricalParts'])->name('dashboard.el');

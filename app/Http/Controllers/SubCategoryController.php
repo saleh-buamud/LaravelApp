@@ -49,7 +49,7 @@ class SubCategoryController extends Controller
             'category_id' => $request->category_id,
         ]);
 
-        return redirect()->route('dashboard')->with('success', 'Subcategory created successfully.');
+        return redirect()->route('dashboard.index')->with('success', 'Subcategory created successfully.');
     }
 
     // Show the form for editing the specified subcategory
@@ -82,7 +82,7 @@ class SubCategoryController extends Controller
         $subCategory->update($request->all());
 
         // Redirect with success message
-        return redirect()->route('dashboard')->with('updated', 'Subcategory updated successfully.');
+        return redirect()->route('dashboard.index')->with('updated', 'Subcategory updated successfully.');
     }
 
     // Remove the specified subcategory
@@ -95,13 +95,13 @@ class SubCategoryController extends Controller
 
         // Check if the subcategory exists
         if (!$subCategory) {
-            return redirect()->route('dashboard')->with('Deleted', 'Subcategory not found.');
+            return redirect()->route('dashboard.index')->with('Deleted', 'Subcategory not found.');
         }
 
         // Delete the subcategory if it exists
         $subCategory->delete();
 
         // Redirect with success message
-        return redirect()->route('subcategories.index')->with('Deleted', 'Subcategory deleted successfully.');
+        return redirect()->route('dashboard.index')->with('Deleted', 'Subcategory deleted successfully.');
     }
 }

@@ -20,21 +20,21 @@
     @endif
 
     @if (session('Deleted'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ session('Deleted') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
+        <script>
+            swal("Message", "{{ Session::get('messages') }}", 'warning', {
+                button: true,
+                button: "OK",
+            });
+        </script>
     @endif
 
     @if (session('updated'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('updated') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
+        <script>
+            swal("Message", "{{ Session::get('messages') }}", 'warning', {
+                button: true,
+                button: "OK",
+            });
+        </script>
     @endif
     @if (Session::has('messages'))
         <script>

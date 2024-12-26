@@ -119,7 +119,7 @@
                             class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="{{ route('dashboard') }}" class="nav-link">Home</a>
+                    <a href="{{ route('dashboard.index') }}" class="nav-link">Home</a>
                 </li>
             </ul>
 
@@ -172,7 +172,8 @@
                 </div>
 
                 <div class="mt-3">
-                    <a href="{{ route('dashboard') }}" class="btn btn-primary btn-lg w-100 text-white">Categories</a>
+                    <a href="{{ route('dashboard.index') }} "
+                        class="btn btn-primary btn-lg w-100 text-white">Categories</a>
                     <a href="{{ route('dashboard.in') }}" class="btn btn-primary btn-lg w-100 text-white">Internal
                         Category</a>
                     <a href="{{ route('dashboard.ex') }}" class="btn btn-primary btn-lg w-100 text-white">External
