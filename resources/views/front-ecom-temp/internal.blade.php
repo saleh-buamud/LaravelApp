@@ -53,7 +53,8 @@
                             <h5 class="card-title">{{ $subCategory->name }}</h5>
                             <p class="card-text">{{ $subCategory->description }}</p>
                         </div>
-                        <a href="#" class="btn btn-primary w-50 mb-20">Product</a>
+                        <a href="{{ route('subCategory.products', $subCategory->id) }}"
+                            class="btn btn-primary w-50 mb-20">View Products</a>
                     </div>
                 </div>
             @endforeach

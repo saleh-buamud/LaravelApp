@@ -28,7 +28,7 @@ class ProductController extends Controller
             'price' => 'required|numeric|min:0',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'sub_category_id' => 'required|exists:sub_categories,id',
-            'model_id' => 'required|array', // تعديل هنا لإلزام المستخدم باختيار موديلات
+            'model_id' => 'required|array', // إلزام المستخدم باختيار موديلات
             'model_id.*' => 'exists:modes,id', // التحقق من وجود كل موديل
         ]);
 
@@ -44,8 +44,10 @@ class ProductController extends Controller
         // إنشاء المنتج
         $product = Product::create($productData);
 
-        // ربط المنتج بالموديلات المختارة
-        $product->modes()->attach($request->modes_id);
+        // ربط المنتج بالموديلات المختارة عبر جدول product_model
+        if ($request->has('model_id')) {
+            $product->modes()->attach($request->model_id); // استخدام الحقل 'model_id' الذي يحتوي على موديلات
+        }
 
         return redirect()->route('dashboard.allProducts')->with('messages', 'Product created successfully.');
     }

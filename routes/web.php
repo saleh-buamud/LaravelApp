@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Front\SubCategoryController;
 use App\Models\User;
 use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\Front\HomeController;
@@ -20,12 +21,13 @@ use App\Http\Controllers\Front\CartController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/internal', [ProductController::class, 'allInternal'])->name('allInternal');
-Route::get('/external', [ProductController::class, 'allExternal'])->name('allExternal');
-Route::get('/electrical', [ProductController::class, 'allElectrical'])->name('allElectrical');
+Route::get('/internal', [SubCategoryController::class, 'allInternal'])->name('allInternal');
+Route::get('/external', [SubCategoryController::class, 'allExternal'])->name('allExternal');
+Route::get('/electrical', [SubCategoryController::class, 'allElectrical'])->name('allElectrical');
 Route::get('cart', [CartController::class, 'cart'])->name('cart');
 Route::get('add-cart/{productId}', [CartController::class, 'addCart'])->name('add.cart');
-Route::get('/logintest', [UserController::class, 'showLoginForm']);
+// Route::get('/logintest', [UserController::class, 'showLoginForm']);
+Route::get('sub-category/{subCategoryId}/products', [ProductController::class, 'showProductsBySubCategory'])->name('subCategory.products');
 
 Route::get('checkout', function () {
     return view('front-ecom-temp.checkout');

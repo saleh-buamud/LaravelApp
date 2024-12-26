@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon; // استيراد Carbon بشكل صحيح
 use Illuminate\Http\Request;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Models\SubCategory; // ��ضافة SubCategory Model
+use App\Models\Product; // ��ضافة Product Model
 use App\Mail\TestMail;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-use App\Models\Product;
 use App\Models\Order;
 use App\Models\OrderDet;
 
@@ -74,12 +77,13 @@ class CartController extends Controller
     }
     public function saveOrder(Request $request)
     {
-        if (!empty(\Cart::getContent())) {
+        if (\Cart::isEmpty()) {
             return redirect()->route('cart')->with('error', 'There is no item in your cart');
         }
-        if (Auth::guest()->user) {
-            return redirect()->route('login')->with('error', 'يجب تسجيل الدخول أولا�� للمتابعة');
+        if (Auth::guest()) {
+            return redirect()->route('login')->with('error', 'يجب تسجيل الدخول أولاً للمتابعة');
         }
+
         // إنشاء سجل طلب جديد
         $order = new Order();
         $order->user_id = auth()->check() ? auth()->user()->id : null; // ربط الطلب بالمستخدم إذا كان مسجلاً للدخول، وإذا لم يكن يوجد مستخدم يتم تعيين القيمة null
@@ -99,6 +103,13 @@ class CartController extends Controller
             $orderDetail->quantity = $item->quantity; // الكمية
             $orderDetail->price = $item->price; // السعر لكل منتج
             $orderDetail->save(); // حفظ تفاصيل المنتج في جدول order_details
+
+            // تحديث كمية المنتج في المخزون
+            $product = Product::find($item->id);
+            if ($product) {
+                $product->quantity -= $item->quantity;
+                $product->save();
+            }
 
             // إضافة تفاصيل الطلب إلى المصفوفة
             $orderDetails[] = $orderDetail;

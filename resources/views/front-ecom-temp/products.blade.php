@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/LineIcons.3.0.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/tiny-slider.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/glightbox.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
+    {{-- <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" /> --}}
     <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
 </head>
 
@@ -32,34 +32,24 @@
     @include('front-ecom-temp.header')
 
     <div class="container my-4">
-        <h1 class="text-center mb-4">External Parts Subcategories</h1>
-        {{-- <div class="text-center flex">
-            <form method="GET" action="{{ route('search') }}">
-                <input type="text" id="search" name="search" placeholder="Search products..."
-                    class="form-control">
-            </form>
-            <div id="search-results">
-            </div>
-            <br>
-            <hr>
-            <hr>
-            <hr> --}}
-        {{-- </div> --}}
+        <h1 class="text-center mb-4">Products for Subcategory: {{ $subCategory->name }}</h1>
         <div class="row">
-            @foreach ($subCategories as $subCategory)
+            @foreach ($products as $product)
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
+                        <img src="{{ asset('storage/' . $product->image) }}" alt="Product image">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $subCategory->name }}</h5>
-                            <p class="card-text">{{ $subCategory->description }}</p>
+                            <h5 class="card-title">{{ $product->name }}</h5>
+                            <p class="card-text">{{ $product->description }}</p>
+                            <p class="card-text"><strong>Price:</strong> ${{ $product->price }}</p>
+                            <a href="{{ route('add.cart', $product->id) }}" class="btn btn-primary">Add to Cart</a>
                         </div>
-                        <a href="{{ route('subCategory.products', $subCategory->id) }}"
-                            class="btn btn-primary w-50 mb-20">View Products</a>
                     </div>
                 </div>
             @endforeach
         </div>
     </div>
+
 
     @include('front-ecom-temp.footer')
 
