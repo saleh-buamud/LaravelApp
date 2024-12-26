@@ -11,7 +11,7 @@ class SubCategoryController extends Controller
     public function AllProduct()
     {
         // جلب أول قطعتين فقط من الفئات الفرعية المرتبطة بالفئات الرئيسية
-        $subCategories = SubCategory::with('category')->take(2)->get();
+        $subCategories = SubCategory::with('category')->paginate(10);
 
         return view('front-ecom-temp.Trending-product', compact('subCategories'));
     }
@@ -23,7 +23,7 @@ class SubCategoryController extends Controller
             $query->where('name', 'Internal-Parts');
         })
             ->with('category')
-            ->get();
+            ->paginate(1);
 
         return view('front-ecom-temp.Internal', compact('subCategories'));
     }
@@ -35,7 +35,7 @@ class SubCategoryController extends Controller
             $query->where('name', 'External-Parts');
         })
             ->with('category')
-            ->get();
+            ->paginate(1);
 
         return view('front-ecom-temp.External', compact('subCategories'));
     }
@@ -47,7 +47,7 @@ class SubCategoryController extends Controller
             $query->where('name', 'Electrical-Parts');
         })
             ->with('category')
-            ->get();
+            ->paginate(1);
 
         return view('front-ecom-temp.Electrical', compact('subCategories'));
     }

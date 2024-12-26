@@ -59,6 +59,9 @@
             @endforeach
         </div>
     </div>
+    <div class="d-flex justify-content-center">
+        {{ $subCategories->links('pagination::bootstrap-5') }}
+    </div>
 
     @include('front-ecom-temp.footer')
 

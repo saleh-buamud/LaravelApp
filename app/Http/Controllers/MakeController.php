@@ -10,7 +10,7 @@ class MakeController extends Controller
     // عرض جميع الـ Makes
     public function index()
     {
-        $makes = Make::all();
+        $makes = Make::paginate(1);
         return view('make.index', compact('makes'));
     }
 

@@ -49,7 +49,7 @@ class SalehController extends Controller
     }
     public function allProducts()
     {
-        $products = Product::all();
+        $products = Product::paginate(1);
         $lowStockProducts = Product::where('quantity', '<', 5)->get();
 
         return view('dashboard.categories.productAll', compact('products', 'lowStockProducts'));
