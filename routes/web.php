@@ -42,7 +42,7 @@ Route::get('remove-item/{productId}', [CartController::class, 'removeItem'])->na
 
 Route::get('clear', [CartController::class, 'clearCart'])->name('clear'); // Route::get('/all', [ProductController::class, 'AllProduct'])->name('home');
 
-Route::get('/search', [ProductController::class, 'search'])->name('search');
+Route::get('/search', [ProductController::class, 'search'])->name('product.search');
 
 Route::get('/product-details', function () {
     return view('front-ecom-temp.product-details');

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Mode; // تحديد موديل الوحدات المتعلقة بالوضعات
 use Illuminate\Support\Facades\DB; // تأكد من إضافة هذا السطر
 
 class ModesTableSeeder extends Seeder
@@ -14,6 +15,6 @@ class ModesTableSeeder extends Seeder
     public function run(): void
     {
         //
-        DB::table('modes')->insert([['name' => 'Camry', 'make_id' => 1], ['name' => 'Civic', 'make_id' => 2], ['name' => 'Focus', 'make_id' => 3], ['name' => 'K5', 'make_id' => 4]]);
+        Mode::factory()->count(10)->create();
     }
 }

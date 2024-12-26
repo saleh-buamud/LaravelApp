@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Product;
+
 use Illuminate\Support\Facades\DB; // تأكد من إضافة هذا السطر
 
 class ProductsTableSeeder extends Seeder
@@ -13,7 +15,7 @@ class ProductsTableSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('products')->insert([['name' => 'محرك تويوتا', 'sub_category_id' => 1, 'description' => 'محرك قوي', 'price' => 2000.0, 'quantity' => 5], ['name' => 'محرك تويوتا', 'sub_category_id' => 1, 'description' => 'محرك قوي', 'price' => 2000.0, 'quantity' => 5], ['name' => 'فيوز', 'sub_category_id' => 3, 'description' => 'بطارية جديدة', 'price' => 150.0, 'quantity' => 10], ['name' => 'فرشيله', 'sub_category_id' => 3, 'description' => 'بطارية جديدة', 'price' => 150.0, 'quantity' => 10]]);
+        Product::factory()->count(10)->create();
         //
     }
 }

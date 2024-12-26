@@ -30,28 +30,37 @@
     @include('front-ecom-temp.header')
 
     <div class="container my-4">
-        <h1 class="text-center mb-4">Electrical Parts Products</h1>
-        <div class="search-input">
-            <input type="text" placeholder="Search">
-        </div>
-        <div class="search-btn">
-            <button><i class="lni lni-search-alt"></i></button>
-        </div>
+        <!-- Search Input -->
+        <form method="GET" action="{{ route('product.search') }}" class="d-flex mb-4">
+            <input type="text" name="search" class="form-control" placeholder="Search"
+                value="{{ request()->get('search') }}">
+            <button type="submit" class="btn btn-primary ml-2">
+                <i class="lni lni-search-alt"></i> Search
+            </button>
+        </form>
+
+        <!-- Display Results -->
         <div class="row">
-            @foreach ($products as $product)
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <img src="{{ asset('storage/' . $product->image) }}" alt="صورة المنتج">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $product->name }}</h5>
-                            <p class="card-text">{{ $product->description }}</p>
-                            <p class="card-text"><strong>Price:</strong> ${{ $product->price }}</p>
-                            <a href="{{ route('add.cart', $product->id) }}" data-id="{{ $product->id }}"
-                                class="btn btn-primary">Add cart</a>
+            @if ($products->isEmpty())
+                <div class="col-12">
+                    <p class="text-center">No products found.</p>
+                </div>
+            @else
+                @foreach ($products as $product)
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <img src="{{ asset('storage/' . $product->image) }}" alt="Product Image">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $product->name }}</h5>
+                                <p class="card-text">{{ $product->description }}</p>
+                                <p class="card-text"><strong>Price:</strong> ${{ $product->price }}</p>
+                                <a href="{{ route('add.cart', $product->id) }}" data-id="{{ $product->id }}"
+                                    class="btn btn-primary">Add to cart</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            @endif
         </div>
     </div>
 
@@ -67,30 +76,6 @@
     <script src="assets/js/glightbox.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('.add-to-cart').on('click', function(e) {
-                e.preventDefault();
-                var productId = $(this).data('id');
-
-                $.ajax({
-                    url: '/add-cart/' + productId,
-                    method: 'POST',
-                    data: {
-                        _token: '{{ csrf_token() }}',
-                        id: productId
-                    },
-                    success: function(response) {
-                        $('#cart-item-count').text(response.totalQuantity);
-                    },
-                    error: function(xhr) {
-                        console.error(xhr.responseText);
-                    }
-                });
-            });
-        });
-    </script>
-
 </body>
 
 </html>
