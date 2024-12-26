@@ -49,7 +49,7 @@ class SubCategoryController extends Controller
             'category_id' => $request->category_id,
         ]);
 
-        return redirect()->route('dashboard.index')->with('success', 'Subcategory created successfully.');
+        return redirect()->route('dashboard.index')->with('message', 'Subcategory created successfully.');
     }
 
     // Show the form for editing the specified subcategory
