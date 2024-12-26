@@ -122,11 +122,12 @@
                                  </li>
                                  <li class="nav-item">
                                      <a class="nav-link" style="font-family: sans-serif ; font-weight: bold"
-                                         href="{{ route('allExternal') }}">Electrical Spare Parts</a>
+                                         href="{{ route('allExternal') }}">External Spare Parts</a>
                                  </li>
                                  <li class="nav-item">
                                      <a class="nav-link" style="font-family: sans-serif ; font-weight: bold"
-                                         href="{{ route('allElectrical') }}">External Spare Parts</a>
+                                         href="{{ route('allElectrical') }}"> Electrical Spare Parts</a>
+                                 </li></a>
                                  </li>
                              </ul>
                          </div>

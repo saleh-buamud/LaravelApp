@@ -32,32 +32,28 @@
     @include('front-ecom-temp.header')
 
     <div class="container my-4">
-        <h1 class="text-center mb-4">External Parts Products</h1>
-        <div class="text-center flex">
+        <h1 class="text-center mb-4">External Parts Subcategories</h1>
+        {{-- <div class="text-center flex">
             <form method="GET" action="{{ route('search') }}">
                 <input type="text" id="search" name="search" placeholder="Search products..."
                     class="form-control">
             </form>
             <div id="search-results">
-
             </div>
             <br>
             <hr>
             <hr>
-            <hr>
-        </div>
+            <hr> --}}
+        {{-- </div> --}}
         <div class="row">
-            @foreach ($products as $product)
+            @foreach ($subCategories as $subCategory)
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
-                        <img src="{{ asset('storage/' . $product->image) }}" alt="صورة المنتج">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $product->name }}</h5>
-                            <p class="card-text">{{ $product->description }}</p>
-                            <p class="card-text"><strong>Price:</strong> ${{ $product->price }}</p>
-                            <a href="{{ route('add.cart', $product->id) }}" data-id="{{ $product->id }}"
-                                class="btn btn-primary">Add cart</a>
+                            <h5 class="card-title">{{ $subCategory->name }}</h5>
+                            <p class="card-text">{{ $subCategory->description }}</p>
                         </div>
+                        <a href="#" class="btn btn-primary w-50 mb-20">Product</a>
                     </div>
                 </div>
             @endforeach
@@ -76,59 +72,7 @@
     <script src="assets/js/glightbox.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('.add-to-cart').on('click', function(e) {
-                e.preventDefault();
-                var productId = $(this).data('id');
 
-                $.ajax({
-                    url: '/add-cart/' + productId,
-                    method: 'POST',
-                    data: {
-                        _token: '{{ csrf_token() }}',
-                        id: productId
-                    },
-                    success: function(response) {
-                        $('#cart-item-count').text(response.totalQuantity);
-                    },
-                    error: function(xhr) {
-                        console.error(xhr.responseText);
-                    }
-                });
-            });
-        });
-        document.getElementById('search').addEventListener('input', function() {
-            var searchQuery = this.value;
-
-            // إذا كانت قيمة البحث غير فارغة، نقوم بإرسال طلب البحث
-            if (searchQuery.length > 0) {
-                fetch('{{ route('search') }}?search=' + searchQuery)
-                    .then(response => response.json())
-                    .then(data => {
-                        let results = data.results;
-                        let resultContainer = document.getElementById('search-results');
-                        resultContainer.innerHTML = ''; // مسح النتائج السابقة
-
-                        if (results.length > 0) {
-                            results.forEach(item => {
-                                resultContainer.innerHTML += `
-                            <div class="result-item">
-                                <h5>${item.name}</h5>
-                                <p>${item.description}</p>
-                            </div>
-                        `;
-                            });
-                        } else {
-                            resultContainer.innerHTML = '<p>No results found</p>';
-                        }
-                    })
-                    .catch(error => console.log(error));
-            } else {
-                document.getElementById('search-results').innerHTML = '';
-            }
-        });
-    </script>
 
 </body>
 

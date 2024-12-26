@@ -8,6 +8,8 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.svg" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
     <!-- ========================= CSS here ========================= -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/LineIcons.3.0.css') }}" />
@@ -30,37 +32,31 @@
     @include('front-ecom-temp.header')
 
     <div class="container my-4">
-        <!-- Search Input -->
-        <form method="GET" action="{{ route('product.search') }}" class="d-flex mb-4">
-            <input type="text" name="search" class="form-control" placeholder="Search"
-                value="{{ request()->get('search') }}">
-            <button type="submit" class="btn btn-primary ml-2">
-                <i class="lni lni-search-alt"></i> Search
-            </button>
-        </form>
-
-        <!-- Display Results -->
+        <h1 class="text-center mb-4">Electrical Parts Subcategories</h1>
+        {{-- <div class="text-center flex">
+            <form method="GET" action="{{ route('search') }}">
+                <input type="text" id="search" name="search" placeholder="Search products..."
+                    class="form-control">
+            </form>
+            <div id="search-results">
+            </div>
+            <br>
+            <hr>
+            <hr>
+            <hr> --}}
+        {{-- </div> --}}
         <div class="row">
-            @if ($products->isEmpty())
-                <div class="col-12">
-                    <p class="text-center">No products found.</p>
-                </div>
-            @else
-                @foreach ($products as $product)
-                    <div class="col-md-4 mb-4">
-                        <div class="card h-100">
-                            <img src="{{ asset('storage/' . $product->image) }}" alt="Product Image">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $product->name }}</h5>
-                                <p class="card-text">{{ $product->description }}</p>
-                                <p class="card-text"><strong>Price:</strong> ${{ $product->price }}</p>
-                                <a href="{{ route('add.cart', $product->id) }}" data-id="{{ $product->id }}"
-                                    class="btn btn-primary">Add to cart</a>
-                            </div>
+            @foreach ($subCategories as $subCategory)
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $subCategory->name }}</h5>
+                            <p class="card-text">{{ $subCategory->description }}</p>
                         </div>
+                        <a href="#" class="btn btn-primary w-50 mb-20">Product</a>
                     </div>
-                @endforeach
-            @endif
+                </div>
+            @endforeach
         </div>
     </div>
 
@@ -76,6 +72,8 @@
     <script src="assets/js/glightbox.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
 </body>
 
 </html>
