@@ -6,9 +6,9 @@
                      <div class="top-left">
                          <div class="top-middle">
                              <ul class="useful-links">
-                                 <li><a href="index.html">Home</a></li>
-                                 <li><a href="about-us.html">About Us</a></li>
-                                 <li><a href="contact.html">Contact Us</a></li>
+                                 <li><a href="{{ route('home') }}">Home</a></li>
+                                 <li><a href="{{ route('about') }}">About Us</a></li>
+                                 <li><a href="#contact">Contact Us</a></li>
                              </ul>
                          </div>
                      </div>

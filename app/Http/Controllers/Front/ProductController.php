@@ -9,15 +9,18 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
-    //
     public function showProductsBySubCategory($subCategoryId)
     {
-        // جلب الفئة الفرعية مع المنتجات المرتبطة بها باستخدام Eager Loading
-        $subCategory = SubCategory::with('products')->find($subCategoryId);
-        $products = $subCategory->products;
-        if (!$subCategory || !$products) {
+        // جلب الفئة الفرعية مع المنتجات المرتبطة بها باستخدام Eager Loading مع Pagination
+        $subCategory = SubCategory::find($subCategoryId);
+
+        if (!$subCategory) {
             return redirect()->route('home');
         }
+
+        // جلب المنتجات بطريقة مقسمة (paginate)
+        $products = Product::where('sub_category_id', $subCategoryId)->paginate(1); // يمكنك تغيير الرقم 10 حسب رغبتك
+
         return view('front-ecom-temp.products', compact('subCategory', 'products'));
     }
 }

@@ -18,6 +18,27 @@
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
     <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
 </head>
+<style>
+    .pagination-container {
+        display: flex;
+
+        justify-content: center;
+    }
+
+    .small {
+        display: none;
+
+    }
+
+
+    .pagination {
+        display: flex;
+    }
+
+    .pagination li {
+        margin: 0;
+    }
+</style>
 
 <body style="font-family: 'Amiri', serif;">
     <div class="preloader">
@@ -54,7 +75,7 @@
                             <p class="card-text">{{ $subCategory->description }}</p>
                         </div>
                         <a href="{{ route('subCategory.products', $subCategory->id) }}"
-                            class="btn btn-primary w-50 mb-20">View Products</a>
+                            class="btn btn-primary">View Products</a>
                     </div>
                 </div>
             @endforeach
