@@ -43,7 +43,9 @@ Route::get('decrease-quantity/{productId}', [CartController::class, 'decreaseQua
 Route::get('remove-item/{productId}', [CartController::class, 'removeItem'])->name('remove.item');
 
 Route::get('clear', [CartController::class, 'clearCart'])->name('clear'); // Route::get('/all', [ProductController::class, 'AllProduct'])->name('home');
-
+Route::get('about', function () {
+    return view('front-ecom-temp.about');
+})->name('about');
 Route::get('/search', [ProductController::class, 'search'])->name('product.search');
 
 Route::get('/product-details', function () {
