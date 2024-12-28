@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use App\Models\Admin;
 use App\Models\Product;
 
 class SalehController extends Controller
@@ -54,4 +55,6 @@ class SalehController extends Controller
 
         return view('dashboard.categories.productAll', compact('products', 'lowStockProducts'));
     }
+
+  
 }

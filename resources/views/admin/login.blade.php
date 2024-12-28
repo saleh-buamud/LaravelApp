@@ -37,9 +37,8 @@
         <h2 class="text-center">Admin Login</h2>
 
         <!-- نموذج تسجيل الدخول -->
-        <form method="POST" action="{{ route('admin.login') }}">
+        <form method="POST" action="{{ route('admin.login.submit') }}">
             @csrf
-
             <div class="mb-3">
                 <label for="email" class="form-label">Email:</label>
                 <input type="email" class="form-control" id="email" name="email" required>
@@ -54,6 +53,7 @@
                 <button type="submit" class="btn btn-primary w-100">Login</button>
             </div>
         </form>
+
     </div>
 
     <!-- إضافة مكتبات JavaScript الخاصة بـ Bootstrap عبر CDN (اختياري) -->
