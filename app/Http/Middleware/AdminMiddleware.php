@@ -16,7 +16,8 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (auth()->user() && !auth()->user()->is_admin) {
+        // التحقق مما إذا كان المستخدم قد سجل الدخول كـ Admin وليس لديه صلاحيات admin
+        if (auth('admin')->check() && !auth('admin')->user()->is_admin) {
             return redirect()->route('home');
         }
 

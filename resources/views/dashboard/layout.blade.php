@@ -165,8 +165,9 @@
                 </div>
 
                 <div class="m-3 text-center">
-                    <form action="{{ route('logout') }}" method="POST">
-                        @csrf
+                    <form action="{{ route('admin.logout') }}" method="POST">
+                        @csrf <!-- لحماية الـ CSRF -->
+                        <h1 style="color: red">Log Out</h1>
                         <button class="btn btn-primary btn-sm px-5 py-2">Log Out</button>
                     </form>
                 </div>

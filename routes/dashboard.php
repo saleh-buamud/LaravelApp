@@ -7,9 +7,17 @@ use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MakeController;
 use App\Http\Controllers\ModeController;
-// use App\Http\Middleware\CheckUserType;
-// حدد الـ Guard للمشرفين فقط
-Route::middleware(['auth', 'admin'])->group(function () {
+use App\Http\Controllers\AdminAuthController;
+// 'middleware' => 'auth:admin'
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('register', [AdminAuthController::class, 'showRegisterForm'])->name('admin.register');
+    Route::post('register', [AdminAuthController::class, 'register']);
+    Route::get('login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
+    Route::post('login-admin', [AdminAuthController::class, 'login']);
+    Route::post('logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+});
+
+Route::middleware(['auth:admin', 'admin'])->group(function () {
     // مسارات لوحة التحكم الخاصة بالمشرفين
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::get('/dashboard/in', [SalehController::class, 'internalParts'])->name('dashboard.in');
