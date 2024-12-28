@@ -33,8 +33,7 @@ Route::middleware(['auth:admin', 'admin'])->group(function () {
     // Dashboard route for viewing all admins (restricted to admins only)
     Route::get('/dashboard/admin', [AdminController::class, 'allAdmin'])->name('dashboard.allAdmin');
     // Resource route for managing admins (CRUD operations for admins)
-    Route::resource('admin', AdminController::class);
-
+    Route::resource('admin', AdminController::class)->middleware(['auth', 'check.permissions:can_create_users']);
     // Dashboard routes for the different sections of the application
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::get('/dashboard/in', [SalehController::class, 'internalParts'])->name('dashboard.in');

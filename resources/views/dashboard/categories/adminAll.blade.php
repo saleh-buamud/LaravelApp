@@ -36,7 +36,11 @@
         </div>
     @endif
 
-    <a href="{{ route('admin.create') }}" class="btn btn-primary">Add Admin</a>
+    @if (auth()->user()->can_create_users)
+        <a href="{{ route('admin.create') }}" class="btn btn-primary">Add Admin</a>
+    @else
+        <button class="btn btn-primary" disabled>Add Admin</button>
+    @endif
     <hr>
     <br>
 
@@ -74,7 +78,11 @@
                     </td>
                     <td>
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <a href="{{ route('admin.edit', $admin->id) }}" class="btn btn-dark btn-sm mr-1">Edit</a>
+                            @if (auth()->user()->can_create_users)
+                                <a href="{{ route('admin.edit', $admin->id) }}" class="btn btn-dark btn-sm mr-1">Edit</a>
+                            @else
+                                <button class="btn btn-dark btn-sm mr-1" disabled>Edit</button>
+                            @endif
                             <form action="{{ route('admin.destroy', $admin->id) }}" method="post" class="mr-1">
                                 @csrf
                                 @method('DELETE')
