@@ -6,9 +6,9 @@
                      <div class="top-left">
                          <div class="top-middle">
                              <ul class="useful-links">
-                                 <li><a href="index.html">Home</a></li>
-                                 <li><a href="about-us.html">About Us</a></li>
-                                 <li><a href="contact.html">Contact Us</a></li>
+                                 <li><a href="{{ route('home') }}">Home</a></li>
+                                 <li><a href="{{ route('about') }}">About Us</a></li>
+                                 <li><a href="#contact">Contact Us</a></li>
                              </ul>
                          </div>
                      </div>
@@ -57,7 +57,7 @@
          <div class="container">
              <div class="row align-items-center">
                  <div class="col-lg-3 col-md-3 col-7">
-                     <a class="navbar-brand" href="index.html">
+                     <a class="navbar-brand" href="{{ route('home') }}">
                          <img src="assets/images/logo/logo.svg" alt="Logo">
                      </a>
                  </div>
@@ -122,11 +122,12 @@
                                  </li>
                                  <li class="nav-item">
                                      <a class="nav-link" style="font-family: sans-serif ; font-weight: bold"
-                                         href="{{ route('allExternal') }}">Electrical Spare Parts</a>
+                                         href="{{ route('allExternal') }}">External Spare Parts</a>
                                  </li>
                                  <li class="nav-item">
                                      <a class="nav-link" style="font-family: sans-serif ; font-weight: bold"
-                                         href="{{ route('allElectrical') }}">External Spare Parts</a>
+                                         href="{{ route('allElectrical') }}"> Electrical Spare Parts</a>
+                                 </li></a>
                                  </li>
                              </ul>
                          </div>

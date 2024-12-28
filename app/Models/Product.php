@@ -13,10 +13,10 @@ class Product extends Model
 
     public function subCategory()
     {
-        return $this->belongsTo(SubCategory::class);
+        return $this->belongsTo(SubCategory::class, 'sub_category_id');
     }
 
-    // علاقة "ميني تو ميني" مع ProductModel
+    // علاقة "ميني تو ميني" مع ProductModels
     // public function models()
     // {
     //     return $this->belongsToMany(ProductModel::class, 'product_model', 'product_id', 'model_id');

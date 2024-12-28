@@ -57,4 +57,7 @@
             @endforeach
         </tbody>
     </table>
+    <div class="d-flex justify-content-center">
+        {{ $makes->links('pagination::bootstrap-5') }}
+    </div>
 @endsection

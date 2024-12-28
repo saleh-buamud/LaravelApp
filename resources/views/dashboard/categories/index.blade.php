@@ -10,6 +10,32 @@
 @section('content')
     <h1>Dashboard</h1>
 
+    @if (Session::has('message'))
+        <script>
+            swal("Messages", "{{ Session::get('message') }}", 'success', {
+                button: true,
+                button: "OK",
+            });
+        </script>
+    @endif
+
+    @if (session('updated'))
+        <script>
+            swal("Message", "{{ Session::get('updated') }}", 'warning', {
+                button: true,
+                button: "OK",
+            });
+        </script>
+    @endif
+
+    @if (session('Deleted'))
+        <script>
+            swal("Message", "{{ Session::get('Deleted') }}", 'warning', {
+                button: true,
+                button: "OK",
+            });
+        </script>
+    @endif
     @if (Session::has('messages'))
         <script>
             swal("Message", "{{ Session::get('messages') }}", 'warning', {

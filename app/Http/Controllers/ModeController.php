@@ -11,7 +11,7 @@ class ModeController extends Controller
     // عرض جميع الـ Modes
     public function index()
     {
-        $modes = Mode::all();
+        $modes = Mode::paginate(1);
         return view('mode.index', compact('modes'));
     }
 

@@ -3,6 +3,14 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\Order; // تأكد من ��ضافة ال�� Model
+use App\Models\Product; // تأكد من ��ضافة ال�� Model
+use App\Models\ProductModel; // تأكد من ��ضافة ال�� Model
+use App\Models\Make; // تأكد من ��ضافة ال�� Model
+use App\Models\SubCategory; // تأكد من ��ضافة ال�� Model
+use App\Models\Category; // تأكد من ��ضافة ال�� Model
+use App\Models\OrderDet; // تأكد من ��ضافة ال�� Model
+
 use App\Models\User; // تأكد من إضافة الـ Model
 
 class OrdersTableSeeder extends Seeder
@@ -12,19 +20,6 @@ class OrdersTableSeeder extends Seeder
      */
     public function run(): void
     {
-        // إضافة مستخدم أولًا
-        $user = User::create([
-            'name' => 'User One',
-            'email' => 'userone@example.com',
-            'password' => bcrypt('password'), // تأكد من تشفير كلمة المرور
-        ]);
-
-        // إضافة الطلبات
-        DB::table('orders')->insert([
-            'user_id' => $user->id, // استخدام معرف المستخدم الذي تم إنشاؤه
-            'order_date' => now(),
-            'total_amount' => 2150.0,
-            'status' => true, // قيمة الحالة (يمكنك تخصيص الحالة حسب الحاجة)
-        ]);
+        Order::factory()->count(10)->create();
     }
 }

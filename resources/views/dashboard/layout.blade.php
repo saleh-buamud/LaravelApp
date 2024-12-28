@@ -119,7 +119,7 @@
                             class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="{{ route('dashboard') }}" class="nav-link">Home</a>
+                    <a href="{{ route('dashboard.index') }}" class="nav-link">Home</a>
                 </li>
             </ul>
 
@@ -165,14 +165,15 @@
                 </div>
 
                 <div class="m-3 text-center">
-                    <form action="{{ route('logout') }}" method="POST">
-                        @csrf
+                    <form action="{{ route('admin.logout') }}" method="POST">
+                        @csrf <!-- لحماية الـ CSRF -->
                         <button class="btn btn-primary btn-sm px-5 py-2">Log Out</button>
                     </form>
                 </div>
 
                 <div class="mt-3">
-                    <a href="{{ route('dashboard') }}" class="btn btn-primary btn-lg w-100 text-white">Categories</a>
+                    <a href="{{ route('dashboard.index') }} "
+                        class="btn btn-primary btn-lg w-100 text-white">Categories</a>
                     <a href="{{ route('dashboard.in') }}" class="btn btn-primary btn-lg w-100 text-white">Internal
                         Category</a>
                     <a href="{{ route('dashboard.ex') }}" class="btn btn-primary btn-lg w-100 text-white">External
@@ -185,6 +186,8 @@
                         class="btn btn-primary btn-lg w-100 text-white">Brands</a>
                     <a href="{{ route('dashboard.modes.index') }}"
                         class="btn btn-primary btn-lg w-100 text-white">Models</a>
+                    <a href="{{ route('dashboard.allAdmin') }}"
+                        class="btn btn-primary btn-lg w-100 text-white">Admins</a>
                 </div>
             </div>
         </aside>

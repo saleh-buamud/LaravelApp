@@ -9,29 +9,29 @@ use Illuminate\Http\Request;
 
 class SubCategoryController extends Controller
 {
-    // عرض جميع الفئات الفرعية
+    // Display all subcategories
     public function index()
     {
         $this->authorize('is-admin'); // This will check if the user has admin access
 
         $subCategories = SubCategory::with('category')->get();
 
-        // جلب المنتجات ذات الكميات المنخفضة
+        // Fetch products with low stock
         $lowStockProducts = Product::where('quantity', '<', 5)->get();
 
         return view('dashboard.categories.index', compact('subCategories', 'lowStockProducts'));
     }
 
-    // عرض نموذج إنشاء فئة فرعية جديدة
+    // Show the form for creating a new subcategory
     public function create()
     {
         $this->authorize('is-admin'); // This will check if the user has admin access
 
-        $categories = Category::all(); // جلب جميع الفئات
+        $categories = Category::all(); // Fetch all categories
         return view('dashboard.categories.create', compact('categories'));
     }
 
-    // تخزين فئة فرعية جديدة
+    // Store a newly created subcategory
     public function store(Request $request)
     {
         $this->authorize('is-admin'); // This will check if the user has admin access
@@ -42,66 +42,66 @@ class SubCategoryController extends Controller
             'category_id' => 'required|exists:categories,id',
         ]);
 
-        // إضافة فئة فرعية جديدة بدون ربط بـ admin
+        // Create a new subcategory
         SubCategory::create([
             'name' => $request->name,
             'description' => $request->description,
             'category_id' => $request->category_id,
         ]);
 
-        return redirect()->route('subcategories.index')->with('success', 'تم إنشاء الفئة الفرعية بنجاح.');
+        return redirect()->route('dashboard.index')->with('message', 'Subcategory created successfully.');
     }
 
-    // عرض نموذج تعديل فئة فرعية
+    // Show the form for editing the specified subcategory
     public function edit(Request $request, SubCategory $subCategory, string $id)
     {
         $this->authorize('is-admin'); // This will check if the user has admin access
 
-        // جلب الفئات الرئيسية
+        // Fetch the subcategory and categories
         $subCategory = SubCategory::find($id);
         $categories = Category::all();
-        // إعادة عرض الصفحة مع إرسال الفئة الفرعية والفئات الرئيسية
+        // Return the edit view with subcategory and categories data
         return view('dashboard.categories.edit', compact('subCategory', 'categories'));
     }
 
-    // تحديث فئة فرعية معينة
+    // Update the specified subcategory
     public function update(Request $request, SubCategory $subCategory, string $id)
     {
         $this->authorize('is-admin'); // This will check if the user has admin access
 
-        // التحقق من صحة البيانات المدخلة
+        // Validate the input data
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'category_id' => 'required|exists:categories,id', // التأكد أن الـ category_id موجود في الجدول
+            'category_id' => 'required|exists:categories,id', // Ensure the category_id exists in the categories table
         ]);
 
         $subCategory = SubCategory::find($id);
 
-        // تحديث بيانات الفئة الفرعية
+        // Update the subcategory
         $subCategory->update($request->all());
 
-        // إعادة التوجيه مع رسالة نجاح
-        return redirect()->route('subcategories.index')->with('updated', 'تم تحديث الفئة الفرعية بنجاح.');
+        // Redirect with success message
+        return redirect()->route('dashboard.index')->with('updated', 'Subcategory updated successfully.');
     }
 
-    // حذف فئة فرعية معينة
+    // Remove the specified subcategory
     public function destroy($id)
     {
         $this->authorize('is-admin'); // This will check if the user has admin access
 
-        // العثور على الفئة الفرعية باستخدام الـ id
+        // Find the subcategory by id
         $subCategory = SubCategory::find($id);
 
-        // التأكد إذا كانت الفئة الفرعية موجودة
+        // Check if the subcategory exists
         if (!$subCategory) {
-            return redirect()->route('subcategories.index')->with('Deleted', 'الفئة الفرعية غير موجودة.');
+            return redirect()->route('dashboard.index')->with('Deleted', 'Subcategory not found.');
         }
 
-        // إذا كانت الفئة الفرعية موجودة، قم بحذفها
+        // Delete the subcategory if it exists
         $subCategory->delete();
 
-        // إعادة التوجيه مع رسالة النجاح
-        return redirect()->route('subcategories.index')->with('Deleted', 'تم حذف الفئة الفرعية بنجاح.');
+        // Redirect with success message
+        return redirect()->route('dashboard.index')->with('Deleted', 'Subcategory deleted successfully.');
     }
 }
