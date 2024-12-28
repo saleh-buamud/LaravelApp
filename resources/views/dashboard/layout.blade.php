@@ -165,8 +165,8 @@
                 </div>
 
                 <div class="m-3 text-center">
-                    <form action="{{ route('logout') }}" method="POST">
-                        @csrf
+                    <form action="{{ route('admin.logout') }}" method="POST">
+                        @csrf <!-- لحماية الـ CSRF -->
                         <button class="btn btn-primary btn-sm px-5 py-2">Log Out</button>
                     </form>
                 </div>
@@ -186,6 +186,8 @@
                         class="btn btn-primary btn-lg w-100 text-white">Brands</a>
                     <a href="{{ route('dashboard.modes.index') }}"
                         class="btn btn-primary btn-lg w-100 text-white">Models</a>
+                    <a href="{{ route('dashboard.allAdmin') }}"
+                        class="btn btn-primary btn-lg w-100 text-white">Admins</a>
                 </div>
             </div>
         </aside>
