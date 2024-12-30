@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Cart</title>
+    <title>عربة التسوق</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
     <!-- ========================= CSS here ========================= -->
@@ -22,12 +22,6 @@
             color: white;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
-
-        /* تأثير التكبير عند التمرير */
-        /* .hover-scale:hover {
-            transform: scale(1.05);
-            transition: transform 0.3s ease;
-        } */
 
         /* تحسين الأزرار الصغيرة */
         .btn-sm {
@@ -65,7 +59,7 @@
     </style>
 </head>
 
-<body>
+<body style="direction: rtl;">
     @include('front-ecom-temp.header')
 
     <section class="bg-light my-5 mt-4 ">
@@ -82,9 +76,8 @@
                     <div class="card border shadow-0">
                         <div class="m-4">
                             <div class="mb-3">
-                                <span class="card-title mb-4 h4">Your shopping cart</span>
-                                <a href="{{ route('clear') }}" class="float-end">Clear
-                                    All</a>:
+                                <span class="card-title mb-4 h4">سلة التسوق الخاصة بك</span>
+                                <a href="{{ route('clear') }}" class="float-end">مسح الكل</a>:
                             </div>
                             <hr />
                             @foreach ($items as $item)
@@ -131,7 +124,7 @@
                                         <div class="float-md-end">
                                             <a href="{{ route('remove.item', $item->id) }}"
                                                 class="btn btn-light btn-outline-danger text-black shadow-none hover-scale">
-                                                Remove
+                                                إزالة
                                             </a>
                                         </div>
                                     </div>
@@ -158,23 +151,18 @@
                     <div class="card shadow-0 border">
                         <div class="card-body">
 
-
-
-
-
-
                             <hr />
                             <div class="d-flex justify-content-between">
-                                <p class="mb-2">Total price:</p>
+                                <p class="mb-2">السعر الإجمالي:</p>
                                 <p class="mb-2 fw-bold">{{ '$' . number_format($total, 2) }}</p>
                             </div>
 
                             <div class="mt-3">
                                 <a href="#" class="btn btn-success w-100 shadow-0 mb-2">
-                                    Make Purchase
+                                    إتمام الشراء
                                 </a>
                                 <a href="{{ route('home') }}" class="btn btn-light w-100 border mt-2 hover-scale">
-                                    Back to shop
+                                    العودة إلى المتجر
                                 </a>
                             </div>
                         </div>
@@ -184,13 +172,12 @@
                 <!-- summary -->
             </div>
         </div>
-        <a href="{{ route('checkout') }}" class="btn btn-primary btn-lg w-40 mt-1">Chkecout</a>
+        <a href="{{ route('checkout') }}" class="btn btn-primary btn-lg w-40 mt-1">إتمام الشراء</a>
     </section>
     @include('front-ecom-temp.footer')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
-
 
 </body>
 

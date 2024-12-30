@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="ar" dir="rtl">
 
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>ShopGrids - Bootstrap 5 eCommerce HTML Template.</title>
+    <title>ShopGrids - قالب HTML للتجارة الإلكترونية Bootstrap 5</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.svg" />
@@ -21,15 +21,12 @@
 <style>
     .pagination-container {
         display: flex;
-
         justify-content: center;
     }
 
     .small {
         display: none;
-
     }
-
 
     .pagination {
         display: flex;
@@ -53,19 +50,7 @@
     @include('front-ecom-temp.header')
 
     <div class="container my-4">
-        <h1 class="text-center mb-4">Internal Parts Subcategories</h1>
-        {{-- <div class="text-center flex">
-            <form method="GET" action="{{ route('search') }}">
-                <input type="text" id="search" name="search" placeholder="Search products..."
-                    class="form-control">
-            </form>
-            <div id="search-results">
-            </div>
-            <br>
-            <hr>
-            <hr>
-            <hr> --}}
-        {{-- </div> --}}
+        <h1 class="text-center mb-4">الفئات الفرعية للأجزاء الداخلية</h1>
         <div class="row">
             @foreach ($subCategories as $subCategory)
                 <div class="col-md-4 mb-4">
@@ -74,8 +59,8 @@
                             <h5 class="card-title">{{ $subCategory->name }}</h5>
                             <p class="card-text">{{ $subCategory->description }}</p>
                         </div>
-                        <a href="{{ route('subCategory.products', $subCategory->id) }}"
-                            class="btn btn-primary">View Products</a>
+                        <a href="{{ route('subCategory.products', $subCategory->id) }}" class="btn btn-primary">عرض
+                            المنتجات</a>
                     </div>
                 </div>
             @endforeach
@@ -96,8 +81,6 @@
     <script src="assets/js/glightbox.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-
 </body>
 
 </html>

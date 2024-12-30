@@ -1,14 +1,15 @@
-<header class="header navbar-area">
+<header class="header navbar-area" dir="rtl">
     <div class="topbar">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-4 col-md-4 col-12">
                     <div class="top-left">
                         <div class="top-middle">
-                            <ul class="useful-links">
-                                <li><a href="{{ route('home') }}">الرئيسية</a></li>
-                                <li><a href="{{ route('about') }}">من نحن</a></li>
-                                <li><a href="#contact">اتصل بنا</a></li>
+                            <ul class="useful-links ">
+                                <li class="py-2 mx-2"><a href="#contact">اتصل بنا</a></li>
+                                <li class="py-2 mx-2"><a href="{{ route('about') }}">من نحن</a></li>
+                                <li class="py-2 mx-2"><a href="{{ route('home') }}">الرئيسية</a></li>
+
                             </ul>
                         </div>
                     </div>
@@ -112,15 +113,15 @@
                         <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                             <ul id="nav" class="navbar-nav ms-auto">
                                 <!-- Adding spare parts section -->
-                                <li class="nav-item">
+                                <li class="nav-item mx-3">
                                     <a class="nav-link" style="font-family: sans-serif ; font-weight: bold"
                                         href="{{ route('allInternal') }}">قطع غيار داخلية</a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item mx-3">
                                     <a class="nav-link" style="font-family: sans-serif ; font-weight: bold"
                                         href="{{ route('allExternal') }}">قطع غيار خارجية</a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item mx-3">
                                     <a class="nav-link" style="font-family: sans-serif ; font-weight: bold"
                                         href="{{ route('allElectrical') }}">قطع غيار كهربائية</a>
                                 </li>
@@ -131,6 +132,4 @@
             </div>
         </div>
     </div>
-    </div>
-    <!-- End Header Bottom -->
 </header>
