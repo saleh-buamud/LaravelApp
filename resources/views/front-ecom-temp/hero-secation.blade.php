@@ -18,6 +18,32 @@
                     <!-- End Hero Slider -->
                 </div>
             </div>
+            <style>
+                .hero-small-banner.style2 {
+                    position: relative;
+                    background-color: #2b1ab0;
+                    /* اللون الأساسي */
+                    padding: 50px;
+                    transition: all 0.3s ease;
+
+                    /* تأثير الانتقال عند الهور */
+                }
+
+                .hero-small-banner.style2 .content {
+                    color: #fff;
+                }
+
+                .hero-small-banner.style2:hover {
+                    background-color: #2b1ab0;
+                    /* اللون عند الهور */
+                }
+
+                .hero-small-banner.style2:hover .content h2,
+                .hero-small-banner.style2:hover .content p {
+                    color: #fff;
+                    /* تغيير لون النص عند الهور */
+                }
+            </style>
             <div class="col-lg-4 col-12">
                 <div class="row">
                     <div class="col-lg-12 col-md-6 col-12 md-custom-padding">
@@ -28,13 +54,11 @@
                     </div>
                     <div class="col-lg-12 col-md-6 col-12">
                         <!-- Start Small Banner -->
-                        <div class="hero-small-banner style2">
+                        <div class="hero-small-banner style2" style="text-align: right;">
                             <div class="content">
-                                <h2>تخفيضات الأسبوع!</h2>
-                                <p>توفير يصل إلى 50٪ على جميع منتجات المتجر عبر الإنترنت هذا الأسبوع.</p>
-                                <div class="button">
-                                    <a class="btn" href="product-grids.html">تسوق الآن</a>
-                                </div>
+                                <h2>قطع غيار السيارات عالية الجودة</h2>
+                                <p>نحن نقدم مجموعة واسعة من قطع غيار السيارات المتوفرة لاحتياجاتك اليومية بأعلى جودة
+                                    وأفضل الأسعار.</p>
                             </div>
                         </div>
                         <!-- End Small Banner -->
