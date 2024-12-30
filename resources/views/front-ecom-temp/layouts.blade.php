@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>ShopGrids - Bootstrap 5 eCommerce HTML Template.</title>
+    <title>متجر قطع غيار السيارات - ShopGrids</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.svg" />
@@ -15,9 +15,10 @@
     <link rel="stylesheet" href="{{ asset('assets/css/glightbox.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
     <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
+
 </head>
 
-<body style=" font-family: 'Amiri', serif;">
+<body>
     <div class="preloader">
         <div class="preloader-inner">
             <div class="preloader-icon">
@@ -37,8 +38,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-title text-center">
-                        <h2>Contact Us</h2>
-                        <p>For any inquiries or assistance, feel free to reach out to us. We are here to help you!</p>
+                        <h2>اتصل بنا</h2>
+                        <p>لأي استفسارات أو مساعدة، لا تتردد في التواصل معنا. نحن هنا لمساعدتك!</p>
                     </div>
                 </div>
             </div>
@@ -46,18 +47,19 @@
                 <div class="col-lg-6 col-md-8 col-12">
                     <form action="#" method="POST" class="contact-form">
                         <div class="form-group">
-                            <label for="name" class="text-center">Full Name</label>
-                            <input type="text" id="name" class="form-control" placeholder="Enter your name">
+                            <label for="name" class="text-center">الاسم الكامل</label>
+                            <input type="text" id="name" class="form-control" placeholder="أدخل اسمك">
                         </div>
                         <div class="form-group">
-                            <label for="email" class="text-center">Email</label>
-                            <input type="email" id="email" class="form-control" placeholder="Enter your email">
+                            <label for="email" class="text-center">البريد الإلكتروني</label>
+                            <input type="email" id="email" class="form-control"
+                                placeholder="أدخل بريدك الإلكتروني">
                         </div>
                         <div class="form-group">
-                            <label for="message" class="text-center">Message</label>
-                            <textarea id="message" class="form-control" rows="5" placeholder="Enter your message here"></textarea>
+                            <label for="message" class="text-center">الرسالة</label>
+                            <textarea id="message" class="form-control" rows="5" placeholder="أدخل رسالتك هنا"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100 mt-2">Submit</button>
+                        <button type="submit" class="btn btn-primary w-100 mt-2">إرسال</button>
                     </form>
                 </div>
             </div>
