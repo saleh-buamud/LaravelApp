@@ -90,4 +90,10 @@ class AdminController extends Controller
         // إعادة توجيه إلى صفحة جميع الإداريين مع رسالة نجاح
         return redirect()->route('dashboard.allAdmin')->with('success', 'Admin updated successfully!');
     }
+    public function destroy($id)
+    {
+        $admin = Admin::findOrFail($id);
+        $admin->delete();
+        return redirect()->route('dashboard.allAdmin')->with('success', 'Admin deleted successfully!');
+    }
 }
