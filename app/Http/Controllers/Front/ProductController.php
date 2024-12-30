@@ -23,4 +23,16 @@ class ProductController extends Controller
 
         return view('front-ecom-temp.products', compact('subCategory', 'products'));
     }
+    public function search(Request $request)
+    {
+        $keyword = $request->input('search');
+        $products = Product::query();
+        if ($keyword) {
+            $products = $products->search($keyword);
+        }
+
+        $products = $products->paginate(1); // يمكنك ضبط العدد حسب احتياجك
+
+        return view('front-ecom-temp.search', compact('products'));
+    }
 }

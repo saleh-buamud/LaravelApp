@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="ar" dir="rtl">
 
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>ShopGrids - Bootstrap 5 eCommerce HTML Template.</title>
-    <meta name="description" content="" />
+    <title>ShopGrids - متجر قطع غيار سيارات</title>
+    <meta name="description" content="متجر يقدم قطع غيار السيارات عالية الجودة بأسعار منافسة." />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.svg" />
-    <!-- ========================= CSS here ========================= -->
+    <!-- ========================= CSS هنا ========================= -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/LineIcons.3.0.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/tiny-slider.css') }}" />
@@ -16,6 +16,10 @@
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
     <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
     <style>
+        body {
+            font-family: 'Amiri', serif;
+        }
+
         .box {
             display: flex;
             flex-direction: column;
@@ -26,8 +30,7 @@
     </style>
 </head>
 
-
-<body style=" font-family: 'Amiri', serif;">
+<body>
     <div class="preloader">
         <div class="preloader-inner">
             <div class="preloader-icon">
@@ -41,17 +44,18 @@
         <div class="container">
             <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
                 <div class="col-12 col-lg-6 col-xl-5">
-                    <img class="img-fluid rounded" loading="lazy" src="./assets/img/about-img-1.jpg" alt="About 1">
+                    <img class="img-fluid rounded" loading="lazy" src="./assets/img/about-img-1.jpg"
+                        alt="قطع غيار السيارات">
                 </div>
                 <div class="col-12 col-lg-6 col-xl-7">
                     <div class="row justify-content-xl-center">
                         <div class="col-12 col-xl-11">
-                            <h2 class="mb-3">Who Are We?</h2>
-                            <p class="lead fs-4 text-secondary mb-3">We help people to build incredible brands and
-                                superior products. Our perspective is to furnish outstanding captivating services.</p>
-                            <p class="mb-5">We are a fast-growing company, but we have never lost sight of our core
-                                values. We believe in collaboration, innovation, and customer satisfaction. We are
-                                always looking for new ways to improve our products and services.</p>
+                            <h2 class="mb-3">من نحن؟</h2>
+                            <p class="lead fs-4 text-secondary mb-3">نحن هنا لمساعدتك في الحصول على قطع غيار سيارات
+                                عالية الجودة بأسعار مناسبة.</p>
+                            <p class="mb-5">نحن شركة سريعة النمو، لكننا لم نفقد أبداً رؤيتنا للقيم الأساسية. نحن نؤمن
+                                بالتعاون والابتكار ورضا العملاء. ونحن دائماً نبحث عن طرق جديدة لتحسين منتجاتنا وخدماتنا.
+                            </p>
                             <div class="row gy-4 gy-md-0 gx-xxl-5X">
                                 <div class="col-12 col-md-6">
                                     <div class="d-flex">
@@ -63,9 +67,9 @@
                                             </svg>
                                         </div>
                                         <div>
-                                            <h2 class="h4 mb-3">Versatile Brand</h2>
-                                            <p class="text-secondary mb-0">We are crafting a digital method that
-                                                subsists life across all mediums.</p>
+                                            <h2 class="h4 mb-3">ماركة متعددة الاستخدامات</h2>
+                                            <p class="text-secondary mb-0">نحن نعمل على تطوير طرق رقمية تساعد في توفير
+                                                قطع الغيار عبر جميع المنصات.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -79,9 +83,9 @@
                                             </svg>
                                         </div>
                                         <div>
-                                            <h2 class="h4 mb-3">Digital Agency</h2>
-                                            <p class="text-secondary mb-0">We believe in innovation by merging primary
-                                                with elaborate ideas.</p>
+                                            <h2 class="h4 mb-3">وكالة رقمية</h2>
+                                            <p class="text-secondary mb-0">نؤمن بالابتكار من خلال دمج الأفكار البسيطة
+                                                والمعقدة.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -92,6 +96,7 @@
             </div>
         </div>
     </section>
+
     <div class="box">
         <p>////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         </p>
@@ -106,6 +111,7 @@
         <p>////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         </p>
     </div>
+
     <section class="py-5">
         <div class="container">
             <div class="row align-items-center gx-4">
@@ -115,12 +121,11 @@
                 </div>
                 <div class="col-md-6 offset-md-1">
                     <div class="ms-md-2 ms-lg-5">
-                        <span class="text-muted">Our Story</span>
-                        <h2 class="display-5 fw-bold">About Us</h2>
-                        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
-                        <p class="lead mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                        <span class="text-muted">قصتنا</span>
+                        <h2 class="display-5 fw-bold">عن متجرنا</h2>
+                        <p class="lead">نحن نقدم مجموعة واسعة من قطع غيار السيارات عالية الجودة لتلبية احتياجات
+                            سياراتك.</p>
+                        <p class="lead mb-0">فريقنا يعمل بشكل دؤوب لتوفير أفضل الأسعار والخدمات لعملائنا الكرام.</p>
                     </div>
                 </div>
             </div>
@@ -131,7 +136,7 @@
     <a href="#" class="scroll-top">
         <i class="lni lni-chevron-up"></i>
     </a>
-    <!-- ========================= JS here ========================= -->
+    <!-- ========================= JS هنا ========================= -->
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/tiny-slider.js"></script>
     <script src="assets/js/glightbox.min.js"></script>

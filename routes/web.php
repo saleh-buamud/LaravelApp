@@ -42,6 +42,9 @@ Route::get('clear', [CartController::class, 'clearCart'])->name('clear');
 Route::post('saveOrder', [CartController::class, 'saveOrder'])->name('saveOrder');
 Route::get('sendEmail', [CartController::class, 'sendEmail'])->name('sendEmail');
 
+// Search products
+Route::get('/search', [ProductController::class, 'search'])->name('products.search');
+Route::get('/product/{productId}', [ProductController::class, 'showProduct'])->name('product-details');
 // Checkout Route
 Route::get('checkout', function () {
     return view('front-ecom-temp.checkout');

@@ -43,7 +43,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row justify-content-center">
+            <div class="row justify-content-center" style="text-align: center">
                 <div class="col-lg-6 col-md-8 col-12">
                     <form action="#" method="POST" class="contact-form">
                         <div class="form-group">
