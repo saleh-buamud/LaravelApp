@@ -10,9 +10,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::table('order_dets', function (Blueprint $table) {
-            $table->string('name')->nullable();
-            $table->string('phone')->nullable(); // هذا السطر كان يحتوي على $$table
+        Schema::table('users', function (Blueprint $table) {
             $table->string('address')->nullable();
             $table->string('city')->nullable();
         });
@@ -23,8 +21,8 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::table('order_dets', function (Blueprint $table) {
-            $table->dropColumn(['name', 'phone', 'address', 'city']); // أضف حذف الأعمدة في حالة التراجع
+        Schema::table('users', function (Blueprint $table) {
+            //
         });
     }
 };

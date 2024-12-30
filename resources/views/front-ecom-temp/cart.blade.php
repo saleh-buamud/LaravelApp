@@ -172,7 +172,8 @@
                 <!-- summary -->
             </div>
         </div>
-        <a href="{{ route('checkout') }}" class="btn btn-primary btn-lg w-40 mt-1">إتمام الشراء</a>
+        {{-- <a href="{{ route('checkout') }}" class="btn btn-primary btn-lg w-40 mt-1">إتمام الشراء</a> --}}
+        <a href="{{ route('pyment') }}" class="btn btn-primary btn-lg w-40 mt-1">اتمام الشراء</a>
     </section>
     @include('front-ecom-temp.footer')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
