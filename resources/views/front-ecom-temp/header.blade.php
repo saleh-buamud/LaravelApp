@@ -66,12 +66,6 @@
                         <div class="navbar-search search-style-5">
                             <div class="search-select">
                             </div>
-                            {{-- <div class="search-input">
-                                <input type="text" placeholder="بحث">
-                            </div>
-                            <div class="search-btn">
-                                <button><i class="lni lni-search-alt"></i></button>
-                            </div> --}}
                         </div>
                     </div>
                 </div>

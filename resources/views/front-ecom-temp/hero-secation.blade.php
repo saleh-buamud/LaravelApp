@@ -13,6 +13,8 @@
                         <!-- Start Single Slider -->
                         <div class="single-slider" style="background-image: url('assets/images/hero/test.jpg');">
                         </div>
+                        <div class="single-slider" style="background-image: url('assets/images/hero/small.jpg');">
+                        </div>
                         <!-- End Single Slider -->
                     </div>
                     <!-- End Hero Slider -->

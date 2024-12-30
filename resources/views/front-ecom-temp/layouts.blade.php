@@ -29,9 +29,7 @@
     </div>
     @include('front-ecom-temp.header')
     @include('front-ecom-temp.hero-secation')
-    {{-- @include('front-ecom-temp.Trending-product') --}}
     @yield('test')
-
     @include('front-ecom-temp.Start-Call-Action')
     <section class="contact-us section" style="background-color: #f9f9f9; padding: 50px 0;" id="contact">
         <div class="container">
