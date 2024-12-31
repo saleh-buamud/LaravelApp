@@ -186,8 +186,7 @@
                         class="btn btn-primary btn-lg w-100 text-white">Brands</a>
                     <a href="{{ route('dashboard.modes.index') }}"
                         class="btn btn-primary btn-lg w-100 text-white">Models</a>
-                    <a href="{{ route('dashboard.allAdmin') }}"
-                        class="btn btn-primary btn-lg w-100 text-white">Admins</a>
+
                 </div>
             </div>
         </aside>
@@ -202,9 +201,10 @@
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                @section('breadcrumb')
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                @show
+                                <li class="breadcrumb-item"><a href="#">المخزون القطع</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('dashboard.allAdmin') }}">Admains</a>
+                                </li>
+
                             </ol>
                         </div>
                     </div>
