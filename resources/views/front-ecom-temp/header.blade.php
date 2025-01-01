@@ -85,6 +85,8 @@
                                     <span class="total-items" id="cart-item-count">{{ Cart::getTotalQuantity() }}</span>
                                 </a>
                             </div>
+                            <a href="{{ route('clear') }}" class="btn btn-danger mb-2">مسح الكل السلة</a>
+
                         </div>
                     </div>
                 </div>

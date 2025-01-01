@@ -75,10 +75,14 @@
 
                     <div class="card border shadow-0">
                         <div class="m-4">
-                            <div class="mb-3">
+                            <div class="mb-3 d-flex flex-column align-items-start">
+                                <!-- زر المسح -->
+                                <a href="{{ route('clear') }}" class="btn btn-danger mb-2">مسح الكل السلة</a>
+
+                                <!-- عنوان سلة التسوق -->
                                 <span class="card-title mb-4 h4">سلة التسوق الخاصة بك</span>
-                                <a href="{{ route('clear') }}" class="float-end">مسح الكل</a>:
                             </div>
+
                             <hr />
                             @foreach ($items as $item)
                                 <div class="row gy-3 mb-4">
