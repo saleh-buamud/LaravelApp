@@ -1,4 +1,4 @@
-<header class="header navbar-area" dir="rtl">
+<header class="header navbar-area " dir="rtl" lang="ar">
     <div class="topbar">
         <div class="container">
             <div class="row align-items-center">
