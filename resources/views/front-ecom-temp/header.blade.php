@@ -58,7 +58,9 @@
             <div class="row align-items-center">
                 <div class="col-lg-3 col-md-3 col-7">
                     <a class="navbar-brand" href="{{ route('home') }}">
-                        <img src="assets/images/logo/e.jpg" alt="الشعار" style="width: 150px; height: 100px">
+                        <img src="{{ asset('assets/images/logo/e.jpg') }}" alt="الشعار"
+                            style="width: 150px; height: 100px">
+
                     </a>
                 </div>
                 <div class="col-lg-5 col-md-7 d-xs-none">
@@ -73,8 +75,8 @@
                     <div class="middle-right-area">
                         <div class="nav-hotline">
                             <i class="lni lni-phone"></i>
-                            <h3>الخط الساخن:
-                                <span>(+100) 123 456 7890</span>
+                            <h3>الخط :
+                                <span>09xxxxxxxx</span>
                             </h3>
                         </div>
                         <!-- الجزء الجديد لإظهار عدد العناصر في السلة -->
@@ -82,7 +84,8 @@
                             <div class="cart-items">
                                 <a href="{{ route('cart') }}" class="main-btn">
                                     <i class="lni lni-cart"></i>
-                                    <span class="total-items" id="cart-item-count">{{ Cart::getTotalQuantity() }}</span>
+                                    <span class="total-items"
+                                        id="cart-item-count">{{ Cart::getTotalQuantity() }}</span>
                                 </a>
                             </div>
                             @if (!Cart::isEmpty())

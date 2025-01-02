@@ -8,9 +8,6 @@
                         <p class="wow fadeInUp" data-wow-delay=".6s">نحن نقدم لك مجموعة شاملة من قطع غيار السيارات ذات
                             الجودة العالية والأسعار المناسبة.<br> سواء كنت بحاجة إلى قطع غيار جديدة أو مستعملة، لدينا كل
                             ما تحتاجه لسيارتك.</p>
-                        {{-- <div class="button wow fadeInUp" data-wow-delay=".8s">
-                            <a href="{{ route('shop') }}" class="btn">ابدأ التسوق الآن</a>
-                        </div> --}}
                     </div>
                 </div>
             </div>
