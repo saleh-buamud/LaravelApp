@@ -83,13 +83,13 @@
         transform: scale(1.2);
     }
 
-    .container img {
+    /* .container img {
         padding: 75px;
         margin-top: -40px;
         margin-bottom: -40px;
         transition: 0.4s ease;
         cursor: pointer;
-    }
+    } */
 
     .saleh {
         background: #EEECF7;
