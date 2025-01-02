@@ -32,7 +32,7 @@
 
     @include('front-ecom-temp.header')
     <div class="container my-4">
-        <h1>النماذج2898u09u90091</h1>
+        <h1>موبي كاش </h1>
     </div>
     @include('front-ecom-temp.footer')
 

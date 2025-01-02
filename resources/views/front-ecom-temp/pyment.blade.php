@@ -32,10 +32,16 @@
 
     @include('front-ecom-temp.header')
     <div class="container my-4">
-        <a href="{{ route('type-1') }}" class="btn btn-dark"> ادفعلي</a>
-        <a href="{{ route('type-2') }}" class="btn btn-dark">موبي كاش</a>
-        <a href="{{ route('type-3') }}" class="btn btn-dark">فيزا</a>
+        <a href="{{ route('type-1') }}" class="btn btn-dark border  border-transparent hover-outline">ادفعلي</a>
+        <a href="{{ route('type-2') }}" class="btn btn-dark border  border-transparent hover-outline">موبي كاش</a>
+        <a href="{{ route('type-3') }}" class="btn btn-dark border  border-transparent hover-outline">فيزا</a>
+        <a href="{{ route('type-3') }}" class="btn btn-dark border  border-transparent hover-outline">نقدي</a>
     </div>
+
+
+
+
+
     @include('front-ecom-temp.footer')
 
     <a href="#" class="scroll-top">
