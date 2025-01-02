@@ -201,7 +201,7 @@
     @include('front-ecom-temp.header')
 
     <div class="container my-4">
-        <h1 class="text-center mb-4">فئات قطع الإلكترونيات الفرعية</h1>
+        <h1 class="text-center mb-4">البخث عن قطع غيار</h1>
         <div class="text-center flex justify-center">
             <form action="{{ route('products.search') }}" method="GET" class="flex items-center space-x-1">
                 <div class="search-container flex items-center" style="display: flex">
@@ -244,7 +244,8 @@
             </div>
         @else
             <div class="text-center mt-2 text-blue-700">
-                <p class="text-center" style="color: #441CFF; font-weight: bold">لم يتم العثور على منتجات.</p>
+                <p class="text-center" style="color: #441CFF; font-weight:bold; font-size: 30px ">لم يتم العثور على
+                    منتجات</p>
             </div>
         @endif
     </div>

@@ -3,6 +3,7 @@
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     @vite('resources/css/app.css')
+    <img src="assets/images/logo/e.jpg" alt="الشعار" style="width: 150px; height: 100px">
 
     <form method="POST" action="{{ route('login') }}" class="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
         @csrf

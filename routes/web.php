@@ -30,7 +30,6 @@ Route::get('/electrical', [SubCategoryController::class, 'allElectrical'])->name
 
 // Product Routes
 Route::get('sub-category/{subCategoryId}/products', [ProductController::class, 'showProductsBySubCategory'])->name('subCategory.products');
-Route::get('/search', [ProductController::class, 'search'])->name('product.search');
 
 // Cart Routes
 Route::get('cart', [CartController::class, 'cart'])->name('cart');

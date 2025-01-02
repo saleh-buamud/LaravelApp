@@ -85,7 +85,15 @@
                                     <span class="total-items" id="cart-item-count">{{ Cart::getTotalQuantity() }}</span>
                                 </a>
                             </div>
-                            <a href="{{ route('clear') }}" class="btn btn-danger mb-2">مسح الكل السلة</a>
+                            @if (!Cart::isEmpty())
+                                <a href="{{ route('clear') }}" class="btn btn-danger mb-2"
+                                    style="margin-right: 5px">مسح الكل السلة</a>
+                            @else
+                                <a href="#" class="btn btn-danger mb-2 disabled" aria-disabled="true">مسح الكل
+                                    السلة</a>
+                            @endif
+
+                            <!-- Shopping Item -->
 
                         </div>
                     </div>
@@ -120,6 +128,10 @@
                                 <li class="nav-item mx-3">
                                     <a class="nav-link" style="font-family: sans-serif ; font-weight: bold"
                                         href="{{ route('allElectrical') }}">قطع غيار كهربائية</a>
+                                </li>
+                                <li class="nav-item mx-3">
+                                    <a class="nav-link" style="font-family: sans-serif ; font-weight: bold"
+                                        href="{{ route('products.search') }}">بحث عن قطع غيار </a>
                                 </li>
                             </ul>
                         </div>
