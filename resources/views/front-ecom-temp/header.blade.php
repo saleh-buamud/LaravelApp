@@ -11,6 +11,7 @@
                                 <li class="py-2 mx-2"><a href="{{ route('home') }}">الرئيسية</a></li>
 
                             </ul>
+                              
                         </div>
                     </div>
                 </div>
@@ -24,7 +25,6 @@
                         </div>
                         <ul class="user-login">
                             @if (Auth::check())
-                                <!-- تحقق إذا كان هناك مستخدم مسجل دخول -->
                                 <li>
                                     مرحباً، {{ Auth::user()->name }} <!-- عرض اسم المستخدم -->
                                 </li>
