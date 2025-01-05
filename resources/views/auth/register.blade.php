@@ -38,6 +38,24 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2 text-sm text-red-600" />
         </div>
 
+        <!-- Address -->
+        <div class="mt-6">
+            <x-input-label for="address" :value="__('Address')" class="text-lg font-semibold text-gray-700" />
+            <x-text-input id="address"
+                class="block mt-2 w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                type="text" name="address" :value="old('address')" required />
+            <x-input-error :messages="$errors->get('address')" class="mt-2 text-sm text-red-600" />
+        </div>
+
+        <!-- City -->
+        <div class="mt-6">
+            <x-input-label for="city" :value="__('City')" class="text-lg font-semibold text-gray-700" />
+            <x-text-input id="city"
+                class="block mt-2 w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                type="text" name="city" :value="old('city')" required />
+            <x-input-error :messages="$errors->get('city')" class="mt-2 text-sm text-red-600" />
+        </div>
+
         <div class="flex items-center justify-between mt-6">
             <a class="text-sm text-indigo-600 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 href="{{ route('login') }}">

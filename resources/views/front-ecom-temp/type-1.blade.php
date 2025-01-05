@@ -18,24 +18,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
     <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
 </head>
-<style>
-    .pagination-container {
-        display: flex;
-        justify-content: center;
-    }
 
-    .small {
-        display: none;
-    }
-
-    .pagination {
-        display: flex;
-    }
-
-    .pagination li {
-        margin: 0;
-    }
-</style>
 
 <body style="font-family: 'Amiri', serif;">
     <div class="preloader">
@@ -48,27 +31,30 @@
     </div>
 
     @include('front-ecom-temp.header')
-
-    <div class="container my-4">
-        <h1 class="text-center mb-4">الفئات الفرعية للأجزاء الداخلية</h1>
-        <div class="row">
-            @foreach ($subCategories as $subCategory)
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $subCategory->name }}</h5>
-                            <p class="card-text">{{ $subCategory->description }}</p>
-                        </div>
-                        <a href="{{ route('subCategory.products', $subCategory->id) }}" class="btn btn-primary">عرض
-                            المنتجات</a>
-                    </div>
+    <div class="container my-4" style="direction: rtl; text-align: right;">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-12">
+                <div class="d-flex align-items-center mb-4">
+                    <img src="assets/images/edf.jpg" alt="test" class="img-fluid"
+                        style="max-width: 100px; margin-left: 15px;">
+                    <h3 class="ml-3">نموذج التسجيل</h3>
                 </div>
-            @endforeach
+                <form action="">
+                    <div class="form-group mb-3">
+                        <label for="exampleInputName" class="form-label">الاسم</label>
+                        <input type="text" class="form-control" id="exampleInputName" placeholder="أدخل اسمك">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="exampleInputEmail" class="form-label">البريد الالكتروني</label>
+                        <input type="email" class="form-control" id="exampleInputEmail"
+                            placeholder="أدخل بريدك الالكتروني">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">إرسال</button>
+                </form>
+            </div>
         </div>
     </div>
-    <div class="d-flex justify-content-center">
-        {{ $subCategories->links('pagination::bootstrap-5') }}
-    </div>
+
     @include('front-ecom-temp.footer')
 
     <a href="#" class="scroll-top">

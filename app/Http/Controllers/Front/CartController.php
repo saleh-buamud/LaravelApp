@@ -73,7 +73,7 @@ class CartController extends Controller
     public function clearCart()
     {
         \Cart::clear();
-        return back()->with('success', 'There is no item in your cart');
+        return back()->with('success', 'تم حذف جميع منتجات في السلة');
     }
     public function saveOrder(Request $request)
     {
@@ -126,16 +126,4 @@ class CartController extends Controller
         // إعادة التوجيه بعد حفظ الطلب
         return redirect()->route('home')->with('success', 'Your order has been placed successfully!');
     }
-
-    // public function sendEmail()
-    // {
-    //     $details = [
-    //         'subject' => 'Test Email from Laravel',
-    //         'body' => 'This is a test email sent from Laravel on localhost.',
-    //     ];
-
-    //     Mail::to('buamudsaleh@gmail.com')->send(new \App\Mail\TestMail($details));
-
-    //     return 'Email sent successfully - please wait for a response.';
-    // }
 }

@@ -4,13 +4,10 @@
             <div class="col-lg-8 offset-lg-2 col-12">
                 <div class="inner">
                     <div class="content">
-                        <h2 class="wow fadeInUp" data-wow-delay=".4s">حاليًا، أنت تستخدم النسخة المجانية<br>
-                            Lite من ShopGrids</h2>
-                        <p class="wow fadeInUp" data-wow-delay=".6s">يرجى شراء النسخة الكاملة من القالب
-                            للحصول على جميع الصفحات،<br> الميزات، والترخيص التجاري.</p>
-                        <div class="button wow fadeInUp" data-wow-delay=".8s">
-                            <a href="javascript:void(0)" class="btn">اشترِ الآن</a>
-                        </div>
+                        <h2 class="wow fadeInUp" data-wow-delay=".4s">أفضل قطع غيار السيارات في متناول يديك</h2>
+                        <p class="wow fadeInUp" data-wow-delay=".6s">نحن نقدم لك مجموعة شاملة من قطع غيار السيارات ذات
+                            الجودة العالية والأسعار المناسبة.<br> سواء كنت بحاجة إلى قطع غيار جديدة أو مستعملة، لدينا كل
+                            ما تحتاجه لسيارتك.</p>
                     </div>
                 </div>
             </div>
