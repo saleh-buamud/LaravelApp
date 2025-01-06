@@ -200,12 +200,12 @@
                             <h1 class="m-0">@yield('title')</h1>
                         </div>
                         <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">المخزون القطع</a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('dashboard.allAdmin') }}">الادمن</a>
-                                </li>
+                            <ul class="float-sm-right d-flex" style="list-style: none;">
+                                <li class=mx-2><a href="#" class="btn btn-primary">المخزون القطع</a></li>
+                                <li class=mx-2><a href="{{ route('dashboard.allAdmin') }}"
+                                        class="btn btn-primary">الادمن</a></li>
 
-                            </ol>
+                            </ul>
                         </div>
                     </div>
                 </div>
