@@ -39,44 +39,50 @@
     <a href="{{ route('products.create') }}" class="btn btn-primary">Add Product</a>
     <hr>
     <br>
+    <form action="{{ route('products.search') }}">
+        <div class="mb-3">
+            <label for="name" class="form-label">اسم المنتج</label>
+            <div class="input-group">
+                <input type="text" name="name" class="form-control" id="name" value="{{ request('name') }}"
+                    placeholder="أدخل اسم المنتج">
+                <button type="submit" class="btn btn-primary">ابحث</button>
+            </div>
+        </div>
 
+    </form>
     {{-- جدول المنتجات --}}
     <table class="table table-striped table-hover mt-4">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">صورة المنتج</th> <!-- إضافة عمود للصورة -->
+                <th scope="col">صورة المنتج</th>
                 <th scope="col">اسم المنتج</th>
                 <th scope="col">وصف المنتج</th>
                 <th scope="col">السعر</th>
                 <th scope="col">الكمية</th>
-                <th scope="col">الموديلات</th> <!-- إضافة عمود للموديلات -->
+                <th scope="col">الموديلات</th>
                 <th scope="col">الإجراءات</th>
             </tr>
         </thead>
         <tbody>
             @forelse ($products as $product)
                 <tr>
-                    <!-- عرض صورة المنتج -->
                     <td>
                         @if ($product->image)
                             <img src="{{ asset('storage/' . $product->image) }}" alt="صورة المنتج"
                                 style="width: 50px; height: auto;">
                         @else
-                            <span>لا توجد صورة</span> <!-- في حال عدم وجود صورة -->
+                            <span>لا توجد صورة</span>
                         @endif
                     </td>
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->description }}</td>
                     <td>{{ $product->price }}</td>
                     <td>{{ $product->quantity }}</td>
-
-                    <!-- عرض الموديلات المرتبطة -->
                     <td>
                         @foreach ($product->modes as $mode)
-                            <span class="badge bg-secondary">{{ $mode->name }}</span> <!-- عرض كل موديل مرتبط -->
+                            <span class="badge bg-secondary">{{ $mode->name }}</span>
                         @endforeach
                     </td>
-
                     <td>
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                             <a href="{{ route('products.edit', $product->id) }}" class="btn btn-dark btn-sm mr-1">Edit</a>
@@ -97,11 +103,10 @@
                     </td>
                 </tr>
             @endforelse
-
         </tbody>
-
     </table>
     <div class="d-flex justify-content-center">
         {{ $products->links('pagination::bootstrap-5') }}
     </div>
+
 @endsection

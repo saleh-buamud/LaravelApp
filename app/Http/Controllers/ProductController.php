@@ -108,4 +108,21 @@ class ProductController extends Controller
         // إعادة التوجيه إلى قائمة المنتجات مع رسالة تأكيد
         return redirect()->route('dashboard.allProducts')->with('messages', 'Product deleted successfully');
     }
+
+    public function search(Request $request)
+    {
+        // Get the search query from the request
+        $query = $request->get('name');
+        // dd($query);
+        // If the query is not empty, filter products by name
+        if ($query) {
+            $products = Product::where('name', 'like', '%' . $query . '%')->paginate(1);
+        } else {
+            // If no query is provided, show all products
+            $products = Product::paginate(1);
+        }
+
+        // Return the view with the filtered products
+        return view('dashboard.categories.productAll', compact('products'));
+    }
 }
