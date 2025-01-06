@@ -48,7 +48,6 @@
                 <button type="submit" class="btn btn-primary">ابحث</button>
             </div>
         </div>
-
     </form>
     {{-- جدول المنتجات --}}
     <table class="table table-striped table-hover mt-4">
