@@ -41,8 +41,6 @@ class AdminController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            // Convert the 'can_create_users' value to a boolean
-            'can_create_users' => $request->has('can_create_users') ? true : false,
         ]);
 
         // Redirect to the all admins page with a success message
@@ -65,7 +63,6 @@ class AdminController extends Controller
             'email' => 'required|email|unique:admins,email,' . $id,
             'password' => 'nullable|string|min:8|confirmed',
             'is_admin' => 'nullable|boolean',
-            'can_create_users' => 'nullable|boolean', // Ensure this is a boolean
         ]);
 
         // Find the admin to update
@@ -82,7 +79,6 @@ class AdminController extends Controller
 
         // Update 'is_admin' and 'can_create_users' values
         $admin->is_admin = $request->has('is_admin') ? $request->is_admin : $admin->is_admin;
-        $admin->can_create_users = $request->has('can_create_users') ? true : false; // Convert the value to boolean
 
         // Save the updated admin
         $admin->save();
