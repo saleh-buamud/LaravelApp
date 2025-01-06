@@ -8,92 +8,94 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
-    // عرض قائمة جميع الإداريين
+    // Display a list of all admins
     public function allAdmin()
     {
-        $admins = Admin::paginate(10);
+        $admins = Admin::paginate(10); // Paginate admins, 10 per page
         return view('dashboard.categories.adminAll', compact('admins'));
     }
 
-    // عرض نموذج إنشاء إداري جديد
+    // Display the create admin form
     public function create()
     {
         return view('admin.create');
     }
 
-    // تخزين إداري جديد في قاعدة البيانات
+    // Store a new admin in the database
     public function store(Request $request)
     {
-        // تأكد من أن الأدمن الحالي لديه الصلاحية لإنشاء مستخدمين
+        // Check if the current admin has permission to create users
         if (!auth()->guard('admin')->user()->can_create_users) {
             return redirect()->route('dashboard.allAdmin')->with('error', 'You do not have permission to create users.');
         }
 
-        // التحقق من البيانات المدخلة
+        // Validate the incoming data
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:admins,email',
             'password' => 'required|string|min:8|confirmed',
         ]);
 
-        // إنشاء الإداري الجديد
+        // Create the new admin
         Admin::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            // تحويل قيمة can_create_users إلى boolean
+            // Convert the 'can_create_users' value to a boolean
             'can_create_users' => $request->has('can_create_users') ? true : false,
         ]);
 
-        // إعادة توجيه إلى صفحة جميع الإداريين مع رسالة نجاح
+        // Redirect to the all admins page with a success message
         return redirect()->route('dashboard.allAdmin')->with('success', 'Admin created successfully!');
     }
 
-    // عرض نموذج تعديل الإداري
+    // Display the edit admin form
     public function edit($id)
     {
-        $admin = Admin::findOrFail($id);
+        $admin = Admin::findOrFail($id); // Find admin by ID
         return view('admin.edit', compact('admin'));
     }
 
-    // تحديث معلومات الإداري
+    // Update admin information
     public function update(Request $request, $id)
     {
-        // التحقق من البيانات المدخلة
+        // Validate the incoming data
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:admins,email,' . $id,
             'password' => 'nullable|string|min:8|confirmed',
             'is_admin' => 'nullable|boolean',
-            'can_create_users' => 'nullable|boolean', // التأكد من أن القيمة هي boolean
+            'can_create_users' => 'nullable|boolean', // Ensure this is a boolean
         ]);
 
-        // إيجاد الإداري لتحديثه
+        // Find the admin to update
         $admin = Admin::findOrFail($id);
 
-        // تحديث بيانات الإداري
+        // Update the admin's information
         $admin->name = $request->name;
         $admin->email = $request->email;
 
-        // إذا تم ملء حقل كلمة المرور
+        // If a password is provided, update it
         if ($request->filled('password')) {
             $admin->password = Hash::make($request->password);
         }
 
-        // تحديث القيم الخاصة بالـ is_admin و can_create_users
+        // Update 'is_admin' and 'can_create_users' values
         $admin->is_admin = $request->has('is_admin') ? $request->is_admin : $admin->is_admin;
-        $admin->can_create_users = $request->has('can_create_users') ? true : false; // تحويل القيمة إلى boolean
+        $admin->can_create_users = $request->has('can_create_users') ? true : false; // Convert the value to boolean
 
-        // حفظ التعديلات
+        // Save the updated admin
         $admin->save();
 
-        // إعادة توجيه إلى صفحة جميع الإداريين مع رسالة نجاح
+        // Redirect to the all admins page with a success message
         return redirect()->route('dashboard.allAdmin')->with('success', 'Admin updated successfully!');
     }
+
+    // Delete an admin
     public function destroy($id)
     {
-        $admin = Admin::findOrFail($id);
-        $admin->delete();
+        $admin = Admin::findOrFail($id); // Find the admin by ID
+        $admin->delete(); // Delete the admin
         return redirect()->route('dashboard.allAdmin')->with('success', 'Admin deleted successfully!');
     }
 }
