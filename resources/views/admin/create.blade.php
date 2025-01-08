@@ -45,14 +45,14 @@
             <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" required>
         </div>
 
-        <!-- حقل can_create_users -->
-        {{-- <div class="mb-3">
+        <!--  can_create_users -->
+        <div class="mb-3">
             <label for="can_create_users" class="form-label">Can Create Users</label>
             <div class="form-check">
                 <input type="checkbox" class="form-check-input" name="can_create_users" id="can_create_users">
                 <label class="form-check-label" for="can_create_users">Check if the admin can create users</label>
             </div>
-        </div> --}}
+        </div>
 
         <button type="submit" class="btn btn-primary">Create Admin</button>
     </form>

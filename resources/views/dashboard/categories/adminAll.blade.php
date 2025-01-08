@@ -61,10 +61,10 @@
                     <td>{{ $admin->name }}</td>
                     <td>{{ $admin->email }}</td>
                     <td>
-                        @if ($admin->is_admin)
+                        @if ($admin->can_create_users)
                             <span class="badge bg-success">Admin</span>
                         @else
-                            <span class="badge bg-secondary">User</span>
+                            <span class="badge bg-secondary">Employee</span>
                         @endif
                     </td>
                     <td>
