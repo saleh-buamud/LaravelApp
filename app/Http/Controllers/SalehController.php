@@ -61,11 +61,11 @@ class SalehController extends Controller
         $admins = Admin::all();
 
         // إرسال بريد إلكتروني لكل مشرف لكل منتج الكمية فيه أقل من 5
-        foreach ($lowStockProducts as $product) {
-            foreach ($admins as $admin) {
-                Mail::to($admin->email)->send(new LowStockNotification($product));
-            }
-        }
+        // foreach ($lowStockProducts as $product) {
+        //   foreach ($admins as $admin) {
+        //Mail::to($admin->email)->send(new LowStockNotification($product));
+        // }
+        // }
         // إرجاع العرض مع المنتجات
         return view('dashboard.categories.productAll', compact('products', 'lowStockProducts'));
     }
