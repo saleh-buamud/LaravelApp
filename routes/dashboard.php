@@ -23,7 +23,7 @@ Route::group(['prefix' => 'admin'], function () {
     // Handle the login process for the admin (POST request)
     Route::post('login', [AdminAuthController::class, 'login'])->name('admin.login.submit');
 
-    // Handle the logout process for the admin
+    // Handle the logout process for the ad nmin
     Route::post('logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 });
 
