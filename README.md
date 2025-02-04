@@ -1,38 +1,30 @@
-## Pending Tasks / المهام غير المنجزة
+# تحديثات المشروع
 
-### The following features are planned but not yet implemented:
-1. **Pagination and Search in Admin Dashboard**
-   - **Pagination:** Add pagination to the product list in the admin dashboard for better navigation.
-   - **Search:** Implement a search functionality to allow admins to quickly find products.
+## المهام المنجزة
 
-2. **User Dashboard**
-   - Develop a dedicated user dashboard to enhance user experience.
+### 1. **Sequence Diagram**
 
-3. **Improved Feedback Messages**
-   - Enhance the clarity and usability of feedback messages throughout the application to improve user interaction.
+-   تم إنشاء وتحديث **Sequence Diagram** لتوضيح تدفق العمليات بين المكونات المختلفة.
 
 ---
 
-### العربية
+## المهام المخطط إنجازها غدًا
 
-### المهام التالية مخطط لها ولكن لم يتم تنفيذها بعد:
-1. **إضافة الترقيم والبحث في لوحة تحكم الأدمن**
-   - **الترقيم (Pagination):** إضافة ميزة الترقيم لقائمة المنتجات في لوحة تحكم الأدمن لتحسين التنقل.
-   - **البحث (Search):** تنفيذ وظيفة بحث لتمكين الأدمن من العثور على المنتجات بسرعة.
+### 1. **بحث صور للمنتجات**
 
-2. **لوحة تحكم للمستخدم (User Dashboard)**
-   - تطوير لوحة تحكم مخصصة لتحسين تجربة المستخدم.
+-   العمل على تحسين وظيفة البحث عن صور المنتجات.
 
-3. **تحسين الرسائل التوضيحية (Feedback Messages)**
-   - تحسين وضوح الرسائل التوضيحية وسهولة استخدامها في جميع أجزاء التطبيق لتعزيز تجربة المستخدم.
+### 2. **تعديل واجهات الدفع**
+
+-   تحديث واجهة **موبي كاش**.
+-   تحديث واجهة **دفعلي**.
+-   تحديث واجهة **فيزات**.
+-   تحديث واجهة **الدفع النقدي**.
+
+### 3. **تعديلات أخرى**
+
+-   تحسين وتنسيق بعض العناصر في الواجهات لضمان تجربة مستخدم أفضل.
 
 ---
 
-### Notes / ملاحظات
-- These features are under development and will be integrated in upcoming updates. Stay tuned!
-- هذه الميزات قيد التطوير وسيتم دمجها في التحديثات القادمة. تابعونا!
-
-
-
-
-## SALEH Main
+سيتم العمل على هذه المهام في اليوم التالي لضمان استكمال المشروع بنجاح.
