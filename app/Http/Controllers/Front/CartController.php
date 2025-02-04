@@ -104,7 +104,6 @@ class CartController extends Controller
         $order->order_date = Carbon::now(); // Set the current order date
         $order->total_amount = \Cart::getTotal(); // Calculate the total amount using getTotal()
         $order->status = 1; // Set the order status to "Pending" by default
-        $order->admin_id = 1;
         // Save the order to the database
         $order->save();
 
