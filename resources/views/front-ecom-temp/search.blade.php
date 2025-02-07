@@ -71,7 +71,7 @@
 
     .card .container {
         width: 88%;
-        background: #F0EEF8;
+        /* background: #F0EEF8; */
         border-radius: 30px;
         height: 140px;
         display: flex;
@@ -79,9 +79,9 @@
         justify-content: center;
     }
 
-    .container:hover>img {
+    /* .container:hover>img {
         transform: scale(1.2);
-    }
+    } */
 
     /* .container img {
         padding: 75px;
@@ -131,9 +131,9 @@
         color: #888;
     }
 
-    .box {
+    /* .box {
         position: relative;
-    }
+    } */
 
     .input {
         padding: 10px;
@@ -150,13 +150,13 @@
         transition: .5s;
     }
 
-    .box:hover input {
+    /* .box:hover input {
         width: 350px;
         background: #ffffff;
         border-radius: 10px;
-    }
+    } */
 
-    .box i {
+    /* .box i {
         position: absolute;
         top: 50%;
         right: 15px;
@@ -164,12 +164,12 @@
         font-size: 26px;
         color: #5535F0;
         transition: .2s;
-    }
+    } */
 
-    .box:hover i {
+    /* .box:hover i {
         opacity: 0;
         z-index: -1;
-    }
+    } */
 
     #ytb {
         height: 50px;
@@ -201,7 +201,7 @@
     @include('front-ecom-temp.header')
 
     <div class="container my-4">
-        <h1 class="text-center mb-4">البخث عن قطع غيار</h1>
+        <h1 class="text-center mb-4">البحث عن قطع غيار</h1>
         <div class="text-center flex justify-center">
             <form action="{{ route('products.search') }}" method="GET" class="flex items-center space-x-1">
                 <div class="search-container flex items-center" style="display: flex">
@@ -215,23 +215,18 @@
                     </button>
                 </div>
             </form>
-            <div class="box">
-                <form name="search">
-                    <input type="search" class="input" name="search" value="{{ request('search') }}"
-                        onmouseout="this.value = ''; this.blur();">
-                </form>
-                <i class="fas fa-search"></i>
-            </div>
+
         </div>
 
         @if (isset($products) && $products->count() > 0)
-            <div class="row">
+            <div class="row mt-3">
                 @foreach ($products as $product)
                     <div class="col-sm-6 col-md-4 col-lg-3 container">
                         <div class="card">
                             <div class="card-body">
                                 <div class="container">
-                                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+                                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}"
+                                        style="width: 240px; height:120px">
                                 </div>
                                 <h5 class="card-title">{{ $product->name }}</h5>
                                 <p class="card-text">{{ $product->description }}</p>
