@@ -46,17 +46,20 @@
             <div class="row align-items-center gx-4">
                 <div class="col-md-5">
                     <div class="ms-md-2 ms-lg-5"><img class="img-fluid rounded-3"
-                            src="https://freefrontend.dev/assets/square.png"></div>
+                            src="{{ asset('assets/images/about.webp') }}"></div>
                 </div>
                 <div class="col-md-6 offset-md-1">
                     <div class="ms-md-2 ms-lg-5">
                         <span class="text-muted">قصتنا</span>
                         <h2 class="display-5 fw-bold">عن متجرنا</h2>
-                        <p class="lead">نحن نقدم مجموعة واسعة من قطع غيار السيارات عالية الجودة لتلبية احتياجات
-                            سياراتك.</p>
-                        <p class="lead mb-0">فريقنا يعمل بشكل دؤوب لتوفير أفضل الأسعار والخدمات لعملائنا الكرام.</p>
+                        <p class="lead" style="margin-bottom: 10px; color: black; line-height: 1.8;">
+                            نحن نقدم مجموعة واسعة من قطع غيار السيارات عالية الجودة لتلبية احتياجات سياراتك.
+                        </p>
+                        <p class="lead mb-0" style="color: black; line-height: 1.8;">
+                            فريقنا يعمل بشكل دؤوب لتوفير أفضل الأسعار والخدمات لعملائنا الكرام.
+                        </p>
                     </div>
-                </div>
+                </div> 
             </div>
         </div>
     </section>
