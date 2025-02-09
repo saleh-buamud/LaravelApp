@@ -61,7 +61,9 @@ Route::get('typeafeza', function () {
 Route::get('sendEmail', [CartController::class, 'sendEmail'])->name('sendEmail');
 
 // Search products
-Route::get('/search', [ProductController::class, 'search'])->name('products.search');
+Route::get('/search', [ProductController::class, 'search'])->name('products.search.front');
+
+
 Route::get('/product/{productId}', [ProductController::class, 'showProduct'])->name('product-details');
 // Checkout Route
 Route::get('checkout', function () {

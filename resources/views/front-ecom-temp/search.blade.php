@@ -203,7 +203,7 @@
     <div class="container my-4">
         <h1 class="text-center mb-4">البحث عن قطع غيار</h1>
         <div class="text-center flex justify-center">
-            <form action="{{ route('products.search') }}" method="GET" class="flex items-center space-x-1">
+            <form action="{{ route('products.search.front') }}" method="GET" class="flex items-center space-x-1">
                 <div class="search-container flex items-center" style="display: flex">
                     <input type="search"
                         class="form-control search-input w-17 h-10 px-4 rounded-full border border-gray-300"
