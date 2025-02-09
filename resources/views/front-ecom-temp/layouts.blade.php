@@ -29,9 +29,7 @@
     </div>
     @include('front-ecom-temp.header')
     @include('front-ecom-temp.hero-secation')
-    {{-- @include('front-ecom-temp.Trending-product') --}}
     @yield('test')
-
     @include('front-ecom-temp.Start-Call-Action')
     <section class="contact-us section" style="background-color: #f9f9f9; padding: 50px 0;" id="contact">
         <div class="container">
@@ -43,7 +41,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row justify-content-center">
+            <div class="row justify-content-center" style="text-align: center">
                 <div class="col-lg-6 col-md-8 col-12">
                     <form action="#" method="POST" class="contact-form">
                         <div class="form-group">

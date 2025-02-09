@@ -30,7 +30,6 @@ Route::get('/electrical', [SubCategoryController::class, 'allElectrical'])->name
 
 // Product Routes
 Route::get('sub-category/{subCategoryId}/products', [ProductController::class, 'showProductsBySubCategory'])->name('subCategory.products');
-Route::get('/search', [ProductController::class, 'search'])->name('product.search');
 
 // Cart Routes
 Route::get('cart', [CartController::class, 'cart'])->name('cart');
@@ -40,8 +39,32 @@ Route::get('decrease-quantity/{productId}', [CartController::class, 'decreaseQua
 Route::get('remove-item/{productId}', [CartController::class, 'removeItem'])->name('remove.item');
 Route::get('clear', [CartController::class, 'clearCart'])->name('clear');
 Route::post('saveOrder', [CartController::class, 'saveOrder'])->name('saveOrder');
+
+///////////////////////
+Route::get('pyment', function () {
+    return view('front-ecom-temp.pyment');
+})->name('pyment');
+
+Route::get('type', function () {
+    return view('front-ecom-temp.type-1');
+})->name('type-1');
+
+Route::get('typeall', function () {
+    return view('front-ecom-temp.type-2');
+})->name('type-2');
+
+Route::get('typeafeza', function () {
+    return view('front-ecom-temp.type-3');
+})->name('type-3');
+
+///////////////////
 Route::get('sendEmail', [CartController::class, 'sendEmail'])->name('sendEmail');
 
+// Search products
+Route::get('/search', [ProductController::class, 'search'])->name('products.search.front');
+
+
+Route::get('/product/{productId}', [ProductController::class, 'showProduct'])->name('product-details');
 // Checkout Route
 Route::get('checkout', function () {
     return view('front-ecom-temp.checkout');

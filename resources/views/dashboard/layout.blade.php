@@ -186,8 +186,7 @@
                         class="btn btn-primary btn-lg w-100 text-white">Brands</a>
                     <a href="{{ route('dashboard.modes.index') }}"
                         class="btn btn-primary btn-lg w-100 text-white">Models</a>
-                    <a href="{{ route('dashboard.allAdmin') }}"
-                        class="btn btn-primary btn-lg w-100 text-white">Admins</a>
+
                 </div>
             </div>
         </aside>
@@ -201,11 +200,12 @@
                             <h1 class="m-0">@yield('title')</h1>
                         </div>
                         <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                @section('breadcrumb')
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                @show
-                            </ol>
+                            <ul class="float-sm-right d-flex" style="list-style: none;">
+                                <li class=mx-2><a href="#" class="btn btn-primary">المخزون القطع</a></li>
+                                <li class=mx-2><a href="{{ route('dashboard.allAdmin') }}"
+                                        class="btn btn-primary">الادمن</a></li>
+
+                            </ul>
                         </div>
                     </div>
                 </div>

@@ -23,7 +23,7 @@ Route::group(['prefix' => 'admin'], function () {
     // Handle the login process for the admin (POST request)
     Route::post('login', [AdminAuthController::class, 'login'])->name('admin.login.submit');
 
-    // Handle the logout process for the admin
+    // Handle the logout process for the ad nmin
     Route::post('logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 });
 
@@ -43,6 +43,8 @@ Route::middleware(['auth:admin', 'admin'])->group(function () {
     Route::get('/dashboard/int', [SalehController::class, 'internalPartsProducts'])->name('dashboard.internalPartsProducts');
     Route::get('/dashboard/ep', [SalehController::class, 'externalPartsProducts'])->name('dashboard.externalPartsProducts');
     Route::get('/dashboard/ele', [SalehController::class, 'electricalPartsProducts'])->name('dashboard.electricalPartsProducts');
+    Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
+    // Route::get('/search', [ProductController::class, 'search'])->name('products.search');
 
     // Resource routes for managing SubCategories and Products (admin only)
     Route::resource('dashboard/subcategories', SubCategoryController::class);
