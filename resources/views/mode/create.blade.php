@@ -1,13 +1,13 @@
 @extends('dashboard.layout')
 
 @section('content')
-    <h1>إضافة نمط جديد</h1>
+    <h1>إضافة موديل  جديد</h1>
 
     <form action="{{ route('dashboard.modes.store') }}" method="POST">
         @csrf
 
         <div class="mb-3">
-            <label for="name" class="form-label">اسم النمط</label>
+            <label for="name" class="form-label">اسم موديل </label>
             <input type="text" class="form-control" id="name" name="name" required>
         </div>
 

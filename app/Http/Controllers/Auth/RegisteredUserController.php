@@ -34,6 +34,8 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'address' => ['required', 'string', 'max:255'],
+            'city' => ['required', 'string', 'max:255'],
         ]);
 
         $user = User::create([
@@ -49,29 +51,29 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
-    public function createNewAdmin()
-    {
-        return view('auth.register-admin');
-    }
-    public function storeNewAdmin(Request $request)
-    {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+    // public function createNewAdmin()
+    // {
+    //     return view('auth.register-admin');
+    // }
+    // public function storeNewAdmin(Request $request)
+    // {
+    //     $request->validate([
+    //         'name' => ['required', 'string', 'max:255'],
+    //         'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+    //         'password' => ['required', 'confirmed', Rules\Password::defaults()],
+    //     ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'type' => 'admin',
-        ]);
+    //     $user = User::create([
+    //         'name' => $request->name,
+    //         'email' => $request->email,
+    //         'password' => Hash::make($request->password),
+    //         'type' => 'admin',
+    //     ]);
 
-        event(new Registered($user));
+    //     event(new Registered($user));
 
-        Auth::login($user);
+    //     Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
-    }
+    //     return redirect(RouteServiceProvider::HOME);
+    // }
 }

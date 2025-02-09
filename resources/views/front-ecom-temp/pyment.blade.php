@@ -18,24 +18,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
     <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
 </head>
-<style>
-    .pagination-container {
-        display: flex;
-        justify-content: center;
-    }
 
-    .small {
-        display: none;
-    }
-
-    .pagination {
-        display: flex;
-    }
-
-    .pagination li {
-        margin: 0;
-    }
-</style>
 
 <body style="font-family: 'Amiri', serif;">
     <div class="preloader">
@@ -48,27 +31,17 @@
     </div>
 
     @include('front-ecom-temp.header')
-
     <div class="container my-4">
-        <h1 class="text-center mb-4">الفئات الفرعية للأجزاء الداخلية</h1>
-        <div class="row">
-            @foreach ($subCategories as $subCategory)
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $subCategory->name }}</h5>
-                            <p class="card-text">{{ $subCategory->description }}</p>
-                        </div>
-                        <a href="{{ route('subCategory.products', $subCategory->id) }}" class="btn btn-primary">عرض
-                            المنتجات</a>
-                    </div>
-                </div>
-            @endforeach
-        </div>
+        <a href="{{ route('type-1') }}" class="btn btn-dark border  border-transparent hover-outline">ادفعلي</a>
+        <a href="{{ route('type-2') }}" class="btn btn-dark border  border-transparent hover-outline">موبي كاش</a>
+        <a href="{{ route('type-3') }}" class="btn btn-dark border  border-transparent hover-outline">فيزا</a>
+        <a href="{{ route('type-3') }}" class="btn btn-dark border  border-transparent hover-outline">نقدي</a>
     </div>
-    <div class="d-flex justify-content-center">
-        {{ $subCategories->links('pagination::bootstrap-5') }}
-    </div>
+
+
+
+
+
     @include('front-ecom-temp.footer')
 
     <a href="#" class="scroll-top">

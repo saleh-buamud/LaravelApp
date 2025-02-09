@@ -25,4 +25,9 @@ class Product extends Model
     {
         return $this->belongsToMany(Mode::class, 'product_model', 'product_id', 'mode_id');
     }
+
+    public function scopeSearch($query, string $keyword)
+    {
+        return $query->where('name', 'like', "%{$keyword}%")->orWhere('description', 'like', "%{$keyword}%");
+    }
 }

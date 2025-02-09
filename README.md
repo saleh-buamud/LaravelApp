@@ -1,31 +1,33 @@
-# Laravel Project
+# تحديثات المشروع
 
-## Notes:
-- All CRUD operations for **SubCategory** and products have been successfully completed.
-- The operations for **Makes** and **Models** have been completed.
-- There is still a task to create the **Customers** table.
-- Some pending tasks include adding descriptive messages after each operation and displaying flash messages after each action.
+## المهام المنجزة
 
+### 1. **Sequence Diagram**
 
-////////////////////////////////////////////////////////////////
+-   تم إنشاء وتحديث **Sequence Diagram** لتوضيح تدفق العمليات بين المكونات المختلفة.
 
+---
 
+## المهام المخطط إنجازها غدًا
 
-## Upcoming Tasks:
-- Creating the **Customers** table.
-- Displaying flash messages after each operation.
-- Adding descriptive messages after each operation.
+### 1. **بحث صور للمنتجات**
 
+-   العمل على تحسين وظيفة البحث عن صور المنتجات.
 
-////////////////////////////////////////////////////////////////
+### 2. **تعديل واجهات الدفع**
 
+-   تحديث واجهة **موبي كاش**.
+-   تحديث واجهة **دفعلي**.
+-   تحديث واجهة **فيزات**.
+-   تحديث واجهة **الدفع النقدي**.
 
+### 3. **تعديلات أخرى**
 
-## Additional Notes:
-- Dashboard operations specific to the **Vendor** have been completed.
-- Currently working on the **store pages** and **frontend**.
+-   تحسين وتنسيق بعض العناصر في الواجهات لضمان تجربة مستخدم أفضل.
 
+---
 
+<<<<<<< HEAD
 ////////////////////////////////////////////////////////////////
 
 
@@ -151,3 +153,6 @@
 
 ## SALEH Main
 >>>>>>> 76d28b991e61fdcf5b7b8454815177bd0d6ff733
+=======
+سيتم العمل على هذه المهام في اليوم التالي لضمان استكمال المشروع بنجاح.
+>>>>>>> 9d42c4ca0e518525a46ae8fdbd148570955af8c0

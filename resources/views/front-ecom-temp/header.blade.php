@@ -1,15 +1,17 @@
-<header class="header navbar-area">
+<header class="header navbar-area " dir="rtl" lang="ar">
     <div class="topbar">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-4 col-md-4 col-12">
                     <div class="top-left">
                         <div class="top-middle">
-                            <ul class="useful-links">
-                                <li><a href="{{ route('home') }}">الرئيسية</a></li>
-                                <li><a href="{{ route('about') }}">من نحن</a></li>
-                                <li><a href="#contact">اتصل بنا</a></li>
+                            <ul class="useful-links ">
+                                <li class="py-2 mx-2"><a href="#contact">اتصل بنا</a></li>
+                                <li class="py-2 mx-2"><a href="{{ route('about') }}">من نحن</a></li>
+                                <li class="py-2 mx-2"><a href="{{ route('home') }}">الرئيسية</a></li>
+
                             </ul>
+                              
                         </div>
                     </div>
                 </div>
@@ -23,7 +25,6 @@
                         </div>
                         <ul class="user-login">
                             @if (Auth::check())
-                                <!-- تحقق إذا كان هناك مستخدم مسجل دخول -->
                                 <li>
                                     مرحباً، {{ Auth::user()->name }} <!-- عرض اسم المستخدم -->
                                 </li>
@@ -57,7 +58,9 @@
             <div class="row align-items-center">
                 <div class="col-lg-3 col-md-3 col-7">
                     <a class="navbar-brand" href="{{ route('home') }}">
-                        <img src="assets/images/logo/e.jpg" alt="الشعار" style="width: 150px; height: 100px">
+                        <img src="{{ asset('assets/images/logo/e.jpg') }}" alt="الشعار"
+                            style="width: 150px; height: 100px">
+
                     </a>
                 </div>
                 <div class="col-lg-5 col-md-7 d-xs-none">
@@ -65,12 +68,6 @@
                         <div class="navbar-search search-style-5">
                             <div class="search-select">
                             </div>
-                            {{-- <div class="search-input">
-                                <input type="text" placeholder="بحث">
-                            </div>
-                            <div class="search-btn">
-                                <button><i class="lni lni-search-alt"></i></button>
-                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -78,8 +75,8 @@
                     <div class="middle-right-area">
                         <div class="nav-hotline">
                             <i class="lni lni-phone"></i>
-                            <h3>الخط الساخن:
-                                <span>(+100) 123 456 7890</span>
+                            <h3>الخط :
+                                <span>09xxxxxxxx</span>
                             </h3>
                         </div>
                         <!-- الجزء الجديد لإظهار عدد العناصر في السلة -->
@@ -87,9 +84,20 @@
                             <div class="cart-items">
                                 <a href="{{ route('cart') }}" class="main-btn">
                                     <i class="lni lni-cart"></i>
-                                    <span class="total-items" id="cart-item-count">{{ Cart::getTotalQuantity() }}</span>
+                                    <span class="total-items"
+                                        id="cart-item-count">{{ Cart::getTotalQuantity() }}</span>
                                 </a>
                             </div>
+                            @if (!Cart::isEmpty())
+                                <a href="{{ route('clear') }}" class="btn btn-danger mb-2"
+                                    style="margin-right: 5px">مسح الكل السلة</a>
+                            @else
+                                <a href="#" class="btn btn-danger mb-2 disabled" aria-disabled="true">مسح الكل
+                                    السلة</a>
+                            @endif
+
+                            <!-- Shopping Item -->
+
                         </div>
                     </div>
                 </div>
@@ -112,17 +120,21 @@
                         <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                             <ul id="nav" class="navbar-nav ms-auto">
                                 <!-- Adding spare parts section -->
-                                <li class="nav-item">
+                                <li class="nav-item mx-3">
                                     <a class="nav-link" style="font-family: sans-serif ; font-weight: bold"
                                         href="{{ route('allInternal') }}">قطع غيار داخلية</a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item mx-3">
                                     <a class="nav-link" style="font-family: sans-serif ; font-weight: bold"
                                         href="{{ route('allExternal') }}">قطع غيار خارجية</a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item mx-3">
                                     <a class="nav-link" style="font-family: sans-serif ; font-weight: bold"
                                         href="{{ route('allElectrical') }}">قطع غيار كهربائية</a>
+                                </li>
+                                <li class="nav-item mx-3">
+                                    <a class="nav-link" style="font-family: sans-serif ; font-weight: bold"
+                                        href="{{ route('products.search') }}">بحث عن قطع غيار </a>
                                 </li>
                             </ul>
                         </div>
@@ -131,6 +143,4 @@
             </div>
         </div>
     </div>
-    </div>
-    <!-- End Header Bottom -->
 </header>

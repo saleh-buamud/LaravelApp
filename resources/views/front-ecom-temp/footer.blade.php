@@ -5,9 +5,9 @@
             <div class="inner-content">
                 <div class="row">
                     <div class="col-lg-3 col-md-4 col-12">
-                        <div class="footer-logo">
-                            <a href="index.html">
-                                <img src="assets/images/logo/white-logo.svg" alt="#">
+                        <div class="footer-logo text-white">
+                            <a href="{{ route('home') }}" style="font-size: 24px; font-weight: bold; color: white ">
+                                متجر سياراتك
                             </a>
                         </div>
                     </div>
