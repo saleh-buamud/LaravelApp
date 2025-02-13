@@ -10,12 +10,12 @@
 @section('content')
     <div class="container-fluid">
         <!-- Header Section -->
-        <div class="row mb-4">
+        {{-- <div class="row mb-4">
             <div class="col-12 text-center">
                 <img src="{{ asset('assets/images/logo/e.jpg') }}" alt="الشعار" class="img-fluid" style="max-height: 100px;">
                 <h2 class="mt-3">متجر سيارتك</h2>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Statistics Cards -->
         <div class="row">

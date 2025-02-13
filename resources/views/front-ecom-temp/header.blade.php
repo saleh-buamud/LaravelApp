@@ -11,7 +11,7 @@
                                 <li class="py-2 mx-2"><a href="{{ route('home') }}">الرئيسية</a></li>
 
                             </ul>
-                              
+
                         </div>
                     </div>
                 </div>
@@ -134,7 +134,7 @@
                                 </li>
                                 <li class="nav-item mx-3">
                                     <a class="nav-link" style="font-family: sans-serif ; font-weight: bold"
-                                        href="{{ route('products.search') }}">بحث عن قطع غيار </a>
+                                        href="/search">بحث عن قطع غيار </a>
                                 </li>
                             </ul>
                         </div>

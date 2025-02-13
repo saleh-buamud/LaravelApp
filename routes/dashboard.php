@@ -43,7 +43,7 @@ Route::middleware(['auth:admin', 'admin'])->group(function () {
     Route::get('/dashboard/int', [SalehController::class, 'internalPartsProducts'])->name('dashboard.internalPartsProducts');
     Route::get('/dashboard/ep', [SalehController::class, 'externalPartsProducts'])->name('dashboard.externalPartsProducts');
     Route::get('/dashboard/ele', [SalehController::class, 'electricalPartsProducts'])->name('dashboard.electricalPartsProducts');
-    Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
+    // Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
     // Route::get('/search', [ProductController::class, 'search'])->name('products.search');
 
     // Resource routes for managing SubCategories and Products (admin only)

@@ -25,6 +25,7 @@ class ProductController extends Controller
     }
     public function search(Request $request)
     {
+        // dd($request);
         $keyword = $request->input('search');
         $products = Product::query();
         if ($keyword) {
