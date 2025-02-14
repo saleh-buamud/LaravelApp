@@ -20,8 +20,11 @@
     <!-- Custom Styles -->
     <style>
         body {
-            font-family: 'Amiri', serif;
-            /* Apply the Arabic font */
+            font-family: Cairo, serif;
+            font-optical-sizing: auto;
+            font-weight: 700;
+            font-style: normal;
+            font-variation-settings: "slnt" 1;
         }
 
         .navbar {

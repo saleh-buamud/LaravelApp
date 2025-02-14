@@ -17,7 +17,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Amiri', serif;
+            font-family: "Cairo", serif;
+            font-optical-sizing: auto;
+            font-weight: 700;
+            /* يمكنك تغيير القيمة من 200 إلى 1000 */
+            font-style: normal;
+            font-variation-settings: "slnt" 1;
         }
 
         .box {
@@ -52,10 +57,12 @@
                     <div class="ms-md-2 ms-lg-5">
                         <span class="text-muted">قصتنا</span>
                         <h2 class="display-5 fw-bold">عن متجرنا</h2>
-                        <p class="lead" style="margin-bottom: 10px; color: black; line-height: 1.8;">
+                        <p class="lead"
+                            style="margin-bottom: 10px; color: black; line-height: 1.8; font-family: Cairo, serif; font-weight: 700;font-size: 18px;">
                             نحن نقدم مجموعة واسعة من قطع غيار السيارات عالية الجودة لتلبية احتياجات سياراتك.
                         </p>
-                        <p class="lead mb-0" style="color: black; line-height: 1.8;">
+                        <p class="lead mb-0"
+                            style="color: black; line-height: 1.8; font-family: Cairo, serif; font-weight: 700;">
                             فريقنا يعمل بشكل دؤوب لتوفير أفضل الأسعار والخدمات لعملائنا الكرام.
                         </p>
                     </div>

@@ -17,10 +17,20 @@
     <link rel="stylesheet" href="{{ asset('assets/css/glightbox.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
     <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Cairo", serif;
+            font-optical-sizing: auto;
+            font-weight: 700;
+            /* يمكنك تغيير القيمة من 200 إلى 1000 */
+            font-style: normal;
+            font-variation-settings: "slnt" 1;
+        }
+    </style>
 </head>
 
 
-<body style="font-family: 'Amiri', serif;">
+<body>
     <div class="preloader">
         <div class="preloader-inner">
             <div class="preloader-icon">

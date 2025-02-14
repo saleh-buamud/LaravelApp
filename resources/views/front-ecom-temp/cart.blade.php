@@ -16,6 +16,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
 
     <style>
+        body {
+            font-family: "Cairo", serif;
+            font-optical-sizing: auto;
+            font-weight: 700;
+            /* يمكنك تغيير القيمة من 200 إلى 1000 */
+            font-style: normal;
+            font-variation-settings: "slnt" 1;
+        }
+
         /* تغيير لون الخلفية عند التمرير */
         .btn:hover {
             background-color: #0056b3;
@@ -77,7 +86,9 @@
                         <div class="m-4">
                             <div class="mb-3 d-flex flex-column align-items-start">
                                 <!-- زر المسح -->
-                                <a href="{{ route('clear') }}" class="btn btn-danger mb-2">مسح الكل السلة</a>
+                                <a href="{{ route('clear') }}" class="btn btn-danger mb-2"
+                                    style="font-family: Cairo, serif; font-weight: 700;font-size: 18px;">مسح الكل
+                                    السلة</a>
 
                                 <!-- عنوان سلة التسوق -->
                                 <span class="card-title mb-4 h4">سلة التسوق الخاصة بك</span>
@@ -92,7 +103,8 @@
                                                 <img src="{{ $item->attributes->image }}" class="border rounded me-3"
                                                     style="width: 96px; height: 96px" />
                                                 <div class="">
-                                                    <a href="#" class="nav-link">{{ $item->name }}</a>
+                                                    <a href="#"
+                                                        class="nav-link"style="font-family: Cairo, serif; font-weight: 700;font-size: 18px;">{{ $item->name }}</a>
                                                     {{-- <p class="text-muted">{{ Number::currency($item->price) }}</p> --}}
                                                 </div>
                                             </div>
@@ -127,7 +139,7 @@
                                         class="col-lg col-sm-6 d-flex justify-content-sm-center justify-content-md-start justify-content-lg-center justify-content-xl-end mb-2">
                                         <div class="float-md-end">
                                             <a href="{{ route('remove.item', $item->id) }}"
-                                                class="btn btn-light btn-outline-danger text-black shadow-none hover-scale">
+                                                class="btn btn-light btn-outline-danger text-black shadow-none hover-scale"style="font-family: Cairo, serif; font-weight: 700;font-size: 18px;">
                                                 إزالة
                                             </a>
                                         </div>
@@ -157,15 +169,20 @@
 
                             <hr />
                             <div class="d-flex justify-content-between">
-                                <p class="mb-2">السعر الإجمالي:</p>
-                                <p class="mb-2 fw-bold">{{ '$' . number_format($total, 2) }}</p>
+                                <p class="mb-2"style="font-family: Cairo, serif; font-weight: 700;font-size: 18px;">
+                                    السعر الإجمالي:</p>
+                                <p
+                                    class="mb-2 fw-bold"style="font-family: Cairo, serif; font-weight: 700;font-size: 18px;">
+                                    {{ '$' . number_format($total, 2) }}</p>
                             </div>
 
                             <div class="mt-3">
-                                <a href="{{ route('checkout') }}" class="btn btn-success w-100 shadow-0 mb-2">
+                                <a href="{{ route('checkout') }}"
+                                    class="btn btn-success w-100 shadow-0 mb-2"style="font-family: Cairo, serif; font-weight: 700;font-size: 18px;">
                                     إتمام الشراء
                                 </a>
-                                <a href="{{ route('home') }}" class="btn btn-light w-100 border mt-2 hover-scale">
+                                <a href="{{ route('home') }}"
+                                    class="btn btn-light w-100 border mt-2 hover-scale"style="font-family: Cairo, serif; font-weight: 700;font-size: 18px;">
                                     العودة إلى المتجر
                                 </a>
                             </div>
@@ -177,7 +194,9 @@
             </div>
         </div>
         {{-- <a href="{{ route('checkout') }}" class="btn btn-primary btn-lg w-40 mt-1">إتمام الشراء</a> --}}
-        <a href="{{ route('checkout') }}" class="btn btn-primary btn-lg w-40 mt-1">اتمام الشراء</a>
+        <a href="{{ route('checkout') }}"
+            class="btn btn-primary btn-lg w-40 mt-1"style="font-family: Cairo, serif; font-weight: 700;font-size: 18px;">اتمام
+            الشراء</a>
     </section>
     @include('front-ecom-temp.footer')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

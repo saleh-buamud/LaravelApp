@@ -17,8 +17,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Noto+Sans+Arabic:wght@100..900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cairo:slnt,wght@1,200..1000&family=Noto+Sans+Arabic:wght@100..900&display=swap"
         rel="stylesheet">
+    <style>
+        * {
+            font-family: "Cairo", serif;
+            font-optical-sizing: auto;
+            font-weight: 700;
+            font-style: normal;
+            font-variation-settings: "slnt" 1;
+        }
+
+        /* تطبيق تنسيق الخط على جميع العناصر داخل <header> */
+    </style>
 </head>
 
 <body>

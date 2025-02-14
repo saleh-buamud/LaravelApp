@@ -24,6 +24,16 @@
 </head>
 
 <style>
+    body {
+        font-family: "Cairo", serif;
+        font-optical-sizing: auto;
+        font-weight: 700;
+        /* يمكنك تغيير القيمة من 200 إلى 1000 */
+        font-style: normal;
+        font-variation-settings: "slnt" 1;
+    }
+
+
     .pagination-container {
         display: flex;
         justify-content: center;
@@ -58,7 +68,7 @@
     @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
 </style>
 
-<body style="font-family: 'Amiri', serif;">
+<body>
     <!-- Preloader -->
     <div class="preloader">
         <div class="preloader-inner">
