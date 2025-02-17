@@ -28,7 +28,6 @@
             font-variation-settings: "slnt" 1;
         }
 
-        /* تطبيق تنسيق الخط على جميع العناصر داخل <header> */
     </style>
 </head>
 

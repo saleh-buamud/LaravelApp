@@ -64,8 +64,6 @@
         box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1),
             0 10px 8px rgba(0, 0, 0, 0.015);
     }
-
-    @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
 </style>
 
 <body>
@@ -85,7 +83,10 @@
 
     <!-- Main Content -->
     <div class="container my-4">
-        <h1 class="text-center mb-4">الفئات الفرعية للأجزاء الخارجية</h1>
+        <h1 class="text-center mb-4" style="font-family: Cairo, serif; font-weight: 900; font-size: 38px;">الفئات
+            الفرعية
+            للأجزاء
+            الخارجية</h1>
         <div class="row">
             @foreach ($subCategories as $subCategory)
                 <div class="col-md-4 mb-4">

@@ -56,7 +56,8 @@
                 <div class="col-md-6 offset-md-1">
                     <div class="ms-md-2 ms-lg-5">
                         <span class="text-muted">قصتنا</span>
-                        <h2 class="display-5 fw-bold">عن متجرنا</h2>
+                        <h2 class="display-5 fw-bold"
+                            style="font-family: Cairo, serif; font-weight: 700; font-size: 18px;">عن متجرنا</h2>
                         <p class="lead"
                             style="margin-bottom: 10px; color: black; line-height: 1.8; font-family: Cairo, serif; font-weight: 700;font-size: 18px;">
                             نحن نقدم مجموعة واسعة من قطع غيار السيارات عالية الجودة لتلبية احتياجات سياراتك.

@@ -59,7 +59,8 @@
     @include('front-ecom-temp.header')
 
     <div class="container my-4">
-        <h1 class="text-center mb-4">فئات فرعية للأجزاء الكهربائية</h1>
+        <h1 class="text-center mb-4" style="font-family: Cairo, serif; font-weight: 900; font-size: 38px;">فئات فرعية
+            للأجزاء الكهربائية</h1>
         <div class="row">
             @foreach ($subCategories as $subCategory)
                 <div class="col-md-4 mb-4">

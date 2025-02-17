@@ -210,7 +210,8 @@
     @include('front-ecom-temp.header')
 
     <div class="container my-4">
-        <h1 class="text-center mb-4">البحث عن قطع غيار</h1>
+        <h1 class="text-center mb-4" style="font-family: Cairo, serif; font-weight: 900; font-size: 38px;">البحث عن قطع
+            غيار</h1>
         <div class="text-center flex justify-center">
             <form action="{{ route('products.search.front') }}" method="GET" class="flex items-center space-x-1">
                 <div class="search-container flex items-center" style="display: flex">
