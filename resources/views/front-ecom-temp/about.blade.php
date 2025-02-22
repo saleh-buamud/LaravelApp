@@ -20,9 +20,9 @@
             font-family: "Cairo", serif;
             font-optical-sizing: auto;
             font-weight: 700;
-            /* يمكنك تغيير القيمة من 200 إلى 1000 */
             font-style: normal;
             font-variation-settings: "slnt" 1;
+            background: red;
         }
 
         .box {

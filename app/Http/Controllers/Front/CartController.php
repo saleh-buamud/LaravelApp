@@ -107,6 +107,7 @@ class CartController extends Controller
         // Save the order to the database
         $order->save();
 
+        
         // Add order details to the order_details table
         $orderDetails = [];
         foreach (\Cart::getContent() as $item) {
@@ -129,9 +130,9 @@ class CartController extends Controller
         }
 
         // // Send an email to the customer with order details
-        // Mail::to('itstd.4626@uob.edu.ly')->send(new TestMail($order, $orderDetails));
+        Mail::to('itstd.4626@uob.edu.ly')->send(new TestMail($order, $orderDetails));
         // // Send an email to the store owner with order details
-        // Mail::to('buamudsaleh@gmail.com')->send(new TestMail($order, $orderDetails));
+        Mail::to('buamudsaleh@gmail.com')->send(new TestMail($order, $orderDetails));
 
         // Clear the cart after saving the order
         \Cart::clear();
