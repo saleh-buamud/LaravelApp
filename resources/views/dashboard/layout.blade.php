@@ -204,7 +204,8 @@
                         </div>
                         <div class="col-sm-6">
                             <ul class="float-sm-right d-flex" style="list-style: none;">
-                                <li class=mx-2><a href="#" class="btn btn-primary">المخزون القطع</a></li>
+                                <li class=mx-2><a href="{{ route('increase') }}" class="btn btn-primary">
+                                        مخزون القطع</a></li>
                                 <li class=mx-2><a href="{{ route('dashboard.allAdmin') }}"
                                         class="btn btn-primary">الادمن</a></li>
 

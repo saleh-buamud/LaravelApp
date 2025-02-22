@@ -24,6 +24,12 @@ class DashboardController extends Controller
 
         return view('dashboard.categories.index', compact('products', 'lowStockProducts'));
     }
+    public function AllProductiNcrease(Request $request)
+    {
+        $products = Product::paginate(10); // 10 هو عدد العناصر في كل صفحة
+
+        return view('dashboard.categories.increase-quantity', compact('products'));
+    }
 
     /**
      * Increase the quantity of a product.
@@ -49,6 +55,6 @@ class DashboardController extends Controller
         $product->save();
 
         // Redirect back with a success message
-        return redirect()->back()->with('success', 'Product quantity increased successfully!');
+        return redirect()->back()->with('messages', 'تم زيادة الكمية بنجاح');
     }
 }

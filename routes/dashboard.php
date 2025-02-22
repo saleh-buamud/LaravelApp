@@ -45,7 +45,9 @@ Route::middleware(['auth:admin', 'admin'])->group(function () {
     Route::get('/dashboard/ele', [SalehController::class, 'electricalPartsProducts'])->name('dashboard.electricalPartsProducts');
     // Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
     Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
+    Route::get('/products/increase-quantity', [DashboardController::class, 'AllProductiNcrease'])->name('increase');
 
+    Route::post('/products/{id}/increase-quantity', [DashboardController::class, 'increaseQuantity'])->name('increase.quantity');
     // Resource routes for managing SubCategories and Products (admin only)
     Route::resource('dashboard/subcategories', SubCategoryController::class);
     Route::resource('dashboard/products', ProductController::class);
