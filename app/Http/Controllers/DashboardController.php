@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Mail\TestMail;
+use App\Mail\LowStockNotification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
@@ -12,25 +13,23 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
         $lowStockProducts = Product::where('quantity', '<', 5)->get();
+        $products = Product::all();
 
-        // If there are products with quantity less than 5
         if ($lowStockProducts->count() > 0) {
-            // Add a message to the session
-            // Mail::to('bbuamud@gmail.com')->send(new TestMail($products, $lowStockProducts));
-            Session::flash('messages', 'There are products with less than 5 in stock!');
+            Mail::to('itstd.4626@uob.edu.ly')->send(new LowStockNotification($lowStockProducts));
+
+            Session::flash('messages', 'There are ' . $lowStockProducts->count() . ' products with low stock!');
         }
 
         return view('dashboard.categories.index', compact('products', 'lowStockProducts'));
     }
     public function AllProductiNcrease(Request $request)
     {
-        $products = Product::paginate(10); // 10 هو عدد العناصر في كل صفحة
+        $products = Product::paginate(10);
 
         return view('dashboard.categories.increase-quantity', compact('products'));
     }
-
     /**
      * Increase the quantity of a product.
      *

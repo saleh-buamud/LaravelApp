@@ -26,7 +26,7 @@ class ProductController extends Controller
             'description' => 'nullable|string',
             'quantity' => 'required|integer|min:0',
             'price' => 'required|numeric|min:0',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|max:2048',
             'sub_category_id' => 'required|exists:sub_categories,id',
             'model_id' => 'required|array', // إلزام المستخدم باختيار موديلات
             'model_id.*' => 'exists:modes,id', // التحقق من وجود كل موديل
@@ -69,7 +69,7 @@ class ProductController extends Controller
             'description' => 'nullable|string',
             'quantity' => 'required|integer|min:0',
             'price' => 'required|numeric|min:0',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|max:2048',
             'sub_category_id' => 'required|exists:sub_categories,id',
             'mode_id' => 'required|array', // إلزام الموديلات
             'mode_id.*' => 'exists:modes,id',

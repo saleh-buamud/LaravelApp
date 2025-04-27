@@ -100,8 +100,8 @@
                                     <div class="col-lg-5">
                                         <div class="me-lg-5">
                                             <div class="d-flex">
-                                                <img src="{{ $item->attributes->image }}" class="border rounded me-3"
-                                                    style="width: 96px; height: 96px" />
+                                                <img src="{{ asset('storage/' . $item->attributes->image) }}"
+                                                    class="border rounded me-3" style="width: 96px; height: 96px" />
                                                 <div class="">
                                                     <a href="#"
                                                         class="nav-link"style="font-family: Cairo, serif; font-weight: 700;font-size: 18px;">{{ $item->name }}</a>

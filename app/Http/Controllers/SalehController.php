@@ -53,7 +53,7 @@ class SalehController extends Controller
     public function allProducts()
     {
         // استرجاع جميع المنتجات
-        $products = Product::paginate(1); // عرض 10 منتجات في الصفحة
+        $products = Product::paginate(10); // عرض 10 منتجات في الصفحة
 
         // استرجاع المنتجات التي تحتوي على كمية أقل من 5
         $lowStockProducts = Product::where('quantity', '<', 5)->get();

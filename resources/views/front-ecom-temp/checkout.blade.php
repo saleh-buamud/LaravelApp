@@ -29,46 +29,16 @@
     @include('front-ecom-temp.header')
 
     <div class="container my-5">
-        <h2 class="mb-4">Checkout</h2>
 
         <!-- Checkout Form -->
         <form action="{{ route('saveOrder') }}" method="POST">
             @csrf
-            <div class="row">
-                <!-- Full Name -->
-                <div class="col-md-6 mb-3">
-                    <label for="name" class="form-label">Full Name</label>
-                    <input type="text" id="name" name="name" class="form-control"
-                        placeholder="Enter your full name" />
-                </div>
 
-                <!-- Phone Number -->
-                <div class="col-md-6 mb-3">
-                    <label for="phone" class="form-label">Phone Number</label>
-                    <input type="text" id="phone" name="phone" class="form-control"
-                        placeholder="Enter your phone number" />
-                </div>
-            </div>
 
-            <!-- Address -->
             <div class="mb-3">
-                <label for="address" class="form-label">Address</label>
-                <input type="text" id="address" name="address" class="form-control"
-                    placeholder="Enter your address" />
+                <h3 class="mb-4 text-center text-primary">متاكد من الطلب</h3>
+                <button type="submit" class="btn btn-primary w-100 text-white text-center">Submit Order</button>
             </div>
-
-            <!-- City -->
-            <div class="mb-3">
-                <label for="city" class="form-label">City</label>
-                <input type="text" id="city" name="city" class="form-control"
-                    placeholder="Enter your city" />
-            </div>
-
-            <!-- Submit Button -->
-            <button type="submit" class="btn btn-primary">Submit Order</button>
-            <button type="submit" class="btn btn-primary">Submit Order</button>
-            <button type="submit" class="btn btn-primary">Submit Order</button>
-
 
         </form>
     </div>

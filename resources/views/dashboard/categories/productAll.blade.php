@@ -84,7 +84,8 @@
                     </td>
                     <td>
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <a href="{{ route('products.edit', $product->id) }}" class="btn btn-dark btn-sm mr-1">Edit</a>
+                            <a href="{{ route('products.edit', $product->id) }}" class="btn-sm"
+                                style="background-color: green;color: white; width:100px">Edit</a>
                             <form action="{{ route('products.destroy', $product->id) }}" method="post" class="mr-1">
                                 @csrf
                                 @method('DELETE')

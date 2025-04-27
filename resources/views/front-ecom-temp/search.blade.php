@@ -240,8 +240,10 @@
                                 </div>
                                 <h5 class="card-title">{{ $product->name }}</h5>
                                 <p class="card-text">{{ $product->description }}</p>
-                                <a href="{{ route('product-details', ['id' => $product->id]) }}"
-                                    class="btn btn-primary saleh">عرض التفاصيل</a>
+                                <p class="card-text"><strong>السعر:</strong> ${{ $product->price }}</p>
+                                <p class="card-text"><strong>الكمية:</strong> {{ $product->quantity }}</p>
+                                <a href="{{ route('add.cart', $product->id) }}" class="btn btn-primary w-100">إضافة إلى
+                                    السلة</a>
                             </div>
                         </div>
                     </div>

@@ -1,40 +1,21 @@
 <?php
 namespace App\Mail;
 
-use App\Models\Product;
-use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
-use Illuminate\Queue\SerializesModels;
+use Illuminate\Database\Eloquent\Collection;
 
 class LowStockNotification extends Mailable
 {
-    use Queueable, SerializesModels;
+    public $lowStockProducts; // متغير لتخزين مجموعة المنتجات
 
-    public $product;
-
-    /**
-     * Create a new message instance.
-     *
-     * @param Product $product
-     * @return void
-     */
-    public function __construct(Product $product)
+    public function __construct(Collection $lowStockProducts)
     {
-        $this->product = $product;
+        $this->lowStockProducts = $lowStockProducts; // تخزين المجموعة
     }
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
     public function build()
     {
-        return $this->subject('Low Stock Alert: ' . $this->product->name)
-            ->view('low_stock_notification')
-            ->with([
-                'productName' => $this->product->name,
-                'productQuantity' => $this->product->quantity,
-            ]);
+        return $this->view('low_stock_notification') // استخدام ملف العرض
+            ->subject('Low Stock Notification'); // عنوان البريد الإلكتروني
     }
 }
