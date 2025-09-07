@@ -45,4 +45,18 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    /**
+     * Render an exception into an HTTP response.
+     */
+    public function render($request, Throwable $exception)
+    {
+        // Handle API exceptions
+        $apiResponse = ApiExceptionHandler::handle($exception, $request);
+        if ($apiResponse) {
+            return $apiResponse;
+        }
+
+        return parent::render($request, $exception);
+    }
 }
