@@ -1,8 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Front\ProductController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -12,9 +9,15 @@ use App\Http\Controllers\Front\ProductController;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "api" middleware group. Make something great!
 |
+| The routes are organized into separate files by domain for better
+| maintainability and clean architecture.
+|
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-// Route::get('/search', [ProductController::class, 'search'])->name('product.search');
+// Include domain-specific route files
+require __DIR__ . '/api/products.php';
+require __DIR__ . '/api/categories.php';
+require __DIR__ . '/api/subcategories.php';
+require __DIR__ . '/api/cart.php';
+require __DIR__ . '/api/orders.php';
+require __DIR__ . '/api/admin.php';
