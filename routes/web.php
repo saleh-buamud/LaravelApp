@@ -20,70 +20,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Home Page Route
-Route::get('/', [HomeController::class, 'index'])->name('home');
-
-// SubCategory Routes
-Route::get('/internal', [SubCategoryController::class, 'allInternal'])->name('allInternal');
-Route::get('/external', [SubCategoryController::class, 'allExternal'])->name('allExternal');
-Route::get('/electrical', [SubCategoryController::class, 'allElectrical'])->name('allElectrical');
-
-// Product Routes
-Route::get('sub-category/{subCategoryId}/products', [ProductController::class, 'showProductsBySubCategory'])->name('subCategory.products');
-
-// Cart Routes
-Route::get('cart', [CartController::class, 'cart'])->name('cart');
-Route::get('add-cart/{productId}', [CartController::class, 'addCart'])->name('add.cart');
-Route::get('add-quantity/{productId}', [CartController::class, 'addQuantity'])->name('add.quantity');
-Route::get('decrease-quantity/{productId}', [CartController::class, 'decreaseQuantity'])->name('decrease.quantity');
-Route::get('remove-item/{productId}', [CartController::class, 'removeItem'])->name('remove.item');
-Route::get('clear', [CartController::class, 'clearCart'])->name('clear');
-Route::post('saveOrder', [CartController::class, 'saveOrder'])->name('saveOrder');
-
-///////////////////////
-Route::get('pyment', function () {
-    return view('front-ecom-temp.pyment');
-})->name('pyment');
-
-Route::get('type', function () {
-    return view('front-ecom-temp.type-1');
-})->name('type-1');
-
-Route::get('typeall', function () {
-    return view('front-ecom-temp.type-2');
-})->name('type-2');
-
-Route::get('typeafeza', function () {
-    return view('front-ecom-temp.type-3');
-})->name('type-3');
-
-///////////////////
-Route::get('sendEmail', [CartController::class, 'sendEmail'])->name('sendEmail');
-
-// Search products
-Route::get('/search', [ProductController::class, 'search'])->name('products.search.front');
-
-
-Route::get('/product/{productId}', [ProductController::class, 'showProduct'])->name('product-details');
-// Checkout Route
-Route::get('checkout', function () {
-    return view('front-ecom-temp.checkout');
-})->name('checkout');
-
-// Static Pages
-Route::get('about', function () {
-    return view('front-ecom-temp.about');
-})->name('about');
-
-Route::get('/product-details', function () {
-    return view('front-ecom-temp.product-details');
-})->name('product-details');
-
-// Debugging Route - To retrieve all users
-Route::get('/to', function () {
-    $All = User::all();
-    dd($All);
-});
+// Split route files for organization
+require __DIR__ . '/front.php';
+require __DIR__ . '/cart.php';
+require __DIR__ . '/debug.php';
 
 // Authentication Routes (Profile Management)
 Route::middleware('auth')->group(function () {

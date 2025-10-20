@@ -1,22 +1,9 @@
-<?
-$name = $_POST{'name'};
-$subject = $_POST{'subject'};
-$email = $_POST{'email'};
-$phone = $_POST{'phone'};
-$message = $_POST['message'];
-
-$email_message = "
-
-Name: ".$name."
-Subject: ".$subject."
-Email: ".$email."
-Phone: ".$phone."
-Message: ".$message."
-
-";
-
-mail ("example@gmail.com" , "New Message", $email_message);
-header("location: ../../mail-success.html");
-?>
-
-
+<!-- DEPRECATED: legacy mail script disabled. -->
+<!-- Use the secure API endpoint: POST /api/contact -->
+<!-- Example JS:
+        fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name:'', email:'', subject:'', message:'' })
+        })
+-->

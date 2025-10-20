@@ -1,22 +1,12 @@
-<?
-$name = $_POST{'name'};
-$subject = $_POST{'subject'};
-$email = $_POST{'email'};
-$phone = $_POST{'phone'};
-$message = $_POST['message'];
+<?php
+// DEPRECATED: This legacy public script has been disabled for security reasons.
+// Please POST JSON to the secure Laravel API endpoint: /api/contact
 
-$email_message = "
-
-Name: ".$name."
-Subject: ".$subject."
-Email: ".$email."
-Phone: ".$phone."
-Message: ".$message."
-
-";
-
-mail ("example@gmail.com" , "New Message", $email_message);
-header("location: ../../mail-success.html");
+http_response_code(410);
+header('Content-Type: application/json');
+echo json_encode([
+    'error' => 'deprecated',
+    'message' => 'This endpoint is disabled. Use POST /api/contact with JSON payload {name,email,subject,message}.',
+]);
+exit;
 ?>
-
-

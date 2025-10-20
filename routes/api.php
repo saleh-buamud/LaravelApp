@@ -21,3 +21,4 @@ require __DIR__ . '/api/subcategories.php';
 require __DIR__ . '/api/cart.php';
 require __DIR__ . '/api/orders.php';
 require __DIR__ . '/api/admin.php';
+require __DIR__ . '/api/contact.php';
