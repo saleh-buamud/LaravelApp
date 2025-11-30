@@ -17,7 +17,7 @@ class CheckoutController extends Controller
         ]);
 
         Order::create([
-            'name' => $t
+            'name' => $validated['name'],
             'phone' => $validated['phone'],
             'address' => $validated['address'],
             'city' => $validated['city'],
