@@ -1,19 +1,47 @@
-<?php
-$name = $_POST['name'];
-$subject = $_POST['subject'];
-$email = $_POST['email'];
-$phone = $_POST['phone'];
-$message = $_POST['message'];
+<div class="contact-form">
+    <form id="contactForm" onsubmit="return submitContact(event)">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required>
 
-$email_message = "
-Name: $name
-Subject: $subject
-Email: $email
-Phone: $phone
-Message: $message
-";
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required>
 
-mail("example@gmail.com", "New Message", $email_message);
-header("Location: ../../mail-success.html");
-exit;
-?>
+        <label for="phone">Phone</label>
+        <input id="phone" name="phone" type="text">
+
+        <label for="subject">Subject</label>
+        <input id="subject" name="subject" type="text">
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button type="submit">Send</button>
+    </form>
+</div>
+
+<script>
+    async function submitContact(e) {
+        e.preventDefault();
+        const data = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            subject: document.getElementById('subject').value,
+            message: document.getElementById('message').value,
+        };
+
+        const res = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+        });
+
+        if (res.status === 202) {
+            alert('Message queued for delivery');
+        } else {
+            const body = await res.json().catch(() => ({}));
+            alert(body.message || 'Failed to send message');
+        }
+        return false;
+    }
+</script>

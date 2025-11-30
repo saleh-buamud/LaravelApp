@@ -1,0 +1,50 @@
+<?php
+// Backup of original public/assets/mail/mail.php
+// Full original content follows.
+?>
+<?php
+// Basic public mail endpoint - validate inputs and send a notification email.
+// NOTE: For production, prefer using Laravel mailables/controllers instead of a public script.
+
+$name = isset($_POST['name']) ? trim($_POST['name']) : '';
+$subject = isset($_POST['subject']) ? trim($_POST['subject']) : 'New message';
+$email = isset($_POST['email']) ? trim($_POST['email']) : '';
+$phone = isset($_POST['phone']) ? trim($_POST['phone']) : '';
+$message = isset($_POST['message']) ? trim($_POST['message']) : '';
+
+// basic sanitization
+$name = filter_var($name, FILTER_SANITIZE_STRING);
+$subject = filter_var($subject, FILTER_SANITIZE_STRING);
+$email = filter_var($email, FILTER_SANITIZE_EMAIL);
+$phone = filter_var($phone, FILTER_SANITIZE_STRING);
+$message = filter_var($message, FILTER_SANITIZE_STRING);
+
+// simple validation - ensure required fields exist
+if (empty($name) || empty($email) || empty($message)) {
+	// Bad request - redirect back or show simple error
+	header('HTTP/1.1 400 Bad Request');
+	echo 'Missing required fields.';
+	exit;
+}
+
+$email_message = "Name: $name\n" .
+	"Subject: $subject\n" .
+	"Email: $email\n" .
+	"Phone: $phone\n" .
+	"Message: $message\n";
+
+$to = 'example@gmail.com';
+$subjectLine = "Website Contact: $subject";
+$headers = [];
+$headers[] = 'From: ' . ($email ?: 'no-reply@example.com');
+$headers[] = 'Reply-To: ' . ($email ?: 'no-reply@example.com');
+$headers[] = 'MIME-Version: 1.0';
+$headers[] = 'Content-Type: text/plain; charset=UTF-8';
+
+// send mail
+mail($to, $subjectLine, $email_message, implode("\r\n", $headers));
+
+// redirect to a success page relative to public folder
+header('Location: /assets/mail/mail-success.html');
+exit;
+?>
